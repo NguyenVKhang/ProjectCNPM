@@ -1,0 +1,29 @@
+.main-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px !important;
+}
+
+.main {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.col1-layout .col-main {
+    float: none;
+    width: auto;
+    padding: 0;
+}
+
+.page-head-alt {
+    margin: 0;
+    color: #222;
+    font-size: 18px;
+    font-style: normal;
+    text-rendering: optimizeSpeed;
+}
+
+.back {
+    color: #e71a0f;
+}

@@ -1,0 +1,17 @@
+.type-payment-cgv {
+    float: none;
+}
+
+.btn-rights {
+    background-position: -149px -110px !important;
+}
+
+.btn-rights {
+    float: none;
+    width: 106px;
+    display: inline-block;
+    margin: 0 0 0 3px;
+    height: 108px;
+    vertical-align: top;
+    background: url("https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-cgv-button-process.png") no-repeat;
+}

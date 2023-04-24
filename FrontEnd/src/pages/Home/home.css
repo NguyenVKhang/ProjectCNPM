@@ -1,0 +1,670 @@
+#app {
+    height: 100%
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+.main-container {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (min-width: 771px) {
+    .main {
+        width: 980px;
+    }
+}
+
+.main {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.main-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    border: 1px solid #fdfcf0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    padding: 20px;
+    color: #ffffff;
+    opacity: 0.6;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 1;
+}
+
+
+.swiper-pagination-bullet {
+    height: 14px;
+    width: 14px;
+    /* background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/sprite_icon.png?fbclid=IwAR3UeOxsdD4CcOmdozWVjTvkto5B0wbyAfnsF7pnPMuYcrKsMjf32A8zn5A) repeat-y; */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #E71A0F;
+    opacity: 0.7;
+}
+
+.cms-index-index,
+.main-container {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg_c_bricks.png) repeat-x scroll 0 124px rgba(0, 0, 0, 0);
+
+}
+
+@media only screen and (min-width: 480px) {
+
+    .main-container {
+        padding: 30px;
+    }
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px !important;
+}
+
+@media only screen and (min-width: 771px) {
+    .main {
+        width: 980px;
+    }
+}
+
+.main {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.main::after,
+.col-wrapper::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.col1-layout .col-main {
+    float: none;
+    width: auto;
+    padding: 0;
+}
+
+.col1-layout .col-main {
+    float: none;
+    width: auto;
+    padding: 0;
+}
+
+.col-main {
+    float: left;
+    width: 75%;
+}
+
+.col-left,
+.col-right,
+.col-main {
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person {
+        /* border-bottom: 1px solid #222; */
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        padding-bottom: 6px;
+        text-align: center;
+        height: 108px;
+        /* margin-left: 15%;
+    margin-right: 18%; */
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul {
+
+        padding-bottom: 10px;
+        margin-left: 0px !important;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person li:first-child {
+        border-left: medium none;
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person li {
+        display: inline-block;
+        vertical-align: baseline;
+        word-break: break-all;
+        /* border-bottom: 1px double #222; */
+        border-bottom-style: double;
+        border-right-width: 1px;
+
+        padding-bottom: 10px;
+    }
+}
+
+/* .sect-person ul li {
+    list-style-type: none;
+    /* display: inline-block; */
+/* margin-bottom: 10px; */
+/* width: 10%; */
+/* }
+
+.sect-person ul {
+    padding-left: 19px;
+    border-bottom: 1px solid #000;
+} */
+
+.sect-person ul li a {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-header-transparent-home.png);
+    display: block;
+    height: 90px;
+    text-indent: -9999px;
+    width: 136px;
+}
+
+.sect-person .threater {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.theater {
+        background-position: 10px 0;
+    }
+}
+
+.sect-person .now-sh {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.now-sh {
+        background-position: -140px 0;
+    }
+}
+
+.sect-person .special {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.special {
+        background-position: -280px 0;
+    }
+}
+
+.sect-person .event {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.event {
+        background-position: -420px 0;
+    }
+}
+
+.sect-person .requied-login {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.requied-login {
+        background-position: -560px 0;
+    }
+}
+
+.sect-person .dc {
+    border-right: 1px solid #000;
+}
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.dc {
+        background-position: -700px 0;
+    }
+}
+
+/* .sect-person .login-header {
+    border-right: 1px solid #000;
+} */
+
+@media only screen and (min-width: 771px) {
+    .sect-person ul li a.login-header {
+        background-position: -840px 0;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .sect-person {
+        display: none;
+    }
+}
+
+/* Phần slider 1 */
+
+.main-container .slideshow-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-top: 8px;
+
+}
+
+.main-container .swiper-slide {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.main-container .swiper-slide::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    z-index: var(--z-overlay);
+}
+
+.main-container .swiper-navBtn {
+    opacity: 0.5;
+    --swiper-theme-color: #ffff !important;
+    border-radius: 100%;
+    visibility: visible;
+}
+
+.main-container .swiper-navBtn:hover {
+    opacity: 1;
+}
+
+.main-container .swiper-pagination {
+    margin-bottom: 10px;
+}
+
+.main-container .swiper-pagination-bullet {
+    --white-color: #ffff;
+    --swiper-theme-color: red;
+    border: 1px solid var(--white-color);
+    --size: 15px;
+    font-size: var(--size);
+}
+
+.main-container .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* hết phần slider 1 */
+
+/* Home movie */
+.home-movie-selection {
+    margin: 30px 0;
+    width: 100%;
+    /* height: 400px; */
+}
+
+
+
+.home-title {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg_h3_line.jpg) repeat-x scroll 0 26px rgba(0, 0, 0, 0);
+    height: 60px;
+    text-align: center;
+    width: 100%;
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 770px) {
+    .home-movie-selection .home-title h2 {
+        width: 56% !important;
+        background-size: 302px 30px !important;
+    }
+}
+
+.home-movie-selection .home-title h2 {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/h3_movie_selection.gif) no-repeat scroll center center / 406px 41px #FDFCF0;
+    display: inline-block;
+    width: 425px;
+}
+
+@media only screen and (max-width: 770px) {
+    .home-movie-selection .home-title h2 {
+        width: 52% !important;
+        background-size: 250px 34px !important;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .home-event .home-title h2 {
+        width: 30% !important;
+
+    }
+}
+
+.home-title h2 {
+    height: 60px;
+    text-indent: -99999px;
+}
+
+.home-movie-selection .slideshow-containe-movier {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+#slider2 a {
+    height: 100%;
+    width: 100%;
+}
+
+#slider2 img {
+    height: 335px;
+    object-fit: unset;
+
+}
+
+/* event */
+.cms-home .home-event {
+    background: transparent;
+    border-bottom: 3px solid #241d1e;
+    overflow: unset;
+    float: left;
+    padding-bottom: 30px;
+    margin: 20px 0px 0px;
+}
+
+.home-event {
+    width: 100%;
+    min-height: 200px;
+    margin-top: 30px;
+
+}
+
+.product-collateral {
+    clear: both;
+}
+
+.product-view .product-shop,
+.product-img-box,
+.product-collateral,
+.product-view .block-related,
+.box-collateral {
+    margin-bottom: 10px;
+}
+
+.tabs {
+    margin-bottom: 10px;
+}
+
+.home-event .home-title h2 {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/h3_event.gif) no-repeat scroll center center / 142px 41px #FDFCF0;
+    display: inline-block;
+    width: 20%;
+}
+
+.home-title h2 {
+    height: 60px;
+    text-indent: -99999px;
+}
+
+@media only screen and (min-width: 770px) {
+    .home-title h2 {
+        height: 60px;
+        text-indent: -99999px;
+    }
+}
+
+.home-event .toggle-tabs {
+    margin-top: 20px;
+    list-style: none outside none;
+}
+
+@media only screen and (min-width: 771px) {
+    .product-collateral .toggle-tabs {
+        background: transparent;
+        border: medium none;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    .product-collateral .toggle-tabs {
+        display: block;
+        width: 100%;
+        position: relative;
+        background-color: #f4f4f4;
+    }
+}
+
+/* tab */
+/* Style the tab */
+/* .tabs {
+    overflow: hidden;
+    border: none;
+
+    margin: 10px 238px;
+} */
+.mb-3 {
+    justify-content: center;
+}
+
+/* Style the buttons inside the tab */
+.tabs button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: 5px;
+    width: 100%;
+    opacity: 0.7;
+    /* background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/ribon_left_menu.gif) no-repeat scroll left 0 #e71a0f; */
+}
+
+.tabs .left {
+    width: 5%;
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/ribon_left_menu.gif) no-repeat scroll left 0 #e71a0f;
+    padding-left: 19px;
+    opacity: 0.8;
+    float: left;
+    display: inline;
+}
+
+.tabs .right {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/ribon_right.gif) no-repeat scroll right 0 #e71a0f;
+    /* margin-left: -10%; */
+    padding-right: 19px;
+    opacity: 0.8;
+    width: 5%;
+    float: left;
+    display: inline;
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+    opacity: 0.5;
+}
+
+/* Create an active/current tablink class */
+.tabs button.active {
+    opacity: 1;
+    font-size: 14px;
+}
+
+.tabcontent {
+    margin-bottom: 40px;
+}
+
+/* end tab */
+
+
+/* home-promotion-card */
+.home-promotion-card {
+    margin-top: 30px;
+    float: left;
+    border-top: 3px solid #241d1e;
+    border-bottom: 3px solid #241d1e;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.promos {
+    margin: 0 0 10px 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+}
+
+.promos:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.home-promotion-card .promos li.col-ad {
+    border: 3px solid #241d1e;
+    height: 261px;
+    padding: 3px;
+    width: 228px;
+    display: block !important;
+    margin-top: 20px;
+}
+
+.home-promotion-card .promos li:first-child {
+    margin-left: 0;
+}
+
+.home-promotion-card .promos li {
+    margin-left: 7px;
+    margin-right: 0;
+}
+
+@media only screen and (min-width: 771px) {
+    body .promos>li {
+        float: left;
+        width: 31.74603%;
+        margin-right: 2.38095%;
+    }
+}
+
+body .promos>li {
+    margin: 0 0 10px 0;
+    list-style: none;
+    text-align: center;
+    position: relative;
+    border: 1px solid #cccccc;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.format-border {
+    border: 1px solid #241d1e;
+}
+
+.promos img {
+    max-width: 100%;
+    width: 100%;
+    opacity: 1;
+}
+
+.promos img:hover {
+    opacity: 0.8;
+}
+
+.home-promotion-card .promos li.col-hd {
+    border: 3px solid #241d1e;
+    height: 261px;
+    padding: 3px;
+    position: relative;
+    width: 510px;
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 771px) {
+    .promos>li:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+.promos>li:last-child {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 770px) {
+    .home-promotion-card {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .home-promotion-card .promos li.col-ad {
+        height: auto !important;
+        width: 23% !important;
+        border: 2px solid #241d1e !important;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .home-promotion-card .promos li.col-hd {
+        height: auto !important;
+        width: 50% !important;
+        border: 2px solid #241d1e !important;
+    }
+}
+
+/* hết phần thân */

@@ -1,0 +1,300 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.main {
+    background-color: #FDFCF0;
+}
+
+#header-container #header_btn {
+    margin: auto;
+    height: 29px;
+    width: 100%;
+    background-color: #fdfcf0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#header-container #header_btn .btn-cover {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 2px 10px;
+}
+
+@media only screen and (max-width: 770px) {
+    #header-container #header_btn .btn-cover a {
+        font-size: 12px;
+        line-height: 12px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #header-container #header_btn .btn-cover a {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #header-container #header_btn .btn-cover1 {
+        display: none;
+    }
+}
+
+
+#header-container #header_btn a {
+    height: 17px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #666;
+    display: inline-block;
+    font-weight: 500;
+}
+
+#header-container #header_btn a:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#header-container #header_btn .icon {
+    margin-right: 2px;
+}
+
+#header-container #bg-top {
+    display: block;
+    width: 100%;
+    background: url(../../img/bg-top.png) repeat-x scroll left bottom transparent;
+    background-size: 10px 135px;
+    height: 135px;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow: visible;
+    margin-top: -10px;
+}
+
+@media only screen and (max-width: 770px) {
+    #header-container #bg-top {
+        overflow: hidden;
+        margin-top: 2px;
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    #header-container #bg-top .top-container {
+        width: 980px;
+        margin: 0px auto;
+    }
+}
+
+#header-container #bg-top .top-container {
+    /* height: 100%;
+    margin: 0 auto;
+    display: block; */
+    position: relative;
+    z-index: 2000;
+}
+
+#header-container #bg-top .menubartop1 {
+    display: none;
+}
+
+/* #header-container #bg-top .logo {
+    display: block;
+    float: left;
+    min-width: 50px;
+    min-height: 44px;
+    margin: 25px 0px 40px 15%;
+    justify-content: center;
+    box-sizing: border-box;
+} */
+
+@media only screen and (min-width: 771px) {
+    #header-container #bg-top .logo {
+        max-width: 300px;
+        min-height: 90px;
+    }
+}
+
+#header-container #bg-top .logo {
+    display: block;
+    float: left;
+    min-width: 100px;
+    min-height: 44px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#header-container #bg-top .menu {
+    display: block;
+    float: left;
+    margin-left: -15px;
+    margin-top: 40px;
+    overflow: hidden;
+    font-weight: 800;
+    text-transform: uppercase;
+    list-style-type: none;
+    min-width: 130px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#header-container #bg-top .menu .subMenu {
+    list-style-type: none;
+    text-transform: none;
+    display: none;
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg_menu_hover.png?fbclid=IwAR1l3sfppIH0yqnvZvIsMCyd-bbzL5yD1WKVRqzqR2WxQ9_DBt7Qz_mGbQ0);
+    margin-top: 5px;
+    padding: 15px 40px 15px 15px;
+    position: absolute;
+    border: 3px solid #828282;
+    opacity: 1;
+}
+
+#header-container #bg-top .menu .subMenu a:hover {
+    color: #E71A0F;
+}
+
+#header-container #bg-top .menu:hover .subMenu {
+    display: block;
+}
+
+#header-container #bg-top .menu .subMenu>li {
+    display: block !important;
+    text-transform: none;
+    text-align: left;
+}
+
+#header-container #bg-top .menu .subMenu a {
+    text-decoration: none;
+    color: #fdfcf0;
+}
+
+/* #header-container #bg-top a {
+    text-decoration: none;
+    color: black;
+} */
+
+#header-container #bg-top #kenhCine {
+    display: block;
+    float: left;
+    /* margin: 0 auto; */
+    margin-top: 54px;
+    margin-bottom: 40px;
+    margin-left: 30px;
+    /* margin-right: 10px; */
+}
+
+#header-container #bg-top #muaVe {
+    display: block;
+    float: left;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 770px) {
+    #bg-top .top-container .menubartop {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    #header-container #bg-top #muaVe {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    #header-container #bg-top #kenhCine {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    #header-container #bg-top .logo {
+        margin-left: 42%;
+        margin-top: 36px;
+    }
+}
+
+@media only screen and (min-width: 771px) {
+    .dropdown {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .dropdown {
+        display: block;
+    }
+}
+
+#header-container #bg-top .menubartop1,
+.menubartop-level2 {
+    display: none;
+}
+
+/*  */
+#header-container svg {
+    font-size: 30px I !important;
+    color: #636363 !important;
+    width: 30px;
+    height: 30px;
+}
+
+#header-container #btn-tiket {
+    background-color: #EDEDED !important;
+    color: #636363 !important;
+    border: 1px solid #FDFCF0;
+    width: 50%;
+    height: 35px;
+}
+
+#header-container #btn-menu {
+    background-color: #EDEDED !important;
+    color: #636363 !important;
+    border: 1px solid #FDFCF0;
+    width: 50%;
+    height: 35px;
+}
+
+#header-container #btn-tiket .icon {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon_ticket25.png) center 0 no-repeat;
+    width: 25px;
+    height: 32px;
+    margin-top: 7px;
+    display: inline-block;
+}
+
+#header-container ul.dropdown-menu.show {
+    width: 100%;
+
+}
+
+#header-container .dropdown-menu>li a {
+    text-decoration: none;
+    color: #636363;
+    line-height: 35px;
+    padding: 0 15px 0 25px;
+
+    text-align: left;
+    text-transform: uppercase;
+
+}
+
+#header-container .dropdown-menu>li {
+    background-color: #EDEDED !important;
+    font-weight: bold;
+    border-bottom: 1px solid #cccccc;
+}
+
+#header-container .dropdown-menu>li a:hover {
+    color: #E71A0F;
+}

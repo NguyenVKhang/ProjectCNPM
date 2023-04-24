@@ -1,0 +1,244 @@
+{
+    "_id": {
+        "$oid": "63db9a8df96160003b649d7e"
+    },
+    "name": "BTS: YET TO COME IN CINEMAS",
+    "category": "Hòa nhạc",
+    "time": "103",
+    "timeStart": "03-02-2023",
+    "actor": "Jin, RM, SUGA, j-hope, Jimin, V, Jung Kook",
+    "directors": "",
+    "language": "Tiếng Hàn - Phụ đề tiếng Việt, tiếng Anh",
+    "title": "bts-yet-to-come",
+    "detail": "o là một đêm diễn đầy cảm xúc đối với chính BTS và ARMY, vì sau buổi diễn này, có thể mất vài năm để chúng ta được thấy 7 chàng trai lại cùng hoà nhịp trên sân khấu. Nhưng RM, Jin, SUGA, j-hope, Jimin, V và Jungkook sẽ cùng nhau xuất hiện trong phiên bản chiếu rạp đặc biệt vào tháng 02.2023, và ARMY trên toàn thế giới sẽ một lần nữa được chiêm ngưỡng, tận hưởng buổi hoà nhạc trên màn ảnh rộng. Các bản hit xuyên suốt sự nghiệp của nhóm, bao gồm Dynamite, Butter và IDOL, và sân khấu đầu tiên của Run BTS - bài hát trong album Proof mới nhất sẽ được trình diễn với sự dàn dựng công phu và mãn nhãn. Thêm nữa, buổi hoà nhạc được sản xuất với định dạng ScreenX và 4DX. Với chế độ toàn cảnh của ScreenX, bạn sẽ được trải nghiệm cảm giác siêu thực của một buổi concert với màn hình phóng đại hai bên, hoặc có thể \"feel the beat\" từng chuyển động với 4DX. Giây phút này, chắc chắn sẽ là khoảnh khắc khó quên trong cuộc hành trình chinh phục âm nhạc của BTS với sự đồng hành của ARMY. Hãy cùng hoà vang điệu nhạc của BTS tại các rạp trên toàn thế giới.",
+    "image": "https://ocwckgy6c1obj.vcdn.cloud/media/catalog/product/cache/1/thumbnail/190x260/2e2b8cd282892c71872b9e67d2cb5039/2/2/22_700x1000pxl.jpg",
+    "rated": "P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG",
+    "itemRate": "p",
+    "trailer": "https://www.youtube.com/embed/k-QeGX-FM2w",
+    "Date": [
+        {
+            "id": 1,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677085200000"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677171600000"
+                }
+            }
+        },
+        {
+            "id": 3,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677258000000"
+                }
+            }
+        },
+        {
+            "id": 4,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677344400000"
+                }
+            }
+        },
+        {
+            "id": 5,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677430800000"
+                }
+            }
+        },
+        {
+            "id": 6,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677517200000"
+                }
+            }
+        },
+        {
+            "id": 7,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677603600000"
+                }
+            }
+        },
+        {
+            "id": 8,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677690000000"
+                }
+            }
+        },
+        {
+            "id": 9,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677776400000"
+                }
+            }
+        },
+        {
+            "id": 10,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677862800000"
+                }
+            }
+        },
+        {
+            "id": 11,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677949200000"
+                }
+            }
+        },
+        {
+            "id": 12,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678035600000"
+                }
+            }
+        },
+        {
+            "id": 13,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678122000000"
+                }
+            }
+        },
+        {
+            "id": 14,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678208400000"
+                }
+            }
+        },
+        {
+            "id": 15,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678294800000"
+                }
+            }
+        },
+        {
+            "id": 16,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678381200000"
+                }
+            }
+        },
+        {
+            "id": 17,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678467600000"
+                }
+            }
+        },
+        {
+            "id": 18,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678554000000"
+                }
+            }
+        },
+        {
+            "id": 19,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678640400000"
+                }
+            }
+        },
+        {
+            "id": 20,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678726800000"
+                }
+            }
+        },
+        {
+            "id": 21,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678813200000"
+                }
+            }
+        },
+        {
+            "id": 22,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678899600000"
+                }
+            }
+        },
+        {
+            "id": 23,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678986000000"
+                }
+            }
+        },
+        {
+            "id": 24,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679072400000"
+                }
+            }
+        },
+        {
+            "id": 25,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679158800000"
+                }
+            }
+        },
+        {
+            "id": 26,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679245200000"
+                }
+            }
+        },
+        {
+            "id": 27,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679331600000"
+                }
+            }
+        },
+        {
+            "id": 28,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679418000000"
+                }
+            }
+        }
+    ]
+}

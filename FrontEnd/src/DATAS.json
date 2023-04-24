@@ -1,0 +1,290 @@
+{
+    "_id": {
+        "$oid": "63f5076f4589cbb7fcdba67c"
+    },
+    "name": "NGƯỜI KIẾN VÀ CHIẾN BINH ONG: THẾ GIỚI LƯỢNG TỬ",
+    "category": "Hành Động, Phiêu Lưu",
+    "image": "https://www.cgv.vn/media/catalog/product/cache/1/thumbnail/190x260/2e2b8cd282892c71872b9e67d2cb5039/1/2/1200x1800-ant-man3.jpg",
+    "time": "124",
+    "timeStart": "17-02-2023",
+    "actor": "Paul Rudd, Evangeline Lilly, Jonathan Majors",
+    "detail": "Scott Lang và Hope Van Dyne trở lại tiếp tục cuộc phiêu lưu của họ với vai trò Người Kiến và Chiến binh Ong. Cùng với cha mẹ của Hope, họ sẽ có chuyến khám phá Lượng Tử Giới, gặp gỡ những sinh vật mới lạ và bắt đầu cuộc hành trình vào thế giới lượng tử.",
+    "directors": "Peyton Reed",
+    "itemRate": "c13",
+    "language": "Tiếng Anh - Phụ đề Tiếng Việt",
+    "rated": "C13 - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM TỪ ĐỦ 13 TUỔI TRỞ LÊN (13+)",
+    "title": "ant-man-3",
+    "trailer": "https://www.youtube.com/embed/r_X6ixZa4Wg",
+    "Date": [
+        {
+            "id": 1,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677085200000"
+                }
+            },
+            "Location": [
+                {
+                    "id": 1,
+                    "place": "Hồ Chí Minh",
+                    "Movie_Type": [
+                        {
+                            "id": 1,
+                            "type_name": "2D Phụ Đề Việt"
+                        },
+                        {
+                            "id": 2,
+                            "type_name": "3D Phụ Đề Việt",
+                            "Cinema": [
+                                {
+                                    "id": 1,
+                                    "cinema_name": "CGV Hùng Vương Plaza",
+                                    "Site": [
+                                        {
+                                            "id": 1,
+                                            "site_name": "Rạp 3D",
+                                            "Time": [
+                                                {
+                                                    "id": 1,
+                                                    "timeSt": "02/23/2023 17:50"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "type_name": "IMAX3D Phụ Đề Việt"
+                        },
+                        {
+                            "id": 4,
+                            "type_name": "SCREENX-2D Phụ Đề Việt"
+                        },
+                        {
+                            "id": 5,
+                            "type_name": "4DX3D Phụ Đề Việt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677171600000"
+                }
+            }
+        },
+        {
+            "id": 3,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677258000000"
+                }
+            }
+        },
+        {
+            "id": 4,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677344400000"
+                }
+            }
+        },
+        {
+            "id": 5,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677430800000"
+                }
+            }
+        },
+        {
+            "id": 6,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677517200000"
+                }
+            }
+        },
+        {
+            "id": 7,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677603600000"
+                }
+            }
+        },
+        {
+            "id": 8,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677690000000"
+                }
+            }
+        },
+        {
+            "id": 9,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677776400000"
+                }
+            }
+        },
+        {
+            "id": 10,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677862800000"
+                }
+            }
+        },
+        {
+            "id": 11,
+            "day": {
+                "$date": {
+                    "$numberLong": "1677949200000"
+                }
+            }
+        },
+        {
+            "id": 12,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678035600000"
+                }
+            }
+        },
+        {
+            "id": 13,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678122000000"
+                }
+            }
+        },
+        {
+            "id": 14,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678208400000"
+                }
+            }
+        },
+        {
+            "id": 15,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678294800000"
+                }
+            }
+        },
+        {
+            "id": 16,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678381200000"
+                }
+            }
+        },
+        {
+            "id": 17,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678467600000"
+                }
+            }
+        },
+        {
+            "id": 18,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678554000000"
+                }
+            }
+        },
+        {
+            "id": 19,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678640400000"
+                }
+            }
+        },
+        {
+            "id": 20,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678726800000"
+                }
+            }
+        },
+        {
+            "id": 21,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678813200000"
+                }
+            }
+        },
+        {
+            "id": 22,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678899600000"
+                }
+            }
+        },
+        {
+            "id": 23,
+            "day": {
+                "$date": {
+                    "$numberLong": "1678986000000"
+                }
+            }
+        },
+        {
+            "id": 24,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679072400000"
+                }
+            }
+        },
+        {
+            "id": 25,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679158800000"
+                }
+            }
+        },
+        {
+            "id": 26,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679245200000"
+                }
+            }
+        },
+        {
+            "id": 27,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679331600000"
+                }
+            }
+        },
+        {
+            "id": 28,
+            "day": {
+                "$date": {
+                    "$numberLong": "1679418000000"
+                }
+            }
+        }
+    ]
+}
