@@ -1,11 +1,26 @@
 const MovieNowShowing = require("../models/MovieNowShowing");
 const MovieComingSoon = require("../models/MovieComingSoon");
 const axios = require("axios");
-
+import pool from "../config/index.js";
 class movieController {
+  // async getMoviesNowShowing(req = new Request(), res) {
+  //   try {
+  //     const moviesNowShowing = await MovieNowShowing.find({});
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: { moviesNowShowing },
+  //     });
+  //   } catch (error) {
+  //     return res.status(503).json({
+  //       status: "error",
+  //       message: "Service error. Please try again later",
+  //     });
+  //   }
+  // }
+// use mysql
   async getMoviesNowShowing(req = new Request(), res) {
     try {
-      const moviesNowShowing = await MovieNowShowing.find({});
+      const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film');
       return res.status(200).json({
         status: "success",
         data: { moviesNowShowing },
@@ -17,6 +32,8 @@ class movieController {
       });
     }
   }
+
+
 
   async getMoviesComingSoon(req = new Request(), res) {
     try {
@@ -176,24 +193,47 @@ class movieController {
   }
 
 
+  // async getDetailMovieNowShowing(req = new Request(), res) {
+  //   const { name } = req.body;
+  //   if (!name) {
+  //     return res.status(400).json({
+  //       status: "error",
+  //       message: "Name is required",
+  //     });
+  //   }
+  //   try {
+  //     const movie = await MovieNowShowing.findOne({
+  //       name
+  //     });
+  //     if (!movie) {
+  //       return res
+  //         .status(400)
+  //         .json({ status: "error", message: "Movie does not exist" });
+  //     }
+
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: { movie }
+  //     });
+  //   } catch (error) {
+  //     return res.status(503).json({
+  //       status: "error",
+  //       message: "Service error. Please try again later",
+  //     });
+  //   }
+  // }
+
   async getDetailMovieNowShowing(req = new Request(), res) {
-    const { name } = req.body;
-    if (!name) {
+    const { id } = req.body;
+    if (!id) {
       return res.status(400).json({
         status: "error",
-        message: "Name is required",
+        message: "Id is required",
       });
     }
+    
     try {
-      const movie = await MovieNowShowing.findOne({
-        name
-      });
-      if (!movie) {
-        return res
-          .status(400)
-          .json({ status: "error", message: "Movie does not exist" });
-      }
-
+      const [movie, fields] = await pool.execute('SELECT * FROM film WHERE film_id = ?', [id]);
       return res.status(200).json({
         status: "success",
         data: { movie }

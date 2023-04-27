@@ -110,7 +110,7 @@ function Chitiet() {
                 <img
                   id="image-main"
                   className="gallery-image visible"
-                  src={state.image}
+                  src={state.poster}
                   alt={state.name}
                   title={state.name}
                 />
@@ -125,7 +125,7 @@ function Chitiet() {
             {/* Build test  */}
             <div className="movie-director movie-info">
               <label>Đạo diễn: </label>
-              <div className="std">&nbsp; {state.directors} </div>
+              <div className="std">&nbsp; {state.director} </div>
             </div>
             <div className="movie-actress movie-info">
               <label cursorshover="true">Diễn viên:</label>
@@ -136,27 +136,28 @@ function Chitiet() {
             <div className="movie-genre movie-info">
               <label>Thể loại: </label>
               <div className="std">
-                &nbsp; {state.category}
+                &nbsp; {state.genres}
               </div>
             </div>
             <div className="movie-release movie-info">
               <label>Khởi chiếu: </label>
-              <div className="std">&nbsp; {state.timeStart} </div>
+              <div className="std">&nbsp; {state.dates_minium} </div>
             </div>
             <div className="movie-actress movie-info">
               <label>Thời lượng: </label>
-              <div className="std">&nbsp; {state.time} phút</div>
+              <div className="std">&nbsp; {state.length} phút</div>
             </div>
             <div className="movie-language movie-info">
               <label>Ngôn ngữ: </label>
               <div className="std">
-                &nbsp; {state.language}
+                {/* &nbsp; {state.language} */}
+                &nbsp; Tiếng Việt
               </div>
             </div>
             <div className="movie-rating movie-rated-web">
               <label cursorshover="true">Rated: </label>
               <div className="std">
-                &nbsp; {state.rated}
+                &nbsp; {state.rate}
               </div>
             </div>
           </div>
@@ -330,7 +331,7 @@ function Chitiet() {
               }
             >
               <p>
-                {state.detail}
+                {state.description}
               </p>
             </div>
 

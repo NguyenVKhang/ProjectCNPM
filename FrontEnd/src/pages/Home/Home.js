@@ -21,18 +21,19 @@ export default function Home() {
   const [movie, setMovie] = useState([]);
 
   const navigate = useNavigate();
-  const showDetailMovie = (e) => {
-    const name = e.target.title
+  const showDetailMovie = (e, film_id) => {
+    const id = film_id;
     fetch('http://localhost:3001/movie/getdetailnow', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify({ id: id }),
     })
       .then((res) => res.json())
       .then((data) => {
-        navigate(`/movie/${data.data.movie.title}`, { state: data.data.movie })
+        console.log(data.data)
+        navigate(`/movie/${data.data.movie[0].name}`, { state: data.data.movie[0] })
       })
       .catch((err) => {
         console.log(err);
@@ -178,9 +179,9 @@ export default function Home() {
           >
             {movie.map((Movie, index) => {
               return (
-                <SwiperSlide key={index} onClick={showDetailMovie} title={Movie.name}>
+                <SwiperSlide key={index} onClick={(e) => showDetailMovie(e, Movie.film_id)}  title={Movie.name}>
                   <img
-                    src={Movie.image}
+                    src={Movie.poster}
                     alt=""
                   />
                 </SwiperSlide>

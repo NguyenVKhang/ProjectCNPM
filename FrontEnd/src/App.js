@@ -38,7 +38,7 @@ function App() {
         <Route path="/movies/now-showing" element={<MovieNowShowing />} />
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/movies/coming-soon" element={<MovieComingSoon />} />
-        <Route path="/movie/:title" element={<Chitiet />} />
+        <Route path="/movie/:id" element={<Chitiet />} />
         <Route path="/payment" element={<AuthPayment />} />
         <Route path="/payment/momo" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
