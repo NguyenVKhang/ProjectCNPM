@@ -29,18 +29,18 @@ function MovieNowShowing() {
       });
   }, []);
 
-  const showDetailMovie = (e) => {
-    const name = e.target.title
+  const showDetailMovie = (e, film_id) => {
+    const id = film_id;
     fetch('http://localhost:3001/movie/getdetailnow', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify({ id: id }),
     })
       .then((res) => res.json())
       .then((data) => {
-        navigate(`/movie/${data.data.movie.title}`, { state: data.data.movie })
+        navigate(`/movie/${data.data.movie[0].name}`, { state: data.data.movie[0] })
       })
       .catch((err) => {
         console.log(err);
@@ -144,13 +144,13 @@ function MovieNowShowing() {
                 <div className="product-images">
                   <span className={`nmovie-rating nmovie-rating-${item.itemRate}`}></span>
                   <a
-                    onClick={showDetailMovie}
+                    onClick={(e) => showDetailMovie(e, item.film_id)}
                     className="product-image"
                     cursorshover="true"
                   >
                     <img
                       title={item.name}
-                      src={item.image}
+                      src={item.poster}
                       alt={item.name}
                       cursorshover="true"
                     />
@@ -164,20 +164,20 @@ function MovieNowShowing() {
                     height: "121px",
                   }}
                 >
-                  <h2 className="product-name" title={item.name} onClick={showDetailMovie}>
+                  <h2 className="product-name" title={item.name} onClick={(e) => showDetailMovie(e, item.film_id)}>
                     {item.name}
                   </h2>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Thể loại: </span>
-                    <span className="cgv-info-normal">{item.category}</span>
+                    <span className="cgv-info-normal">{item.genres}</span>
                   </div>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Thời lượng: </span>
-                    <span className="cgv-info-normal">{item.time} phút</span>
+                    <span className="cgv-info-normal">{item.length} phút</span>
                   </div>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Khởi chiếu: </span>
-                    <span className="cgv-info-normal">{item.timeStart}</span>
+                    <span className="cgv-info-normal">{item.dates_minium}</span>
                   </div>
                 </div>
                 <ul className="add-to-links">

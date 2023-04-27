@@ -173,7 +173,7 @@ function Chitiet() {
               </li>
 
               <li>
-                {state.Date !== undefined && <button type="button" title="Mua vé" className="button btn-booking"><span onClick={buyTicket}>Mua vé</span></button>}
+                {state.dates_minium !== undefined && <button type="button" title="Mua vé" className="button btn-booking"><span onClick={buyTicket}>Mua vé</span></button>}
 
                 <div
                   className="modal fade "
