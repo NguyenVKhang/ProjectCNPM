@@ -50,7 +50,7 @@ function Header() {
               alt="icon"
             />
             {!user ? (
-              <Link to="/login">Đăng nhập/Đăng ký</Link>
+              <><Link to="/login">Đăng nhập/</Link><Link to="register">Đăng ký</Link></>
             ) : (
               <>
                 <Link to="/profile/general">Xin chào, {user.user.name}</Link>
@@ -157,7 +157,7 @@ function Header() {
 
         <div className="dropdown">
           <button id="btn-menu" data-bs-toggle="dropdown" aria-expanded="false">
-            <BsJustify /> Menu
+            <BsJustify/>Menu
           </button>
           <button id="btn-tiket">
             <span className="icon"><a href="https://www.cgv.vn/default/sales/order/history/"></a></span>

@@ -275,7 +275,6 @@
 
 #header-container ul.dropdown-menu.show {
     width: 100%;
-
 }
 
 #header-container .dropdown-menu>li a {
@@ -286,7 +285,6 @@
 
     text-align: left;
     text-transform: uppercase;
-
 }
 
 #header-container .dropdown-menu>li {
@@ -297,4 +295,5 @@
 
 #header-container .dropdown-menu>li a:hover {
     color: #E71A0F;
+
 }

@@ -19,6 +19,7 @@ import Nocart from "./pages/NoCart";
 import Cinema from "./pages/Cinema";
 import Test from "./pages/Test";
 import History from "./pages/Auth/History";
+import NewsOffer from "./pages/NewsOffer";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
         <Route path="/payment/momo" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
         <Route path="/cinema" element={<Cinema />} />
+        <Route path="/newsoffer" element={<NewsOffer />} />
+        
         <Route path="*" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
       </Routes>

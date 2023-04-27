@@ -15,7 +15,9 @@ function Nocart() {
                             <span>Không có sản phẩm nào</span>
                             <br></br>
                             <span><em style={{
-                                "color": "red"
+                                "color": "red",
+                                "cursor": "pointer"
+                            
                             }} onClick={goHome}>
                                 Click vào đây </em>để tiếp tục mua hàng</span>
                         </div>

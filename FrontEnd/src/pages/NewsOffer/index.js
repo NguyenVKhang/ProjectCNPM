@@ -9,13 +9,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useMediaQuery } from 'react-responsive';
-import "./home.css";
+import "./style.css";
 
 
 // import required modules
 import { Autoplay, Navigation, Pagination } from "swiper";
 
-export default function Home() {
+export default function NewsOffer() {
   const isScreen = useMediaQuery({ query: '(max-width: 770px)' });
   const isPhone = useMediaQuery({ query: '(max-width: 600px)' });
   const [movie, setMovie] = useState([]);
@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <div className="main-container">
       <div className="main">
-        <div className="sect-person">
+        {/* <div className="sect-person">
           <ul>
             <li>
               <a
@@ -95,7 +95,7 @@ export default function Home() {
               </a>
             </li>
             <li>
-              <a className="dc" href="/newsoffer">
+              <a className="dc" href="/">
                 discount infor
               </a>
             </li>
@@ -187,61 +187,20 @@ export default function Home() {
               )
             })}
           </Swiper>
-        </div>
+        </div> */}
         <div className="product-collateral toggle-content tabs home-event">
           <div className="home-title">
-            <h2>event</h2>
+            <h2>Tin mới và ưu đãi</h2>
 
           </div>
           <div className="tabs">
-            <Tabs
+            {/* <Tabs
               defaultActiveKey="profile"
               variant="pills"
               id="uncontrolled-tab-example"
               className="mb-3 tabss"
-            >
-              <Tab eventKey="home" title="Thành Viên CGV">
-                <Swiper
-                  //  slidesPerView={4}
-                  slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
-                  spaceBetween={5}
-                  slidesPerGroup={1}
-                  loop={true}
-                  loopFillGroupWithBlank={true}
-                  navigation={true}
-                  modules={[Pagination, Navigation]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/birthday-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/i/birthday_popcorn_box_240x201.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/u22-vn/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22_2022_240x201.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/happy-wednesday/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/h/a/happywednesday240x201_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-culture-day/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/u/culture-240_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-thanh-vien-2023/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_5_.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                </Swiper>
-              </Tab>
-
-              <Tab eventKey="profile" title="Tin Mới & Ưu Đãi">
+            > */}
+              {/* <Tab eventKey="profile" title="Tin Mới & Ưu Đãi"> */}
                 <Swiper
                   // slidesPerView={4}
                   slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
@@ -299,12 +258,12 @@ export default function Home() {
                     </a>
                   </SwiperSlide>
                 </Swiper>
-              </Tab>
-            </Tabs>
+              {/* </Tab>
+            </Tabs> */}
           </div>
 
         </div>
-        <div className="home-promotion-card">
+        {/* <div className="home-promotion-card">
           <ul className="promos">
             <li className="col-ad">
               <div className="format-border">
@@ -334,7 +293,7 @@ export default function Home() {
               </div>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
     </div>
