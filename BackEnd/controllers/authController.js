@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const { validatePassword, validateEmail } = require("../utils/validates");
-
+import pool from "../config/index.js";
 class authController {
   async login(req = new Request(), res) {
     const { email, password } = req.body;
@@ -16,20 +16,21 @@ class authController {
       return res.status(400).json({ status: "error", message: validateErr });
     }
     try {
-      const user = await User.findOne({ email });
-      if (!user) {
+      
+      const [rows] = await pool.execute(`SELECT * from users where gmail = ? and password = ?;`, [email, password]);
+      if (rows.length === 0) {
         return res
           .status(400)
           .json({ status: "error", message: "User does not exist" });
       }
-      if (!user.checkPassword(password)) {
+      if (rows[0].password !== password) {
         return res
           .status(400)
           .json({ status: "error", message: "Password is incorrect" });
       }
       return res.status(200).json({
         status: "success",
-        data: { user },
+        data: { user: rows[0] },
       });
     } catch (error) {
       return res.status(503).json({
@@ -88,14 +89,25 @@ class authController {
       return res.status(400).json({ status: "error", message: validateErr });
     }
     try {
-      const user = await User.findOne({ $or: [{ email }, { phone }] });
-      if (user) {
+      const [rows] = await pool.execute(`SELECT * from users where gmail = ? or phone_number = ?;`, [email, phone]);
+      if (rows.length !== 0) {
         return res
           .status(400)
           .json({ status: "error", message: "User already exists" });
       }
-      const newUser = new User({ email, password, name, phone });
-      await newUser.save();
+      // const newUser = new User({ email, password, name, phone });
+      // await newUser.save();
+      //await pool.execute(`INSERT INTO users (gmail, password, name, phone_number) VALUES (?, ?, ?, ?);`, [email, password, name, phone]);
+      
+      const [row] = await pool.execute(`INSERT INTO users (gmail, password, name, phone_number) VALUES (?, ?, ?, ?);`, [email, password, name, phone]);
+      const newUser = {
+        id: row.insertId,
+        gmail: email,
+        password: password,
+        name: name,
+        phone_number: phone
+      }
+
       return res.status(200).json({
         status: "success",
         data: { user: newUser },
