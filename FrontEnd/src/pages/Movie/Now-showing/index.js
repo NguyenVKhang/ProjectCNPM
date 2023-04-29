@@ -5,6 +5,7 @@ import { BsFillHandThumbsUpFill } from "react-icons/bs"
 import { Col, Row } from "react-bootstrap";
 import { useMediaQuery } from 'react-responsive';
 function MovieNowShowing() {
+ 
   const isLaptop = useMediaQuery({ query: '(max-width: 960px)' });
   const isIpad = useMediaQuery({ query: '(max-width: 770px)' });
 
@@ -173,11 +174,11 @@ function MovieNowShowing() {
                   </div>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Thời lượng: </span>
-                    <span className="cgv-info-normal">{item.length} phút</span>
+                    <span className="cgv-info-normal">{String(item.length).slice(0, 5)} phút</span>
                   </div>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Khởi chiếu: </span>
-                    <span className="cgv-info-normal">{item.dates_minium}</span>
+                    <span className="cgv-info-normal">{String(item.dates_minium).slice(0,10)}</span>
                   </div>
                 </div>
                 <ul className="add-to-links">
