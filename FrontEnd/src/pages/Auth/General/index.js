@@ -9,6 +9,7 @@ function General() {
   };
 
   return (
+    console.log(user),
     <div className="format-profile-cgv">
       <div className="title-page">
         <h1>Thông tin chung</h1>
@@ -132,9 +133,9 @@ function General() {
             </div>
             <div className="box-content box-content-my-cgv col2-set">
               <span>Tên : {user.user.name}</span>
-              <span>Email : {user.user.email}</span>
-              <span>Tên đăng nhập : {user.user.email}</span>
-              <span>Điện thoại : {user.user.phone}</span>
+              <span>Email : {user.user.gmail}</span>
+              <span>Tên đăng nhập : {user.user.gmail}</span>
+              <span>Điện thoại : {user.user.phone_number}</span>
             </div>
           </div>
         </div>

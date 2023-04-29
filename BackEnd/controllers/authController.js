@@ -121,38 +121,83 @@ class authController {
   }
 
   async changeProfile(req = new Request(), res) {
-    const { name, phone, password, email, newPassword } = req.body;
-    console.log(email);
-
+   
+    const { name, phone, sex, date_of_birth, city, address, password, email, newPassword} = req.body;
+    console.log(req.body);
     try {
-      const user = await User.findOne({ email });
-      if (user.password !== password) {
-        return res.status(400).json({
-          status: "error",
-          message: "Password is incorrect",
-        });
+      const [row] = await pool.execute(`SELECT * FROM users WHERE gmail = ?;`, [email])
+      
+      if (row.length === 0) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "User not exists" });
       }
-
-      user.name = name;
-      user.phone = phone;
-      if (newPassword) {
-        user.password = newPassword;
+      if (row[0].password != password) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "Sai mat khau" });
       }
-      await user.save();
-
+      
+      const [rows] = await pool.execute(`UPDATE users
+      SET name = ?, phone_number = ?, sex = ?, date_of_birth = ?, city = ?, address = ?, password = ?
+      WHERE gmail = ?;`, [name, phone, sex, date_of_birth, city, address, newPassword, email])
+      const newData = {
+        id: rows.insertId,
+        gmail: email,
+        password: password,
+        name: name,
+        phone_number: phone,
+        sex: sex, 
+        date_of_birth: date_of_birth,
+        city: city,
+        address: address,
+      }
       return res.status(200).json({
         status: "success",
-        data: { user },
+        data: {user: newData}
       });
     }
-
     catch (error) {
       return res.status(503).json({
-        status: "error",
-        message: "Service error. Please try again later",
-      });
+              status: "error",
+              message: "Service error. Please try again later",
+            });
     }
   }
+
+  // async changeProfile(req = new Request(), res) {
+  //   const { name, phone, password, email, newPassword } = req.body;
+  //   console.log(email);
+
+  //   try {
+  //     const user = await User.findOne({ email });
+  //     if (user.password !== password) {
+  //       return res.status(400).json({
+  //         status: "error",
+  //         message: "Password is incorrect",
+  //       });
+  //     }
+
+  //     user.name = name;
+  //     user.phone = phone;
+  //     if (newPassword) {
+  //       user.password = newPassword;
+  //     }
+  //     await user.save();
+
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: { user },
+  //     });
+  //   }
+
+  //   catch (error) {
+  //     return res.status(503).json({
+  //       status: "error",
+  //       message: "Service error. Please try again later",
+  //     });
+  //   }
+  // }
 
   async saveHistory(req = new Request(), res) {
     const { name, day, location, type, cinema, site, time, position, type_chair, code, email, total_showtime, order_date } = req.body;

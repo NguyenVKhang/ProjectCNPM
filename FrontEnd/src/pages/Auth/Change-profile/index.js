@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
 function ChangePassword() {
-  //event checkbox click console.log 1
   const user = JSON.parse(localStorage.getItem("token"));
   const [check, setCheck] = useState(false);
   const click = (e) => {
@@ -16,24 +15,31 @@ function ChangePassword() {
       alert("Vui lòng nhập mật khẩu hiện tại");
       return;
     }
-
+    
     if (document.getElementById("exampleInputPassword1").value !== document.getElementById("exampleInputPassword2").value) {
       alert("Mat khau moi khong khop");
       return;
     }
-
+    const genderInput = document.querySelector('input[name="gender"]:checked');
     fetch("http://localhost:3001/auth/change-profile", {
+           
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: document.getElementById("fullname").value,
-        phone: document.getElementById("telephone").value,
+        name: document.getElementById("fullname").value || user.user.name,
+        phone: document.getElementById("telephone").value || user.user.phone_number,
+        // sex: document.getElementById("gender").value || '',
+        sex: genderInput ? genderInput.value : '',
+        date_of_birth: document.getElementById("date_of_birth").value || '',
+        city: document.getElementById("region_id").value || '',
+        address: document.getElementById("street_1").value || '',
         password: document.getElementById("current_password").value,
-        email: user.user.email,
-        newPassword: document.getElementById("exampleInputPassword1").value,
+        email: user.user.gmail,
+        newPassword: document.getElementById("exampleInputPassword1").value || user.user.password,
       }),
+      
     })
       .then((res) => res.json())
       .then((data) => {
@@ -55,6 +61,7 @@ function ChangePassword() {
 
 
   return (
+    console.log(user.user),
     <div className="format-profile-cgv">
       <div className="title-page">
         <h1>Thay đổi thông tin</h1>
@@ -96,7 +103,7 @@ function ChangePassword() {
                   autoCorrect="off"
                   name="telephone"
                   id="telephone"
-                  defaultValue={user.user.phone}
+                  defaultValue={user.user.phone_number}
                   title="Phone Number"
                   className="input-text validate-mobile required-entry"
                 />
@@ -107,31 +114,35 @@ function ChangePassword() {
                 <em>*</em>Giới tính
               </label>
               <div className="input-box">
-                <input type="radio" name="gender" defaultValue="1" />
-                Nam
-                <input
-                  type="radio"
-                  name="gender"
-                  defaultValue="2"
-                  checked="checked"
-                />
-                Nữ
-                <input type="radio" name="gender" defaultValue="113" />
-                None
+                <input type="radio" name="gender" value="Nam" defaultChecked={user.user.sex === "Nam" ? "checked" : ""}
+                /> Nam
+                <input type="radio" name="gender" value="Nữ" defaultChecked={user.user.sex === "Nữ" ? "checked" : ""}/> Nữ
               </div>
             </li>
             <li>
               <label htmlFor="month" cursorshover="true">
                 Ngày sinh
               </label>
-              <div className="input-box customer-dob">MAR 29 2000</div>
+              {/* <div className="input-box customer-dob">MAR 29 2000</div> */}
+              <div className="input-box">
+                <input
+                  type="date"
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                  name="date_of_birth"
+                  id="date_of_birth"
+                  defaultValue={user.user.date_of_birth}
+                  title="Date of Birth"
+                  className="input-text validate-mobile required-entry"
+                />
+              </div>
             </li>
 
             <li>
               <label htmlFor="email" className="required" cursorshover="true">
-                <em>*</em>Địa chỉ email
+                <em>*</em>Email
               </label>
-              <div className="input-box">{user.user.email} </div>
+              <div className="input-box">{user.user.gmail} </div>
             </li>
           </ul>
           <ul className="form-list edit-info-cgv-right">
@@ -141,6 +152,7 @@ function ChangePassword() {
                   htmlFor="region_id"
                   className="required "
                   cursorshover="true"
+                  
                 >
                   <em>*</em>Thành phố/Tỉnh
                 </label>
@@ -152,6 +164,7 @@ function ChangePassword() {
                     className="validate-select"
                     cursorshover="true"
                     style={{ width: "100%" }}
+                    defaultValue={user.user.city}
                   >
                     <option defaultValue="0">Vui lòng chọn...</option>
                     <option defaultValue="65">Hồ Chí Minh</option>
@@ -234,7 +247,7 @@ function ChangePassword() {
                 <input
                   type="text"
                   name="street[]"
-                  defaultValue="No address 700"
+                  defaultValue={user.user.address}
                   title="Địa chỉ"
                   id="street_1"
                   className="input-text  required-entry"
