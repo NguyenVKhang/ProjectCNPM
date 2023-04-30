@@ -12,6 +12,6 @@ router.get('/middleServer', movieController.getMiddle);
 router.post('/updateStatus', movieController.updateStatus);
 router.post('/updateStatusEmpty', movieController.updateStatusEmpty);
 router.post('/getMovieByCinplex', movieController.getMovieByCinplex);
-router.get('/getShowTime/:name', movieController.getShowTime);
+router.get('/getShowTime/:id', movieController.getShowTime);
 
 module.exports = router;    
