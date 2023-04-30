@@ -23,18 +23,20 @@ function Chitiet() {
 
 
   const buyTicket = () => {
-    console.log(1);
+    console.log(11111111);
     fetch('http://localhost:3001/movie/getShowTime/' + new URLSearchParams({
       name: state.name
     }), {
-      method: 'get',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setShowTimes(data.data.date);
+        setShowTimes(data.data.Date);
+        console.log(data.data.Date);
+        console.log(1111111111111111111);
       });
 
     const modal = document.getElementById("exampleModal");
