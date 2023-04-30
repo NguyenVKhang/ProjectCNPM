@@ -398,6 +398,51 @@ class movieController {
       status: "success",
     });
   }
+
+  async getShowTime(req, res) {
+    const  name  = req.params.name;
+      const currentDay = new Date()
+      let date = [];
+      for(let i = 0; i < 20; i++) {
+        let currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + i);
+        let [cinema_data] = await pool.execute('SELECT cinema.name as name, cinema.cinema_id as id from cinema inner join cinema_room on cinema_room.cinema_id = cinema.cinema_id inner join showtime on showtime.room_id = cinema_room.room_id inner join film on film.film_id = showtime.film_id where film.title = ? and cast(showtime.time as date) = ? GROUP BY(cinema.name);', [name, currentDate]);
+        let cinemas = cinema_data.map(async (cinema) => {
+          let cinema_name = cinema.name;
+          let id = cinema.id;
+          let [cinema_room] = await pool.execute('SELECT room_id, name_room FROM cinema_room where cinema_id = ?;', id);
+          let sites = cinema_room.map(async (room) => {
+            let id = room.room_id;
+            let site_name = room.name_room;
+            let [times]  = await pool.execute('SELECT Time(showtime.time) as time, showtime.id as id FROM showtime inner join film on film.film_id = showtime.film_id where film.title = ? and showtime.room_id = ?;', [name, id]);
+            let Time = times.map(async (time) => {
+              let id = time.id;
+              let timeSt = time.time;
+              return {id, timeSt};
+            })
+            return {id, site_name, Time}
+          })
+          return {cinema_name, id, site: sites};
+        })
+        let types = [];
+        let type = {id: 1, type_name: "2D Phụ đề tiếng anh", Cinema: cinemas};
+        types.push(type);
+        let locations = [];
+        let location = {id: 1, place: "Hà nội", Movie_Type: types};
+        locations.push(location);
+        let datei = {id: i, day: currentDate, Location: locations};
+        date.push(datei);
+      }
+      return res.status(200).json({
+        status: "success",
+        data: { date: date }
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+    }
 }
 
 module.exports = new movieController();
