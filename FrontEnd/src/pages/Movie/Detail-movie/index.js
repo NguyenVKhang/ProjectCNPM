@@ -21,12 +21,11 @@ function Chitiet() {
     setToggleState(index);
   };
 
-
+  
   const buyTicket = () => {
     console.log(11111111);
-    fetch('http://localhost:3001/movie/getShowTime/' + new URLSearchParams({
-      name: state.name
-    }), {
+    console.log(state.film_id);
+    fetch('http://localhost:3001/movie/getShowTime/' + state.film_id, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -282,7 +281,7 @@ function Chitiet() {
                                                               'margin': '2px',
                                                               'display': 'block',
                                                             }} key={Time.id} className="time">
-                                                              <span title={Time.timeSt} onClick={chooseShowTimes}>{hour.getHours()}:{minutes[hour.getMinutes()]}</span>
+                                                              <span title={Time.timeSt} onClick={chooseShowTimes}>{String(Time.timeSt).slice(0,5)}</span>
                                                             </li>
                                                           )
                                                         })}
