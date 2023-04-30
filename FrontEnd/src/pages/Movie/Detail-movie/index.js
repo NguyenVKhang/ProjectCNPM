@@ -11,7 +11,7 @@ function Chitiet() {
   const [showTimes, setShowTimes] = useState([]);
   const [toggleState, setToggleState] = useState(1);
   const [place, setPlace] = useState(1);
-  const [calendar, setCalendar] = useState(1);
+  const [calendar, setCalendar] = useState(0);
   const [type, setType] = useState(1);
 
   const navigate = useNavigate();
@@ -24,12 +24,13 @@ function Chitiet() {
 
   const buyTicket = () => {
     console.log(1);
-    fetch('http://localhost:3001/movie/getmovie', {
-      method: 'POST',
+    fetch('http://localhost:3001/movie/getShowTime/' + new URLSearchParams({
+      name: state.name
+    }), {
+      method: 'get',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: state.name }),
     })
       .then((res) => res.json())
       .then((data) => {
