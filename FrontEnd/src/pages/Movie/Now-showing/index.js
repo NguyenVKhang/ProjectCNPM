@@ -50,18 +50,15 @@ function MovieNowShowing() {
 
   //add event click button to show modal
   const handleShow = (e) => {
-    setNames(e.target.title);
-    const name = e.target.title;
-    fetch('http://localhost:3001/movie/getmovie', {
-      method: 'POST',
+    fetch('http://localhost:3001/movie/getShowTime/' + e.target.id, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: name }),
+      }
     })
       .then((res) => res.json())
       .then((data) => {
-        setShowTimes(data.data.date);
+        setShowTimes(data.data.Date);
       });
 
 
@@ -201,7 +198,7 @@ function MovieNowShowing() {
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                     >
-                      <span onClick={handleShow} title={item.name}>MUA VÉ</span>
+                      <span onClick={handleShow} id={item.film_id}>MUA VÉ</span>
                     </button>
                     <div
                       className="modal fade "
@@ -296,18 +293,9 @@ function MovieNowShowing() {
                                                           <span>{Site.site_name}</span>
                                                           <ul>
                                                             {Site.Time.map((Time) => {
-                                                              const hour = new Date(Time.timeSt);
                                                               return (
-                                                                <li style={{
-                                                                  'border': '1px solid #cbcabe',
-                                                                  'color': '#222',
-                                                                  'textAlign': 'center',
-                                                                  'float': 'left',
-                                                                  'padding': '5px 20px',
-                                                                  'margin': '2px',
-                                                                  'display': 'block',
-                                                                }} key={Time.id} className="time">
-                                                                  <span title={Time.timeSt} onClick={chooseShowTimes}>{hour.getHours()}:{minutes[hour.getMinutes()]}</span>
+                                                                <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
+                                                                  <span>{String(Time.timeSt).slice(0,5)}</span>
                                                                 </li>
                                                               )
                                                             })}

@@ -34,8 +34,6 @@ function Chitiet() {
       .then((res) => res.json())
       .then((data) => {
         setShowTimes(data.data.Date);
-        console.log(data.data.Date);
-        console.log(1111111111111111111);
       });
 
     const modal = document.getElementById("exampleModal");
@@ -272,16 +270,8 @@ function Chitiet() {
                                                         {Site.Time.map((Time) => {
                                                           const hour = new Date(Time.timeSt);
                                                           return (
-                                                            <li style={{
-                                                              'border': '1px solid #cbcabe',
-                                                              'color': '#222',
-                                                              'textAlign': 'center',
-                                                              'float': 'left',
-                                                              'padding': '5px 20px',
-                                                              'margin': '2px',
-                                                              'display': 'block',
-                                                            }} key={Time.id} className="time">
-                                                              <span title={Time.timeSt} onClick={chooseShowTimes}>{String(Time.timeSt).slice(0,5)}</span>
+                                                            <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
+                                                              <span >{String(Time.timeSt).slice(0,5)}</span>
                                                             </li>
                                                           )
                                                         })}
