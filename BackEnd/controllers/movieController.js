@@ -451,15 +451,15 @@ class movieController {
     for(let i = 0; i < 20; i++) {
       let currentDate = new Date();
       currentDate.setDate(currentDate.getDate() + i);
-      let [cinema_data] = await pool.execute(`SELECT cinema.name as name, cinema_room.room_id as room_id, cinema.cinema_id as id from cinema inner join cinema_room on cinema_room.cinema_id = cinema.cinema_id inner join showtime on showtime.room_id = cinema_room.room_id inner join film on film.film_id = showtime.film_id where film.film_id = ? and cast(showtime.time as date) = cast(? as date) GROUP BY(cinema.name);`, [film_id, currentDate]);
+      let [cinema_data] = await pool.execute(`SELECT cinema.name as name, cinema.cinema_id as id from cinema inner join cinema_room on cinema_room.cinema_id = cinema.cinema_id inner join showtime on showtime.room_id = cinema_room.room_id inner join film on film.film_id = showtime.film_id where film.film_id = ? and cast(showtime.time as date) = cast(? as date) GROUP BY(cinema.name);`, [film_id, currentDate]);
       let cinemas = await Promise.all(cinema_data.map(async (cinema) => {
         let cinema_name = cinema.name;
         let id = cinema.id;
-        let [cinema_room] = await pool.execute('SELECT room_id, name_room FROM cinema_room where room_id = ?;', [cinema.room_id]);
+        let [cinema_room] = await pool.execute(`SELECT distinct cinema_room.room_id as room_id, cinema_room.name_room as name_room FROM cinema_room inner join showtime on showtime.room_id = cinema_room.room_id inner join film on film.film_id = showtime.film_id WHERE film.film_id = ? and cinema_room.cinema_id = ? and cast(showtime.time as date) = cast(? as date);`, [film_id, id, currentDate]);
         let sites = await Promise.all(cinema_room.map(async (room) => {
           let id = room.room_id;
           let site_name = room.name_room;
-          let [times]  = await pool.execute('SELECT Time(showtime.time) as time, showtime.showtime_id as id FROM showtime inner join film on film.film_id = showtime.film_id where film.film_id = ? and showtime.room_id = ?;', [film_id, id]);
+          let [times]  = await pool.execute('SELECT Time(showtime.time) as time, showtime.showtime_id as id FROM showtime inner join film on film.film_id = showtime.film_id where film.film_id = ? and showtime.room_id = ? and cast(showtime.time as date) = cast(? as date);', [film_id, id, currentDate]);
           let Time = times.map(async (time) => {
             let id = time.id;
             let timeSt = time.time;
