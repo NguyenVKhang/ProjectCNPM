@@ -12,11 +12,12 @@ import cineL from "../../img/4.png";
 import cineS from "../../img/2.png";
 import suit from "../../img/12.png";
 import cgvFoot from "../../img/cgv-foot.png";
+import {Link, NavLink} from "react-router-dom";
 
 function Footer() {
   return (
     <div id="footer-container">
-      <div className="footer-brand-slide">
+      {/* <div className="footer-brand-slide">
         <div className="footer-brand-cover">
           <li>
             <a href="https://www.facebook.com/">
@@ -83,10 +84,10 @@ function Footer() {
             </a>
           </li>
         </div>
-      </div>
+      </div> */}
       <div className="footer-cgv-policy">
         <div className="footer-container">
-          <div className="footer-title footer-item footer-item2">
+          {/* <div className="footer-title footer-item footer-item2">
             <h6>CGV Việt Nam</h6>
             <li><a href="https://www.facebook.com/">Giới Thiệu</a></li>
 
@@ -95,26 +96,37 @@ function Footer() {
             <li><a href="https://www.facebook.com/">Thẻ Quà Tặng</a></li>
             <li><a href="https://www.facebook.com/">Tuyển Dụng</a></li>
             <li><a href="https://www.facebook.com/">Liên Hệ Quảng Cáo</a></li>
-          </div>
+          </div> */}
           <div className="footer-title footer-item footer-item2">
 
-            <h6>Điều Khoản Sử Dụng</h6>
-            <li><a href="https://www.facebook.com/">Điều Khoản Chung</a></li>
-            <li><a href="https://www.facebook.com/">Điều Khoản Giao Dịch</a></li>
-            <li><a href="https://www.facebook.com/">Chính Sách Thanh Toán</a></li>
-            <li><a href="https://www.facebook.com/">Chính Sách Bảo Mật</a></li>
-            <li><a href="https://www.facebook.com/">Câu Hỏi Thường Gặp</a></li>
+            <h6>D3K Việt Nam</h6>
+            <li>
+              <a href="https://github.com/huudong03uet/ProjectCNPM"
+              >Giới thiệu
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cgv.vn/default/cgv-online/">Tiện ích Online</a>
+            </li>
+            <li>
+              <Link to="/newsoffer">
+                Tin mới & ưu đãi
+              </Link>
+              </li>
+            <li>
+                <Link to="contact">Liên hệ quảng cáo</Link>
+            </li>
           </div>
           <div className="footer-title footer-item cgv-follow-us">
             <h6>Kết nối với chúng tôi</h6>
-            <a href="https://www.facebook.com/">
+            <a href="https://www.facebook.com/profile.php?id=100033353748879">
               <img
                 style={{ width: "120%" }}
                 src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-social-footer-40.png"
                 alt=""
               />
             </a>
-            <a href="Vhttps://www.facebook.com/">
+            <a href="https://www.facebook.com/">
               <img
                 src="https://www.cgv.vn/skin/frontend/cgv/default/images/cong-thuong.PNG"
                 alt=""
@@ -123,12 +135,13 @@ function Footer() {
           </div>
           <div className="footer-title customer-cgv">
             <h6>Chăm sóc khách hàng</h6>
-            <li>Hotline: 1900 6017</li>
+            <li>Hotline: 1900 0404</li>
             <li>
-              Giờ làm việc: 8:00 - 22:00 <br /> (Tất cả các ngày bao gồm cả ngày Lễ Tết)
+              Giờ làm việc: 8:00 - 22:00 <br /> (Tất cả các ngày trong tuần)
             </li>
-            <li>Email hỗ trợ: hoidap@cgv.vn</li>
+            <li>Email hỗ trợ: contact@d3k.vn</li>
           </div>
+          
         </div>
       </div>
       <div className="footer-cgv-address">
@@ -136,19 +149,23 @@ function Footer() {
           <div className="cgv-foot">
             <img src={cgvFoot} alt="cgvFoot" />
           </div>
+
+          
+
+
+
+
           <div className="cgv-end">
-            <h6>CÔNG TY TNHH CJ CGV VIETNAM</h6>
+            <h6>CÔNG TY TNHH D3K VIETNAM</h6>
             <p>
-              Giấy CNĐKDN: 0303675393, đăng ký lần đầu ngày 31/7/2008, đăng ký
-              thay đổi lần thứ 5 ngày 14/10/2015, cấp bởi
+              Giấy CNĐKDN: 0303040405, đăng ký lần đầu ngày 13/5/2023,  
             </p>
-            <p>Sở KHĐT thành phố Hồ Chí Minh.</p>
+            <p>cấp bởi Sở KHĐT thành phố Hà Nội.</p>
             <p>
-              Địa Chỉ: Tầng 2, Rivera Park Saigon - Số 7/28 Thành Thái, P.14,
-              Q.10, TPHCM.
+              Địa Chỉ: Toà E3, 144 Xuân Thủy, Cầu Giấy, Hà Nội.
             </p>
-            <p>Hotline: 1900 6017</p>
-            <p>COPYRIGHT 2017 CJ CGV. All RIGHTS RESERVED.</p>
+            <p>Hotline: 1900 0404</p>
+            <p>COPYRIGHT 2017 D3K. All RIGHTS RESERVED.</p>
           </div>
         </div>
       </div>

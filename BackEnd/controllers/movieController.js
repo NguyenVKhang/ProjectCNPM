@@ -20,7 +20,7 @@ class movieController {
 // use mysql
   async getMoviesNowShowing(req = new Request(), res) {
     try {
-      const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film');
+      const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film where dates_minium < now()');
 
       moviesNowShowing.forEach((movie) => {
         const time = movie.length;
@@ -47,8 +47,16 @@ class movieController {
 
   async getMoviesComingSoon(req = new Request(), res) {
     try {
-      const moviesComingSoon = await MovieComingSoon.find({});
-      console.log(moviesComingSoon);
+      const [moviesComingSoon, fields] = await pool.execute('SELECT * FROM film where dates_minium > now()');
+
+      moviesComingSoon.forEach((movie) => {
+        const time = movie.length;
+        const timeConvert = time.split(':');
+        const timeConvert2 = parseInt(timeConvert[0]) * 60 + parseInt(timeConvert[1]);
+        movie.length = timeConvert2;
+      }
+      )
+
       return res.status(200).json({
         status: "success",
         data: { moviesComingSoon },

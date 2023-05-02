@@ -75,26 +75,26 @@ export default function Home() {
                 now showing
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 className="special"
                 href="/"
               >
                 cgv special
               </a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a
                 className="event"
                 href="/"
               >
                 mua voucher, thẻ quà tặng CGV
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 className="ticket requied-login"
-                href="/"
+                href="/contact"
               >
                 my ticket infor
               </a>

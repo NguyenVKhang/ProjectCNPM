@@ -19,7 +19,12 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
+    padding-left: 400px;
 }
+
+/* .logo {
+    background-image: url('../../img/D3K.png');
+  } */
 
 #header-container #header_btn .btn-cover {
     display: flex;
@@ -78,6 +83,7 @@
     margin: 0 auto;
     overflow: visible;
     margin-top: -10px;
+    padding-left: 200px
 }
 
 @media only screen and (max-width: 770px) {

@@ -12,7 +12,7 @@ function Header() {
     <>
       <div id="header-container">
         <div id="header_btn">
-          <div className="btn-cover btn-cover1 ">
+          {/* <div className="btn-cover btn-cover1 ">
             <img
               className="icon"
               src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/recruitment_icon1.png"
@@ -22,15 +22,16 @@ function Header() {
             <a id="btn-zoom" href="https://www.facebook.com/">
               Tuyển dụng
             </a>
-          </div>
+          </div> */}
           <div className="btn-cover btn-cover1">
             <img
               className="icon"
               src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon_promotion25.png"
               alt="icon"
             />
-            <a id="btn-zoom" href="https://www.facebook.com/">
-              Tin mới và ưu đãi
+            <a id="btn-zoom">
+              <Link to="/newsoffer">Tin mới và ưu đãi</Link>
+              {/* Tin mới và ưu đãi */}
             </a>
           </div>
           <div className="btn-cover btn-cover1">
@@ -39,8 +40,9 @@ function Header() {
               src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon_ticket25.png"
               alt="icon"
             />
-            <a id="btn-zoom" href="https://www.facebook.com/">
-              Vé của tôi
+            <a id="btn-zoom">
+              <Link to="profile/history">Vé của tôi</Link>
+              
             </a>
           </div>
           <div className="btn-cover ">
@@ -70,7 +72,7 @@ function Header() {
             <Link to="/">
               <img
                 className="logo"
-                src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"
+                src="./D3K.png"
              
                 alt="logo"
               />
@@ -89,7 +91,7 @@ function Header() {
                   </ul>
                 </li>
                 <li className="menu">
-                  Rạp cgv
+                  Rạp D3K
                   <ul
                     className="subMenu"
                     style={{
@@ -143,7 +145,7 @@ function Header() {
             </div>
 
 
-            <img
+            {/* <img
               id="kenhCine"
               src="https://www.cgv.vn/media/wysiwyg/2019/AUG/kenhcine.gif"
               alt="kênh cine"
@@ -152,7 +154,7 @@ function Header() {
               id="muaVe"
               src="https://www.cgv.vn/media/wysiwyg/news-offers/mua-ve_ngay.png"
               alt="mua vé"
-            />
+            /> */}
           </div>
         </div>
 

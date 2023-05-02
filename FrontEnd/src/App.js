@@ -47,6 +47,7 @@ function App() {
         
         <Route path="*" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/contact" element={<Test/>}/>
       </Routes>
       <Footer />
     </Router >

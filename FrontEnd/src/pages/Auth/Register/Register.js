@@ -106,12 +106,12 @@ function Register() {
                 className="form__input"
                 value={email}
                 onChange={(e) => handleInputChange(e)}
-                placeholder="Email"
+                placeholder=" Email"
               />
             </div>
             <div className="phone">
               <label className="form__label" htmlFor="phone">
-                Số điện thoại
+                Số điện thoại{" "}
               </label>
               <input
                 type="phone"
@@ -119,7 +119,7 @@ function Register() {
                 className="form__input"
                 value={phone}
                 onChange={(e) => handleInputChange(e)}
-                placeholder="Số điện thoại"
+                placeholder=" Số điện thoại"
               />
             </div>
 
@@ -138,7 +138,7 @@ function Register() {
             </div>
             <div className="confirm-password">
               <label className="form__label" htmlFor="confirmPassword">
-                Xác nhận lại mật khẩu
+                Xác nhận lại mật khẩu{" "}
               </label>
               <input
                 className="form__input"
