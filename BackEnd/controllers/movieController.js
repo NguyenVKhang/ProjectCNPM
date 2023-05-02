@@ -21,6 +21,16 @@ class movieController {
   async getMoviesNowShowing(req = new Request(), res) {
     try {
       const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film');
+
+      moviesNowShowing.forEach((movie) => {
+        const time = movie.length;
+        const timeConvert = time.split(':');
+        const timeConvert2 = parseInt(timeConvert[0]) * 60 + parseInt(timeConvert[1]);
+        movie.length = timeConvert2;
+      })
+
+      
+
       return res.status(200).json({
         status: "success",
         data: { moviesNowShowing },
@@ -234,6 +244,22 @@ class movieController {
     
     try {
       const [movie, fields] = await pool.execute('SELECT * FROM film WHERE film_id = ?', [id]);
+      
+      const time = movie[0].length;
+      const timeConvert = time.split(':');
+      const timeConvert2 = parseInt(timeConvert[0]) * 60 + parseInt(timeConvert[1]);
+      movie[0].length = timeConvert2;
+
+      
+      const year = movie[0].dates_minium.getFullYear();
+      const month = movie[0].dates_minium.getMonth();
+      const day = movie[0].dates_minium.getDate();
+
+      // const date = new Date(year, month, day);
+      movie[0].dates_minium = day + "-" + month + "-" + year;
+      // console.log(movie[0].dates_minium)
+      // movie[0].dates_minium = date;
+      
       return res.status(200).json({
         status: "success",
         data: { movie }

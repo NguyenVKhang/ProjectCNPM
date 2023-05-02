@@ -71,6 +71,7 @@ function Header() {
               <img
                 className="logo"
                 src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"
+             
                 alt="logo"
               />
             </Link>
