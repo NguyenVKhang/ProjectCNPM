@@ -19,7 +19,8 @@ export default function Home() {
   const isScreen = useMediaQuery({ query: '(max-width: 770px)' });
   const isPhone = useMediaQuery({ query: '(max-width: 600px)' });
   const [movie, setMovie] = useState([]);
-
+  
+  
   const navigate = useNavigate();
   const showDetailMovie = (e, film_id) => {
     const id = film_id;
@@ -39,6 +40,9 @@ export default function Home() {
         console.log(err);
       });
   };
+
+
+  
 
   useEffect(() => {
     fetch("http://localhost:3001/movie/now-showing")
@@ -177,16 +181,37 @@ export default function Home() {
             className="mySwiper"
             id="slider2"
           >
+            
             {movie.map((Movie, index) => {
               return (
-                <SwiperSlide key={index} onClick={(e) => showDetailMovie(e, Movie.film_id)}  title={Movie.name}>
+                <SwiperSlide 
+                  key={index} 
+                  // onClick={(e) => showDetailMovie(e, Movie.film_id)}  
+                  title={Movie.name}
+                  className="swiper-slide-with-overlay"
+                >
                   <img
                     src={Movie.poster}
                     alt=""
                   />
+                  <div className="feature_film_content">
+                    <h3>{Movie.name}</h3>
+                    <a title="Xem chi tiết" className="button_" onClick={(e) => showDetailMovie(e, Movie.film_id)}>
+                      Xem chi tiết
+                    </a>
+                    <button type="button" title="Mua vé" className="button_ btn-booking_" onClick={(e) => showDetailMovie(e, Movie.film_id)}>
+                      <span>
+                        <span>Mua vé</span>
+                      </span>
+                    </button>
+                  </div>
+
+
+                       
                 </SwiperSlide>
               )
             })}
+            
           </Swiper>
         </div>
         <div className="product-collateral toggle-content tabs home-event">

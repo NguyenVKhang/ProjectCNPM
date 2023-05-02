@@ -667,4 +667,116 @@ body .promos>li {
     }
 }
 
+
+/* .swiper-slide-with-overlay {
+  position: relative;
+} */
+
+.swiper-slide-with-overlay .feature_film_content,
+.swiper-slide-with-overlay .play-button
+ {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: absolute;
+  opacity: 0;
+}
+
+.swiper-slide-with-overlay:hover .feature_film_content {
+  opacity: 1;
+  
+  background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-black-transparent.png) repeat scroll 0 0 transparent;
+  padding-bottom: 10px;
+  top: 255px;
+  width: 99%;
+  z-index: 999;
+  cursor: default;
+  cursor: text;
+}
+
+.swiper-slide-with-overlay:hover .play-button {
+  opacity: 1;
+}
+
+.swiper-slide-with-overlay:hover .feature_film_content h3 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 10px 0;
+    overflow: hidden;
+    opacity: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.swiper-slide-with-overlay:hover .feature_film_content .button_ {
+    padding: 7px 7px;
+    margin: 3px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #e71a0f;
+    /* display: inline-block; */
+    border: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: Verdana, Arial, sans-serif;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap; 
+    cursor: pointer;
+}
+
+.swiper-slide-with-overlay:hover .feature_film_content .button_.btn-booking_ {
+    
+    box-sizing: border-box;
+    margin: 3px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-family: Verdana, Arial, sans-serif;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 5px 7px;
+}
+
+.swiper-slide-with-overlay:hover .feature_film_content .button_.btn-booking_ span span {
+    padding-left: 25px;
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cate-booking.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+    border-radius: 5px;
+}
+
+.swiper-slide-with-overlay:hover .play-button {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-transparent-grey.png) no-repeat scroll 0 0 transparent;
+    height: 355px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 240px;
+    text-indent: -99999px;
+    /* text-indent: 0px; */
+    display: block;
+    cursor: pointer;
+}
+
+.movie-trailer {
+    display: none;
+}
+
+/*  run movie-trailer when click play button */
+
+
 /* hết phần thân */
