@@ -130,11 +130,15 @@
     font-size: 0;
 }
 
+.seat.active {
+    cursor: pointer;
+}
+
 .seat {
     display: inline-block;
     /* border: 1px solid transparent; */
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     vertical-align: middle;
     font-size: 7pt;
     margin: 0 1px;
@@ -142,9 +146,6 @@
 }
 
 
-.seat .active {
-    cursor: pointer;
-}
 
 .seat.seat-disable {
     background: #bbb;
@@ -152,18 +153,18 @@
     color: #fff;
 }
 
-.seat-vipprime {
+.seat-PRIME {
     border: 1px solid #f71708;
 }
 
 
-.seat-sw {
+.seat-SWEETBOX {
     background: #FF62B0;
     color: #fff;
     border-color: #FF62B0;
 }
 
-.seat-standard {
+.seat-NORMAL {
     border: 1px solid #01c73c;
 }
 
@@ -245,15 +246,15 @@
     color: #fff;
 }
 
-.icon.zone-vipprime:before {
+.icon.zone-PRIME:before {
     border: 1px solid #f71708;
 }
 
-.icon.zone-standard:before {
+.icon.zone-NORMAL:before {
     border: 1px solid #01c73c;
 }
 
-.icon.zone-sw:before {
+.icon.zone-NORMAL:before {
     background: #FF62B0;
 }
 

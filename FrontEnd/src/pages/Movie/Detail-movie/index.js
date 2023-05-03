@@ -60,28 +60,21 @@ function Chitiet() {
   };
 
   const user = JSON.parse(localStorage.getItem("token"));
-  const chooseShowTimes = (e) => {
-    if (!user) {
-      window.location.href = "/login";
-      return;
-    }
-
-    const Day = document.querySelector('.current .day').getAttribute('title')
-    const Place = document.querySelector('.toggle-tabs-city .appear .current-location span').innerHTML
-    const Type = document.querySelector('.toggle-tabs-type .appear .appear .current-type span').innerHTML
-    const Cinema = e.target.closest('.cinema').querySelector('span').innerHTML
-    const Site = e.target.closest('.site').querySelector('span').innerHTML
-    const TimeSt = e.target.title
-
+    const chooseShowTimes = (e) => {
+      if (!user) {
+        window.location.href = "/login";
+        return;
+      }
     fetch('http://localhost:3001/movie/getposition', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: state.name, day: Day, location: Place, type: Type, cinema: Cinema, site: Site, time: TimeSt }),
+      body: JSON.stringify({id: e.currentTarget.title}),
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         navigate('/ticket', { state: data.data })
       });
 
@@ -270,8 +263,8 @@ function Chitiet() {
                                                         {Site.Time.map((Time) => {
                                                           const hour = new Date(Time.timeSt);
                                                           return (
-                                                            <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
-                                                              <span >{String(Time.timeSt).slice(0,5)}</span>
+                                                            <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
+                                                              <span>{String(Time.timeSt).slice(0,5)}</span>
                                                             </li>
                                                           )
                                                         })}
