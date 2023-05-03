@@ -310,43 +310,7 @@ class movieController {
   }
 
   /** */
-  async getPosition(req = new Request(), res) {
-    const { name, day, location, type, cinema, site, time } = req.body;
-    if (!name || !day || !location || !type || !cinema || !site || !time) {
-      return res.status(400).json({
-        status: "error",
-        message: "All fields are required",
-      });
-    }
-    try {
-      const movie = await MovieNowShowing.findOne({
-        name
-      });
-      if (!movie) {
-        return res
-          .status(400)
-          .json({ status: "error", message: "Movie does not exist" });
-      }
-      const total_showtime = movie.time;
-
-      const date = new Date(day);
-      const timest = new Date(time);
-
-      const image = movie.image;
-      const type_chair = movie.Date.find((Date) => Date.day.getTime() === date.getTime()).Location.find((Location) => Location.place === location).Movie_Type.find((Movie_Type) => Movie_Type.type_name === type).Cinema.find((Cinema) => Cinema.cinema_name === cinema).Site.find((Site) => Site.site_name === site).Time.find((Time) => Time.timeSt.getTime() === timest.getTime()).Type_Chair;
-      const position = movie.Date.find((Date) => Date.day.getTime() === date.getTime()).Location.find((Location) => Location.place === location).Movie_Type.find((Movie_Type) => Movie_Type.type_name === type).Cinema.find((Cinema) => Cinema.cinema_name === cinema).Site.find((Site) => Site.site_name === site).Time.find((Time) => Time.timeSt.getTime() === timest.getTime()).Position;
-      return res.status(200).json({
-        status: "success",
-        data: { position, name, day, location, type, cinema, site, time, type_chair, total_showtime, image }
-      });
-
-    } catch (error) {
-      return res.status(503).json({
-        status: "error",
-        message: "Service error. Please try again later",
-      });
-    }
-  }
+  
 
   async getMiddle(req, res) {
     try {
@@ -519,6 +483,39 @@ class movieController {
     });
   }
   
+
+  async getPosition(req, res) {
+    console.log(req.body);
+    console.log(`------------`);
+    const film_id  = req.body.id;
+    if (!film_id) {
+      return res.status(400).json({
+        status: "error",
+        message: "All fields are required",
+      });
+    }
+    const [movie] = await pool.execute(`SELECT cinema_room.lenght as length, cinema_room.width as width, film.poster as poster, showtime.showtime_id as id, film.name as film_name, film.length as film_length, cinema.name as cinema_name,  showtime.time as time, cinema_room.name_room as name_room from showtime inner join cinema_room on cinema_room.room_id = showtime.room_id INNER join film on film.film_id = showtime.film_id inner join cinema on cinema.cinema_id = cinema_room.cinema_id where showtime.showtime_id = ?;`, [film_id]);
+    const [type_chair] = await pool.execute(`SELECT room_seat.seat_type as type_chair FROM showtime inner join cinema_room on cinema_room.room_id = showtime.room_id inner join room_seat on cinema_room.room_id = room_seat.room_id where showtime.showtime_id = ?  GROUP BY(type_chair);`, [film_id]);
+    const position = [];
+    for(let i = 0; i < movie[0].width; i++) {
+      let [row_chair] = await pool.execute(`SELECT room_seat.* from room_seat inner join showtime on showtime.room_id = room_seat.room_id WHERE room_seat.seat_row = ? AND showtime.showtime_id = ?;`, [(i+1), film_id]);
+      row_chair.map((chair) => {
+        chair.status = "available";
+      })
+      position.push(row_chair);
+      console.log(movie.length);
+    }
+    const [booked_seat] = await pool.execute(`SELECT room_seat.* FROM room_seat inner join showtime on showtime.room_id = room_seat.room_id inner join booked_seat on booked_seat.showtime_id = showtime.showtime_id where booked_seat.seat_id = room_seat.seat_id and showtime.showtime_id = ?;`, [film_id]);
+    booked_seat.map((booked) => {
+      if(booked != null) {
+        position[booked.seat_column-1][booked.seat_row-1].status = "disable";
+      } 
+    })
+    return res.status(200).json({
+      status: "success",
+      data: {movie, type_chair, position}
+    });
+  }
   
 }
 module.exports = new movieController();
