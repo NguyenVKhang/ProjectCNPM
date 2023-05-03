@@ -69,63 +69,19 @@ class movieController {
     }
   }
 
-  async getMovieByName(req = new Request(), res) {
-    const { name } = req.body;
-    if (!name) {
-      return res.status(400).json({
-        status: "error",
-        message: "Name is required",
-      });
-    }
+  async getMovie(req, res) {
+    const { id } = req.params;
     try {
-      const movie = await MovieNowShowing.findOne({
-        name
-      });
-      if (!movie) {
-        return res
-          .status(400)
-          .json({ status: "error", message: "Movie does not exist" });
-      }
+      const [rows] = await pool.execute(`SELECT * from film where film_id = ${id};`);
 
-
-      const currentDay = new Date()
-      const date = movie.Date.filter((Date) => Date.day.getTime() > currentDay.getTime() || Date.day.getDate() === currentDay.getDate()).map((Date) => {
-        const day = Date.day;
-        const id = Date.id;
-        const Location = Date.Location.map((Location) => {
-          const place = Location.place;
-          const id = Location.id;
-          const Movie_Type = Location.Movie_Type.map((Movie_Type) => {
-            const type_name = Movie_Type.type_name;
-            const id = Movie_Type.id;
-            const Cinema = Movie_Type.Cinema.map((Cinema) => {
-              const cinema_name = Cinema.cinema_name;
-              const id = Cinema.id;
-              const Site = Cinema.Site.map((Site) => {
-                const site_name = Site.site_name;
-                const id = Site.id;
-                const Time = Site.Time.filter((Time) => {
-                  return Time.timeSt.getTime() >= currentDay.getTime();
-                }).map((Time2) => {
-                  const timeSt = Time2.timeSt;
-                  const id = Time2.id;
-                  return { timeSt, id };
-                });
-                return { site_name, id, Time };
-              });
-              return { cinema_name, id, Site };
-            });
-            return { type_name, id, Cinema };
-          });
-          return { place, id, Movie_Type };
-        });
-        return { day, id, Location };
-      });
-
-
+      // convert time to yyyy:mm:dd
+      rows.forEach((movie) => {
+        movie.release_date = movie.release_date.toISOString().slice(0, 10);
+        movie.dates_minium = movie.dates_minium.toISOString().slice(0, 10);
+      })
       return res.status(200).json({
         status: "success",
-        data: { date }
+        data: { movie: rows[0] },
       });
     } catch (error) {
       return res.status(503).json({
@@ -519,6 +475,110 @@ class movieController {
     });
   }
   
-  
+  async getAllMovies(req, res) {
+    try {
+      const [movies] = await pool.execute('SELECT * FROM film');
+      // const year = movie[0].dates_minium.getFullYear();
+      // const month = movie[0].dates_minium.getMonth();
+      // const day = movie[0].dates_minium.getDate();
+
+      // // const date = new Date(year, month, day);
+      // movie[0].dates_minium = day + "-" + month + "-" + year;
+
+      for (let i = 0; i < movies.length; i++) {
+        // convert to string
+        movies[i].dates_minium = movies[i].dates_minium.toISOString().slice(0, 10);
+      }
+
+      return res.status(200).json({
+        status: "success",
+        data: { movies: movies }
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+    }
+  }
+
+  async postMovie(req, res) {
+    //name, description, length,genres, trailer, poster, release_date, dates_minium, actor, director
+    console.log(req.body)
+    
+    try {
+      
+      const { name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director } = req.body;
+      const [movie] = await pool.execute('SELECT * FROM film WHERE name = ?', [name]);
+      if (movie.length > 0) {
+        return res.status(400).json({
+          status: "error",
+          message: "Movie already exists",
+        });
+      }
+
+      const [result] = await pool.execute('INSERT INTO film (name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director]);
+      return res.status(200).json({
+        status: "success",
+        data: { id: result.insertId }
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+
+
+
+    }
+  }
+
+  // try {
+//     const id = req.body.id;
+//     await pool.execute(`DELETE FROM users WHERE user_id = ${id};`);
+//     return res.status(200).json({
+//         status: "success",
+//         message: "Delete user successfully",
+//     });
+// } catch (error) {
+//     return res.status(503).json({
+//         status: "error",
+//         message: "Service error. Please try again later",
+//     });
+// }
+  async deleteMovie(req = new Request(), res) {
+    try {
+      const id = req.body.id;
+      await pool.execute(`DELETE FROM film WHERE film_id = ${id};`);
+      return res.status(200).json({
+        status: "success",
+        message: "Delete movie successfully",
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+    }
+  }
+
+  async updateMovie(req = new Request(), res) {
+    try {
+      const { name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director } = req.body;
+      const id = req.body.id;
+      await pool.execute(`UPDATE film SET name = ?, description = ?, length = ?, genres = ?, trailer = ?, poster = ?, release_date = ?, dates_minium = ?, actor = ?, director = ? WHERE film_id = ?`, [name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director, id]);
+      return res.status(200).json({
+        status: "success",
+        message: "Update movie successfully",
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+
+    }
+  }
 }
+
 module.exports = new movieController();

@@ -1,0 +1,79 @@
+.newMoviePage {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.newMovieTitle {
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+}
+
+.uploadContainer > input {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.uploadForm {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.uploadItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadItem > input {
+  margin-top: 10px;
+  width: 400px;
+  margin-right: 15px;
+  border: none;
+  border: 0.5px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.uploadItem > select {
+  margin-top: 10px;
+  width: 425px;
+  border: none;
+  border: 0.5px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.uploadItem > label {
+  margin-top: 10px;
+}
+
+.createNewMovie {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(36, 29, 97);
+  cursor: pointer;
+
+  margin-right: 1000px;
+}
+
+.errorBoundary {
+  color: red;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}

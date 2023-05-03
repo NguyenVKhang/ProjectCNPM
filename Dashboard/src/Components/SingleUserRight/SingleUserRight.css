@@ -1,0 +1,79 @@
+.singleuserright {
+  flex: 2;
+  margin-top: 20px;
+}
+
+.edittTitleAndForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.edittTitle {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.formsAndImage {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 45px;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+
+.input[type="text"] {
+  border: none;
+  border-bottom: 2px solid rgb(190, 190, 190);
+  margin-top: 10px;
+  padding: 5px;
+  width: 250px;
+}
+
+.input[type="email"] {
+  border: none;
+  border-bottom: 2px solid rgb(190, 190, 190);
+  margin-top: 10px;
+  padding: 5px;
+  width: 250px;
+}
+
+.label {
+  margin-top: 10px;
+}
+
+.uploading {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.uploadImage {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 80px;
+}
+
+.singleUserRightIcon {
+  position: absolute;
+  bottom: 300px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.update {
+  position: absolute;
+  bottom: 50px;
+  right: 100px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(22, 4, 71);
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}

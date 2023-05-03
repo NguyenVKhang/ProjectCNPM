@@ -1,0 +1,57 @@
+.SingleList {
+  flex: 0.9;
+  padding: 20px;
+}
+
+.listAndCreateWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createList {
+  border: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  background-color: rgb(59, 99, 74);
+  color: white;
+  cursor: pointer;
+}
+
+.updateWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem > label {
+  opacity: 0.6;
+}
+
+.listItem > input {
+  margin: 20px 0px;
+  border: none;
+  width: 400px;
+  border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.updateButton {
+  margin-top: 30px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(48, 32, 107);
+  cursor: pointer;
+  color: white;
+}
