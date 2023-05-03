@@ -4,13 +4,15 @@ import "./style.css";
 
 function Ticket() {
     const { state } = useLocation();
-    console.log(state);
-
+    console.log(state.movie);
+    console.log(1111);
     const Position = state.position
     let sum_chair = 0;
     Position.forEach(element => {
-        element.forEach(element => {
-            sum_chair++;
+        element.forEach(element1 => {
+            if(element1.seat_type != 'SPACE') {
+                sum_chair++;
+            }
         });
     });
 
@@ -146,10 +148,9 @@ function Ticket() {
         });
     }
 
-
-
-    const showtime_start = new Date(state.time);
-    const showtime_end = new Date(showtime_start.getTime() + state.total_showtime * 60000);
+    const [hour, minute, second] = state.movie[0].film_length.split(":");
+    const showtime_start = new Date(state.movie[0].time);
+    const showtime_end = new Date(showtime_start.getTime() + hour*3600000 + minute*60000 + second*1000);
 
 
 
@@ -170,7 +171,7 @@ function Ticket() {
                                         <div className="f-fix">
                                             <div className="product-primary">
                                                 <p>
-                                                    {state.cinema} | {state.site} | Cinema 7 | So ghe (<em>{sum_chair_available}</em>/{sum_chair})
+                                                    {state.movie[0].cinema_name} | {state.movie[0].name_room} | Số ghế (<em>{sum_chair_available}</em>/{sum_chair})
                                                 </p>
                                                 <p>
                                                     {showtime_start.toLocaleDateString("en-GB")} {showtime_start.toLocaleTimeString("en-GB", {
@@ -210,9 +211,17 @@ function Ticket() {
                                         {state.position.map((item1, index1) => (
                                             <div className="rows" key={index1}>
                                                 {item1.map((item, index) => (
-                                                    <div className={`${item.status === "disable" ? "seat seat-disable disable" : `seat seat-${item.status} active`}`} key={index} type={item.status} price={item.price} onClick={check}>
-                                                        {item.position}
-                                                    </div>
+                                                    <>
+                                                        {item1.seat_type != "SPACE" ? <div className={`${item.status === "disable" ? "seat seat-disable disable" : `seat seat-${item.seat_type} active`}`} key={index} type={item.status} price={item.seat_fare} onClick={check}>
+                                                            {item.seat_name}
+                                                        </div> 
+                                                        :
+                                                        <div className={`${item.status = `seat seat-${item.seat_type} active`}`}>
+                                                        </div> 
+                                                        }
+                                                        
+                                                    </>
+                                                  
                                                 ))}
                                             </div>
                                         ))}
@@ -250,16 +259,16 @@ function Ticket() {
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <img src={state.image} alt='' />
+                                                            <img src={state.movie[0].poster} alt='' />
                                                         </td>
                                                         <td>
                                                             <table className="info-wrapper">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td className="label">{state.name}</td>
+                                                                        <td className="label">{state.movie[0].film_name}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td className="label">{state.site}</td>
+                                                                        <td className="label">2D</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td className="label">C18</td>
@@ -277,8 +286,8 @@ function Ticket() {
                                             <table className="info-wrapper">
                                                 <tbody>
                                                     <tr>
-                                                        <td className="label">Rạp</td>
-                                                        <td>{state.cinema}</td>
+                                                        <td className="label">Rạp:</td>
+                                                        <td>{state.movie[0].cinema_name}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="label">Suất chiếu</td>
@@ -288,8 +297,8 @@ function Ticket() {
                                                         })}, {showtime_start.toLocaleDateString("en-GB")}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="label">Phòng chiếu</td>
-                                                        <td>Cinema 2</td>
+                                                        <td className="label">Phòng chiếu: </td>
+                                                        <td>{state.movie[0].name_room}</td>
                                                     </tr>
                                                     <tr className="block-seats" style={{ "display": "table-row" }}>
                                                         <td className="label">Ghế</td>
@@ -297,7 +306,7 @@ function Ticket() {
                                                             <span style={{
                                                                 "clear": "both",
                                                                 "float": "left",
-                                                            }} id="Type_Chair"></span>
+                                                            }} id="Type_Chair">Thường</span>
                                                             <span style={{
                                                                 "clear": "both",
                                                                 "float": "left",
@@ -313,7 +322,7 @@ function Ticket() {
                                             <table className="info-wrapper">
                                                 <thead>
                                                     <tr className="block-box">
-                                                        <td className="label">Tên phim</td>
+                                                        <td className="label">Tiền phim:</td>
                                                         <td className="price" id="total1">0,00 đ</td>
                                                         <td className="data">
                                                             <div className="truncated">
@@ -331,7 +340,7 @@ function Ticket() {
                                                 <tbody>
                                                     <tr className="block-con">
                                                         <td className="label">
-                                                            Combo
+                                                            Combo:
                                                         </td>
                                                         <td className="price"></td>
                                                         <td className="data">
@@ -344,7 +353,7 @@ function Ticket() {
                                                 </tbody>
                                                 <tfoot className="block-price">
                                                     <tr>
-                                                        <td className="label">Tổng</td>
+                                                        <td className="label">Tổng:</td>
                                                         <td className="price" id="total">0,00 đ</td>
                                                     </tr>
                                                 </tfoot>
