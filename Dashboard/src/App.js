@@ -20,7 +20,9 @@ import { authContext } from "./Context/Auth/AuthContext";
 import Lists from "./Pages/ListsPage/Lists";
 import SingleListPage from "./Pages/SingleListPage/SingleList";
 import NewListPage from "./Pages/NewListPage/NewList";
-
+import SchedulesPage from "./Pages/SchedulesPage/SchedulesPage";
+import ScheduleSingle from "./Pages/ScheduleSingle/ScheduleSingle";
+import ScheduleNew from "./Pages/ScheduleNew/ScheduleNew";
 function App() {
   const { user } = useContext(authContext);
   return (
@@ -64,6 +66,18 @@ function App() {
               <Route path="/newList">
                 <NewListPage />
               </Route>
+              <Route path="/schedules">
+                <SchedulesPage/>
+              </Route>
+
+              <Route path="/schedule/:id">
+                <ScheduleSingle/>
+              </Route>
+
+              <Route path="/scheduleNew">
+                <ScheduleNew/>
+              </Route>
+
             </div>
           </>
         ) : (

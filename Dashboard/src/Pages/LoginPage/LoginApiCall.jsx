@@ -10,12 +10,31 @@ export const login = async (user, dispatch) => {
   try {
     // const res = await axiosInstance.post("auth/login", user);
     // data for testing
+    // fetch http://localhost:3001/auth/login with user is body
+    
+    const result = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const res_ = await result.json();
+    console.log(res_);
+    if (res_.status === "success") {
+      alert("login success");
+      
+    } else {
+      alert(res_.message);
+      return;
+
+    }
     const res = {
       data: {
         isAdmin: true,
-        username: "joey",
+        username: "admin",
         profilePic:
-          "https://images.unsplash.com/photo-1632836926800-0e9e2b4b5b0b?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&w=1000&q=80",
+          "https://busmedia.vn/wp-content/uploads/2021/09/quang-cao-tai-rap-chieu-phim-unique-ooh-34.jpg",
       },
     };
     res.data.isAdmin && dispatch(loginSuccess(res.data));

@@ -1,0 +1,169 @@
+.singleMoviePage {
+    flex: 0.9;
+    padding: 20px;
+  }
+  
+  .movieAndButtonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .createMovie {
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    background-color: rgb(59, 99, 74);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .ChartAndMovieInfo {
+    margin-top: 30px;
+  }
+  
+  .movieInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movieProfile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .movieImage {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+  
+  .movieDetailss {
+    margin-top: 20px;
+  }
+  
+  .movieId {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
+  
+  .Amount {
+    margin-left: 20px;
+    opacity: 0.6;
+  }
+  
+  .movieSales {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
+  
+  .salesAmount {
+    margin-left: 20px;
+    opacity: 0.6;
+  }
+  
+  .activeMovie {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
+  
+  .statuss {
+    margin-left: 20px;
+    opacity: 0.6;
+  }
+  
+  .movieStock {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
+  
+  .statusss {
+    margin-left: 70px;
+    opacity: 0.6;
+  }
+  
+  .updateWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movieItem {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 75px;
+  }
+  
+  .movieItem > label {
+    opacity: 0.6;
+  }
+  
+  .movieItem > input {
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 2px solid rgb(190, 190, 190);
+    
+  }
+  
+  .movieItem > select {
+    margin: 10px 0px;
+    cursor: pointer;
+    
+  }
+  
+  .imageAndButtonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 50px;
+  }
+  
+  .imageAndIcon {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .publishIcon {
+    position: absolute;
+    bottom: 40px;
+    right: 45px;
+    cursor: pointer;
+  }
+  
+  .updateButton {
+    margin-top: 30px;
+    margin-right: 60px;
+    padding: 5px 25px;
+    width: 125px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(48, 32, 107);
+    cursor: pointer;
+    color: white;
+  }
+  
+  .updateImage {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 80px;
+  }
+  

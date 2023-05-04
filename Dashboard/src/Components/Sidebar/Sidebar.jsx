@@ -43,6 +43,12 @@ function Sidebar() {
           <span>Quick Menu</span>
         </div>
         <div className="items">
+        <Link to="/schedules" className="link">
+            <div className="subItem2Wrapper">
+              <EqualizerOutlinedIcon className="subItem2" />
+              <span className="subItem2">Schedule</span>
+            </div>
+          </Link>
           <Link to="/movies" className="link">
             <div className="subItem1Wrapper">
               <LocalMoviesOutlinedIcon className="subItem0" />
@@ -62,10 +68,7 @@ function Sidebar() {
               <span className="subItem2">Admin</span>
             </div>
           </Link>
-          <div className="subItem2Wrapper">
-            <EqualizerOutlinedIcon className="subItem2" />
-            <span className="subItem2">Reports</span>
-          </div>
+          
         </div>
       </div>
       <div className="itemsContainer">

@@ -17,7 +17,7 @@ function Navbar() {
     <div className="Navbar">
       <div className="NavbarWrapper">
         <div className="topLeft">
-          <span className="logo">JOEY ADMIN</span>
+          <span className="logo">D3K ADMIN</span>
         </div>
         <div className="topRight">
           <div className="NavbarIcons">
