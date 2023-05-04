@@ -91,13 +91,13 @@ function MovieNowShowing() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: names, day: Day, location: Place, type: Type, cinema: Cinema, site: Site, time: TimeSt }),
+      body: JSON.stringify({id: e.currentTarget.title}),
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         navigate('/ticket', { state: data.data })
       });
-
   }
 
 

@@ -556,17 +556,22 @@ class movieController {
       });
     }
     const [movie] = await pool.execute(`SELECT cinema_room.lenght as length, cinema_room.width as width, film.poster as poster, showtime.showtime_id as id, film.name as film_name, film.length as film_length, cinema.name as cinema_name,  showtime.time as time, cinema_room.name_room as name_room from showtime inner join cinema_room on cinema_room.room_id = showtime.room_id INNER join film on film.film_id = showtime.film_id inner join cinema on cinema.cinema_id = cinema_room.cinema_id where showtime.showtime_id = ?;`, [film_id]);
+    if(movie == null) {
+      res.status(500).json({
+        status: "không có data",
+      });
+    }
     const [type_chair] = await pool.execute(`SELECT room_seat.seat_type as type_chair FROM showtime inner join cinema_room on cinema_room.room_id = showtime.room_id inner join room_seat on cinema_room.room_id = room_seat.room_id where showtime.showtime_id = ?  GROUP BY(type_chair);`, [film_id]);
     const position = [];
     for(let i = 0; i < movie[0].width; i++) {
-      let [row_chair] = await pool.execute(`SELECT room_seat.* from room_seat inner join showtime on showtime.room_id = room_seat.room_id WHERE room_seat.seat_row = ? AND showtime.showtime_id = ?;`, [(i+1), film_id]);
+      let [row_chair] = await pool.execute(`SELECT room_seat.* from room_seat inner join showtime on showtime.room_id = room_seat.room_id WHERE room_seat.seat_row = ? AND showtime.showtime_id = ? order by(room_seat.seat_column);`, [(i+1), film_id]);
       row_chair.map((chair) => {
         chair.status = "available";
       })
       position.push(row_chair);
       console.log(movie.length);
     }
-    const [booked_seat] = await pool.execute(`SELECT room_seat.* FROM room_seat inner join showtime on showtime.room_id = room_seat.room_id inner join booked_seat on booked_seat.showtime_id = showtime.showtime_id where booked_seat.seat_id = room_seat.seat_id and showtime.showtime_id = ?;`, [film_id]);
+    const [booked_seat] = await pool.execute(`SELECT room_seat.* FROM room_seat inner join showtime on showtime.room_id = room_seat.room_id inner join booked_seat on booked_seat.showtime_id = showtime.showtime_id where booked_seat.seat_id = room_seat.seat_id and showtime.showtime_id = ? ;`, [film_id]);
     booked_seat.map((booked) => {
       if(booked != null) {
         position[booked.seat_column-1][booked.seat_row-1].status = "disable";
