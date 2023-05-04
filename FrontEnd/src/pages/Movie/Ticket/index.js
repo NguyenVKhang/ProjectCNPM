@@ -5,7 +5,6 @@ import "./style.css";
 function Ticket() {
     const { state } = useLocation();
     console.log(state.movie);
-    console.log(1111);
     const Position = state.position
     let sum_chair = 0;
     Position.forEach(element => {
@@ -85,9 +84,23 @@ function Ticket() {
             total += parseInt(seats[i].getAttribute("price"));
         }
         //show the total price
-        document.getElementById("total1").innerHTML = `${total} đ`;
-        document.getElementById("total").innerHTML = `${total} đ`
+        const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(total);
+        document.getElementById("total1").innerHTML = `${currency}`;
+        document.getElementById("total").innerHTML = `${currency}`;
+        const positions = document.querySelectorAll(".checked");
+        console.log(positions);
+        let position = [];
+        for (let i = 0; i < positions.length; i++) {
+            position.push(positions[i].innerHTML);
+        }
+        console.log(position);
+
+   
     }
+
+    const [hour, minute, second] = state.movie[0].film_length.split(":");
+    const showtime_start = new Date(state.movie[0].time);
+    const showtime_end = new Date(showtime_start.getTime() + hour*3600000 + minute*60000 + second*1000);
 
     const navigate = useNavigate();
     const Next = () => {
@@ -104,53 +117,28 @@ function Ticket() {
             position.push(positions[i].innerHTML);
         }
 
+        const seats = document.getElementsByClassName("checked");
 
-
-        // update Temporarily status
-        fetch("http://localhost:3001/movie/updateStatus", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: state.name,
-                day: state.day,
-                location: state.location,
-                type: state.type,
-                cinema: state.cinema,
-                site: state.site,
-                time: state.time,
-                position: position,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        let total = 0;
+        for (let i = 0; i < seats.length; i++) {
+            total += parseInt(seats[i].getAttribute("price"));
+        }
+        const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(total);
 
         navigate("/payment", {
             state: {
-                name: state.name,
-                day: state.day,
-                location: state.location,
-                type: state.type,
-                cinema: state.cinema,
-                site: state.site,
-                position: position,
-                time: state.time,
-                total_showtime: state.total_showtime,
-                price: document.getElementById("total").innerHTML.split(" ")[0],
+                movie: state.movie,
+                position: state.position,
+                position_booked: position,
+                price: currency,
                 type_chair: document.getElementById("Type_Chair").innerHTML,
                 name_chair: document.getElementById("Name_Chair").innerHTML,
+                showtime_start
             },
         });
     }
 
-    const [hour, minute, second] = state.movie[0].film_length.split(":");
-    const showtime_start = new Date(state.movie[0].time);
-    const showtime_end = new Date(showtime_start.getTime() + hour*3600000 + minute*60000 + second*1000);
+  
 
 
 
@@ -212,11 +200,11 @@ function Ticket() {
                                             <div className="rows" key={index1}>
                                                 {item1.map((item, index) => (
                                                     <>
-                                                        {item1.seat_type != "SPACE" ? <div className={`${item.status === "disable" ? "seat seat-disable disable" : `seat seat-${item.seat_type} active`}`} key={index} type={item.status} price={item.seat_fare} onClick={check}>
+                                                        {item.seat_type !== "SPACE" ? <div className={`${item.status === "disable" ? "seat seat-disable disable" : `seat seat-${item.seat_type} active`}`} key={index} type={item.seat_type} price={item.seat_fare} onClick={check}>
                                                             {item.seat_name}
                                                         </div> 
                                                         :
-                                                        <div className={`${item.status = `seat seat-${item.seat_type} active`}`}>
+                                                        <div className={`${item.status = `seat seat-${item.seat_type} `}`}>
                                                         </div> 
                                                         }
                                                         
@@ -236,7 +224,9 @@ function Ticket() {
                                         <div className="iconlist">
                                             {state.type_chair.map((item, index) => {
                                                 return (
-                                                    <div className={`icon zone-${item.type_chair_name}`} key={index}>{item.name_chair}</div>
+                                                    <>
+                                                        {item.type_chair !== "SPACE" ? <div className={`icon zone-${item.type_chair}`} key={index}>{item.type_chair}</div> : <></>}
+                                                    </>
                                                 )
                                             })}
                                         </div>
@@ -290,7 +280,7 @@ function Ticket() {
                                                         <td>{state.movie[0].cinema_name}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="label">Suất chiếu</td>
+                                                        <td className="label">Suất chiếu:</td>
                                                         <td>{showtime_start.toLocaleTimeString("en-GB", {
                                                             hour: "2-digit",
                                                             minute: "2-digit"
@@ -301,12 +291,12 @@ function Ticket() {
                                                         <td>{state.movie[0].name_room}</td>
                                                     </tr>
                                                     <tr className="block-seats" style={{ "display": "table-row" }}>
-                                                        <td className="label">Ghế</td>
+                                                        <td className="label">Ghế:</td>
                                                         <td className="data">
                                                             <span style={{
                                                                 "clear": "both",
                                                                 "float": "left",
-                                                            }} id="Type_Chair">Thường</span>
+                                                            }} id="Type_Chair"></span>
                                                             <span style={{
                                                                 "clear": "both",
                                                                 "float": "left",

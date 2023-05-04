@@ -2,67 +2,16 @@ import { useNavigate, useLocation } from "react-router-dom"
 import Countdown from "react-countdown-now";
 import "./style.css";
 function AuthPayment() {
-    const { state } = useLocation()
-
-    const navigate = useNavigate()
+    const { state } = useLocation();
+    console.log(state.movie[0]);
+    const navigate = useNavigate();
     const back = () => {
-        fetch("http://localhost:3001/movie/updateStatusEmpty", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: state.name,
-                day: state.day,
-                location: state.location,
-                type: state.type,
-                cinema: state.cinema,
-                site: state.site,
-                time: state.time,
-                position: state.position,
-                type_chair: state.type_chair,
-            }),
-        })
-
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
         window.history.back()
     }
 
 
     const renderer = ({ hours, minutes, seconds, completed }) => {
         if (completed) {
-            fetch("http://localhost:3001/movie/updateStatusEmpty", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: state.name,
-                    day: state.day,
-                    location: state.location,
-                    type: state.type,
-                    cinema: state.cinema,
-                    site: state.site,
-                    time: state.time,
-                    position: state.position,
-                    type_chair: state.type_chair,
-                }),
-            })
-
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
             window.location.href = "/nocart";
         } else {
             return (
@@ -88,10 +37,6 @@ function AuthPayment() {
     }
 
 
-    const showtime_start = new Date(state.time);
-
-
-
 
     return (
         <>
@@ -105,7 +50,7 @@ function AuthPayment() {
                             <div className="top-content">
                                 <div className="product-secondary">
                                     <div className="countexpire">
-                                        <h3>Countdown Clock</h3>
+                                        <h3>Countdown Clock:</h3>
                                         <div id="countdown">
                                             <Countdown
                                                 date={Date.now() + 500000}
@@ -114,15 +59,8 @@ function AuthPayment() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="voucher-payment">
-                                    <h3>Bước 1: GIẢM GIÁ</h3>
-                                    <h6>Mã khuyến mãi</h6>
-                                    <span>Nhập mã khuyến mãi</span>
-                                    <input type="text"></input>
-                                    <button className="use">Sử dụng</button>
-                                </div>
                                 <div className="type-payment">
-                                    <h3>Bước 2: HÌNH THỨC THANH TOÁN</h3>
+                                    <h3>HÌNH THỨC THANH TOÁN</h3>
                                     <ul>
                                         <li className="type-payment-cgv">
                                             <input type="radio" name="payment" id="payment1" value="ATM card"></input>
@@ -154,16 +92,16 @@ function AuthPayment() {
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <img src="https://www.cgv.vn/media/catalog/product/cache/1/thumbnail/dc33889b0f8b5da88052ef70de32f1cb/n/b/nbn_main-poster_2_1_.jpg" />
+                                                                <img alt="Ảnh bìa" src={state.movie[0].poster} />
                                                             </td>
                                                             <td>
                                                                 <table className="info-wrapper">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td className="label">{state.name}</td>
+                                                                            <td className="label">{state.movie[0].film_name}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td className="label">{state.site}</td>
+                                                                            <td className="label">2D</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td className="label">C18</td>
@@ -181,21 +119,21 @@ function AuthPayment() {
                                                 <table className="info-wrapper">
                                                     <tbody>
                                                         <tr>
-                                                            <td className="label">Rạp</td>
-                                                            <td>{state.cinema}</td>
+                                                            <td className="label">Rạp:</td>
+                                                            <td>{state.movie[0].cinema_name}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="label">Suất chiếu</td>
-                                                            <td>{showtime_start.toLocaleTimeString("en-GB", {
+                                                            <td className="label">Suất chiếu:</td>
+                                                            <td>{state.showtime_start.toLocaleTimeString("en-GB", {
                                                                 hour: "2-digit",
                                                                 minute: "2-digit",
-                                                            })}, {showtime_start.toLocaleDateString("en-GB")}
+                                                            })}, {state.showtime_start.toLocaleDateString("en-GB")}
 
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="label">Phòng chiếu</td>
-                                                            <td>Cinema 2</td>
+                                                            <td className="label">Phòng chiếu:</td>
+                                                            <td>{state.movie[0].name_room}</td>
                                                         </tr>
                                                         <tr className="block-seats" style={{ "display": "table-row" }}>
                                                             <td className="label">Ghế</td>
@@ -219,13 +157,13 @@ function AuthPayment() {
                                                 <table className="info-wrapper">
                                                     <thead>
                                                         <tr className="block-box">
-                                                            <td className="label">Tên phim</td>
-                                                            <td className="price" id="total1">{state.price} đ</td>
+                                                            <td className="label">Giá phim:</td>
+                                                            <td className="price" id="total1">{state.price}</td>
                                                             <td className="data">
                                                                 <div className="truncated">
                                                                     <div className="truncated_full_value">
                                                                         <dl className="item-options">
-                                                                            <dt>Thường</dt>
+                                                                            <dt>Thường:</dt>
                                                                             <dd>2</dd>
                                                                         </dl>
                                                                     </div>
@@ -250,8 +188,8 @@ function AuthPayment() {
                                                     </tbody>
                                                     <tfoot className="block-price">
                                                         <tr>
-                                                            <td className="label">Tổng</td>
-                                                            <td className="price" id="total">{state.price} đ</td>
+                                                            <td className="label">Tổng:</td>
+                                                            <td className="price" id="total">{state.price}</td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>

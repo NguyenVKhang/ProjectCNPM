@@ -77,7 +77,6 @@ function Chitiet() {
         console.log(data);
         navigate('/ticket', { state: data.data })
       });
-
   }
 
   const Day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

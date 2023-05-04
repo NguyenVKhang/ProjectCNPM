@@ -15,3 +15,7 @@
     vertical-align: top;
     background: url("https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-cgv-button-process.png") no-repeat;
 }
+
+.countdown {
+    justify-content: center;
+}
