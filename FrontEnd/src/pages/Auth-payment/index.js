@@ -6,6 +6,26 @@ function AuthPayment() {
     console.log(state.movie[0]);
     const navigate = useNavigate();
     const back = () => {
+        fetch("http://localhost:3001/movie/updateStatusEmpty", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                movie: state.movie,
+                position: state.position,
+                position_booked: state.position_booked
+            }),
+        })
+
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
         window.history.back()
     }
 
@@ -13,6 +33,25 @@ function AuthPayment() {
     const renderer = ({ hours, minutes, seconds, completed }) => {
         if (completed) {
             window.location.href = "/nocart";
+            fetch("http://localhost:3001/movie/updateStatusEmpty", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    movie: state.movie,
+                    position: state.position,
+                    position_booked: state.position_booked
+                }),
+            })
+
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         } else {
             return (
                 <span>{minutes}:{seconds}</span>
