@@ -20,6 +20,7 @@ import Cinema from "./pages/Cinema";
 import Test from "./pages/Test";
 import History from "./pages/Auth/History";
 import NewsOffer from "./pages/NewsOffer";
+import Hotline from "./components/Hotline/Hotline";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/contact" element={<Test/>}/>
       </Routes>
       <Footer />
+      <Hotline />
     </Router >
   );
 }
