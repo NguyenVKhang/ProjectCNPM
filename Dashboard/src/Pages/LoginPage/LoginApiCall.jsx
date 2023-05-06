@@ -12,7 +12,7 @@ export const login = async (user, dispatch) => {
     // data for testing
     // fetch http://localhost:3001/auth/login with user is body
     
-    const result = await fetch("http://localhost:3001/auth/login", {
+    const result = await fetch("http://localhost:3001/auth/loginAdmin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

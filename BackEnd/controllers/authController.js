@@ -40,6 +40,45 @@ class authController {
     }
   }
 
+  async loginAdmin(req = new Request(), res) {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        status: "error",
+        message: "Email and password are required",
+      });
+    }
+    let validateErr = validateEmail(email) || validatePassword(password);
+    if (validateErr) {
+      return res.status(400).json({ status: "error", message: validateErr });
+    }
+    try {
+      
+      const [rows] = await pool.execute(`SELECT * from employee where gmail = ? and password = ?;`, [email, password]);
+      if (rows.length === 0) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "Employee does not exist" });
+      }
+      if (rows[0].password !== password) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "Password is incorrect" });
+      }
+      return res.status(200).json({
+        status: "success",
+        data: { user: rows[0] },
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+    }
+  }
+  
+
 
 
   // async signup(req = new Request(), res) {

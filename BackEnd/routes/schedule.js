@@ -7,5 +7,6 @@ router.get("/getScheduleById/:id", scheduleController.getScheduleById);
 router.post("/postSchedule", scheduleController.postSchedule);
 router.post("/deleteSchedule", scheduleController.deleteSchedule);
 router.post("/updateSchedule", scheduleController.updateSchedule);
+router.get("/getAllFeatureSchedules", scheduleController.getAllFeatureSchedules);
 
 module.exports = router;

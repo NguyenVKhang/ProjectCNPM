@@ -12,7 +12,7 @@ function SchedulesPage() {
   useEffect(() => {
     const dataSchedules = async () => {
       try {
-        const res = await fetch("http://localhost:3001/schedule/getAllSchedules", {
+        const res = await fetch("http://localhost:3001/schedule/getAllFeatureSchedules", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -49,9 +49,15 @@ function SchedulesPage() {
   const columns = [
     { field: "showtime_id", headerName: "ID", width: 50 },
     {
-      field: "ticket_fare",
-      headerName: "Ticket Fare",
-      width: 250,
+      field: "film_id",
+      headerName: "Film ID",
+      width: 125,
+    },
+    {
+      // get field name in firecolume
+      field: "film_name",
+      headerName: "Film Name",
+      width: 200,
       // renderCell: (params) => {
       //   return (
       //     <div className="userRowProfile">
@@ -64,13 +70,20 @@ function SchedulesPage() {
     { field: "time", headerName: "Time", width: 200 },
     {
       field: "room_id",
-      headerName: "Room ID",
-      width: 140,
+      headerName: "RoomID",
+      width: 130,
     },
     {
-      field: "film_id",
-      headerName: "Film ID",
-      width: 230,
+      field: "name_room",
+      headerName: "Room name",
+      width: 150,
+    },
+    
+    
+    {
+      field: "name",
+      headerName: "Cinema name",
+      width: 150,
     },
 
     // {
