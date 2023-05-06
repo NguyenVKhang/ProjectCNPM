@@ -22,7 +22,24 @@ function ScheduleSingle() {
         });
         
         const result = await res.json();
-        setSchedule(result.data.schedule);
+        // setSchedule(result.data.schedule);
+        // data.schedule.time: "2021-10-10T10:00:00.000Z"
+        // convert to set default value for input type="date" and input type="time"
+        const dateObj = new Date(result.data.schedule.time);
+        
+        const date = dateObj.toISOString().split("T")[0];
+        dateObj.setUTCHours(dateObj.getUTCHours() + 7);
+        const time = dateObj.toISOString().split("T")[1].split(".")[0];
+
+      
+        setSchedule({ ...schedule, date: date, time: time, room_id: result.data.schedule.room_id, film_id: result.data.schedule.film_id });
+        // schedule.date = date;
+        // schedule.time = time;
+        // schedule.date = date;
+        // schedule.time = time;
+        // document.getElementById("date").value = date;
+        // document.getElementById("time").value = time;
+        // console.log(schedule);
       } catch (error) {
         console.log(error);
       }
@@ -41,214 +58,98 @@ function ScheduleSingle() {
     const value = e.target.value;
     setSchedule({ ...schedule, [e.target.name]: value });
   };
-
-  const upload = (updatedItems) => {
-    updatedItems.forEach((updatedItem) => {
-      const uploadTask = storage
-        .ref(`/updatedItems/${updatedItem.file.name}`)
-        .put(updatedItem.file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + " % done");
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-            setUpdatedMovie((prev) => {
-              return { ...prev, [updatedItem.label]: url };
-            });
-            setUploaded((prev) => prev + 1);
-          });
-        }
-      );
-    });
-  };
-
-  const handleUpload = (e) => {
-    e.preventDefault();
-    upload([
-      { file: img, label: "img" },
-      { file: trailer, label: "trailer" },
-      { file: video, label: "video" },
-    ]);
-  };
-
-  // const { dispatch } = useContext(moviesContext);
-
+// feature: id, date: date + time, room_id, film_id
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updateMovie = {
-      id: schedule.film_id,
-      name: schedule.name,
-      description: schedule.description,
-      length: schedule.length,
-      genres: schedule.genres,
-      trailer: schedule.trailer,
-      poster: schedule.poster,
-      release_date: schedule.release_date,
-      dates_minium: schedule.dates_minium,
-      actor: schedule.actor,
-      director: schedule.director,
+    const updateSchedule = {
+      id: showtime_id,
+      date: schedule.date + " " + schedule.time,
+      room_id: schedule.room_id,
+      film_id: schedule.film_id,
     };
 
-    if (!updateMovie.name || !updateMovie.description || !updateMovie.length 
-      || !updateMovie.genres || !updateMovie.trailer || !updateMovie.poster
-      || !updateMovie.release_date || !updateMovie.dates_minium || !updateMovie.actor
-      || !updateMovie.director) {
+    if (!schedule.date  || !schedule.time || !schedule.room_id || !schedule.film_id) {
       alert("All fields are required!");
       return;
   } else {
-    console.log(updateMovie);
-    fetch("http://localhost:3001/movie/updateMovie/", {
+    fetch("http://localhost:3001/schedule/updateSchedule/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updateMovie),
+      body: JSON.stringify(updateSchedule),
     })
       .then((res) => res.json())
       .then((data) => {
         alert("Cập nhật thành công");
-        // reload lại trang
         window.location.reload();
       }
     );
   }
 };
-// feature: name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director
 
   return (
    console.log(schedule),
     <div className="singleMoviePage">
       <div className="movieAndButtonWrapper">
-        <h2 className="movieTitle">Movie</h2>
+        <h2 className="movieTitle">Schedule</h2>
         <Link to="/scheduleNew">
           <button className="createMovie">Create</button>
         </Link>
       </div>
       <div className="ChartAndMovieInfo">
         <div className="movieInfo">
-           <div className="movieProfile">
-            <img src={schedule?.poster} alt="" className="movieImage" />
-            <span className="movieTitle">{schedule?.name}</span>
-          </div>
-          {/*
-          <div className="movieDetailss">
-            <div className="movieId">
-              <span className="id">ID:</span>
-              <span className="Amount">{movie?.film_id}</span>
-            </div>
-            <div className="movieSales">
-              <span className="sales">Genres:</span>
-              <span className="salesAmount">{movie?.genres}</span>
-            </div>
-            <div className="activeMovie">
-              <span className="active">Description:</span>
-              <span className="statuss">{movie?.description}</span>
-            </div>
-            <div className="movieStock">
-              <span className="inStock">Length:</span>
-              <span className="statusss">{movie?.length}</span>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="updateWrapper">
         <div className="updateInfo">
           <form action="" className="formContainer">
             <div className="movieItem">
-              <label>Movie Title</label>
+              <label>Date</label>
               <input
-                type="text"
-                placeholder={schedule?.name}
-                defaultValue={schedule?.name}
-                name="name"
+                type="date"
+                placeholder={schedule?.date}
+                defaultValue={schedule?.date}
+                name="date"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="movieItem">
+              <label>Time</label>
+              <input
+                type="time" step={1}
+                placeholder={schedule?.time}
+                defaultValue={schedule?.time}
+                name="time"
                 onChange={handleChange}
               />
             </div>
             
             <div className="movieItem">
-              <label>Movie Description</label>
+              <label>Room ID</label>
               <input
-                type="text"
-                defaultValue={schedule?.description}
-                name="description"
+                type="number"
+                placeholder={schedule?.room_id}
+                defaultValue={schedule?.room_id}
+                name="room_id"
+                onChange={handleChange}
+              />
+
+            </div>
+
+
+          
+            <div className="movieItem">
+              <label>Film ID</label>
+              <input
+                type="number"
+                defaultValue={schedule?.film_id}
+                name="film_id"
                 onChange={handleChange}
               />
             </div>
 
-
-            <div className="movieItem">
-              <label>Genres</label>
-              <input
-                type="text"
-                defaultValue={schedule?.genres}
-                name="genres"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="movieItem">
-              <label>Trailer</label>
-              <input
-                type="text"
-                defaultValue={schedule?.trailer}
-                name="trailer"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="movieItem">
-              <label>Poster</label>
-              <input
-                type="text"
-                defaultValue={schedule?.poster}
-                name="poster"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="movieItem">
-              <label>Release Date</label>
-              <input
-                type="date"
-                defaultValue={schedule?.release_date}
-                name="release_date"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="movieItem">
-              <label>Date Minium</label>
-              <input type="date" name="dates_minium" 
-              defaultValue={schedule?.dates_minium}
-              onChange={handleChange} />
-            </div>
-
-            <div className="movieItem">
-              <label>Actor</label>
-              <input
-                type="text"
-                defaultValue={schedule?.actor}
-                name="actor"
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="movieItem">
-              <label>Director</label>
-              <input
-                type="text"
-                defaultValue={schedule?.director}
-                name="director"
-                onChange={handleChange}
-              />
-            </div>
 
             <div>
               <button className="updateButton" onClick={handleSubmit}>
@@ -259,18 +160,6 @@ function ScheduleSingle() {
             
           </form>
         </div>
-        {/* <div className="imageAndButtonWrapper">
-         
-          {uploaded === 3 ? (
-            <button className="updateButton" onClick={handleSubmit}>
-              Update
-            </button>
-          ) : (
-            <button className="updateButton" onClick={handleUpload}>
-              Upload
-            </button>
-          )}
-        </div> */}
       </div>
     </div>
   );
