@@ -124,6 +124,24 @@ function Ticket() {
             total += parseInt(seats[i].getAttribute("price"));
         }
         const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(total);
+          // update Temporarily status
+        fetch("http://localhost:3001/movie/updateStatus", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                movie: state.movie,
+                position: state.position,
+                position_booked: position
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+            })
+            .catch((err) => {
+                console.log(err);
+        });
 
         navigate("/payment", {
             state: {
