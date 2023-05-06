@@ -240,9 +240,9 @@ class movieController {
 
   async getMiddle(req, res) {
     try {
-      const response = await axios.get('https://api.web2m.com/historyapimomo/f8302be90a2b90a9a2882c-667c-c240-b57a-6a4a48d70e0d');
-      const data = response.data.momoMsg.tranList;
-
+      const response = await axios.get('https://api.sieuthicode.net/historyapizalopay/xLYzPryvMEtQ-ESBjIk-CHUA-mcfv-xZaf');
+    
+      const data = response.data.zalopayMsg.tranList;
       return res.status(200).json({ status: "success", data })
 
     } catch (error) {
@@ -266,6 +266,7 @@ class movieController {
   async updateStatus(req = new Request(), res) {
     const { movie, position, position_booked } = req.body;
     console.log(position_booked);
+    console.log([movie[0].id, position[0][0].room_id]);
     try {
       const promises = position_booked.map(async (p) => {
         const [rows] = await pool.execute(`INSERT INTO booked_seat (showtime_id, seat_id) VALUES (?, (SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?));`, [movie[0].id, position[0][0].room_id, p]);
@@ -286,7 +287,8 @@ class movieController {
   
   async updateStatusEmpty(req = new Request(), res) {
     const { movie, position, position_booked } = req.body;
-    console.log(position_booked);
+    console.log(movie);
+    console.log(`------------`);
     try {
       const promises = position_booked.map(async (p) => {
         const [rows] = await pool.execute(`DELETE FROM booked_seat WHERE seat_id = (SELECT seat_id from room_seat where room_seat.seat_name = ? and room_id = ?) and booked_seat.showtime_id = ?;`, [p, position[0][0].room_id, movie[0].id]);
@@ -445,8 +447,6 @@ class movieController {
 
 
   async getPosition(req, res) {
-    console.log(req.body);
-    console.log(`------------`);
     const film_id  = req.body.id;
     if (!film_id) {
       return res.status(400).json({
