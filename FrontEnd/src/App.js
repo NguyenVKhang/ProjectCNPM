@@ -41,7 +41,7 @@ function App() {
         <Route path="/movies/coming-soon" element={<MovieComingSoon />} />
         <Route path="/movie/:id" element={<Chitiet />} />
         <Route path="/payment" element={<AuthPayment />} />
-        <Route path="/payment/momo" element={<Payment />} />
+        <Route path="/payment/ZaloPay" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
         <Route path="/cinema" element={<Cinema />} />
         <Route path="/newsoffer" element={<NewsOffer />} />
