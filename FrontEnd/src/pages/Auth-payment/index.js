@@ -8,6 +8,7 @@ function AuthPayment() {
     const navigate = useNavigate();
     const { state } = useLocation();
     const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(state.price);
+    console.log(currency, state.price);
     useEffect(() => {
         const handleBeforeUnload = (event) => {
           event.preventDefault();
