@@ -10,7 +10,7 @@ import General from "./pages/Auth/General/General";
 import ChangeProfile from "./pages/Auth/Change-profile/ChangePassword";
 import MovieNowShowing from "./pages/Movie/Now-showing/NowShowing";
 import MovieComingSoon from "./pages/Movie/Coming-soon";
-import Chitiet from "./pages/Movie/Detail-movie";
+import Chitiet from "./pages/Movie/Detail-movie/Chitiet";
 import Ticket from "./pages/Movie/Ticket/Ticket";
 import AuthPayment from "./pages/Auth-payment";
 import Payment from "./pages/Payment";

@@ -294,15 +294,18 @@ function MovieNowShowing() {
                                                 {Movie_Type.Cinema.map((Cinema) => (
                                                   <li style={{
                                                     'textAlign': 'left'
+                                                  
                                                   }} key={Cinema.id} className="cinema">
                                                     <span>{Cinema.cinema_name}</span>
                                                     <ul>
                                                       {Cinema.Site.map((Site) => (
-                                                        <li style={{
-                                                          'textAlign': 'left',
-                                                          'display': 'table',
-                                                          'margin': '10px 0'
-                                                        }} key={Site.id} className="site">
+                                                        <li 
+                                                        // style={{
+                                                        //   'textAlign': 'left',
+                                                        //   'margin': '10px 0px',
+                                                        //   'display': 'block',
+                                                        // }} 
+                                                        key={Site.id} className="site">
                                                           <span>{Site.site_name}</span>
                                                           <ul>
                                                             {Site.Time.map((Time) => {

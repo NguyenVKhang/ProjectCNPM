@@ -61,6 +61,31 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movieByCinplex": [
+                            {
+
+                                "name": "The Conjuring: The Devil Made Me Do It",   
+                                "image": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                                "time": [
+                                    {
+                                        "start": "10:00",
+                                        "end": "12:00"
+                                    },
+                                    {
+                                        "start": "12:00",
+                                        "end": "14:00"
+                                    },
+
+                                ]
+                            },
+                            
+                        ]
+                    }
+                }
+
                 console.log(data.data.movieByCinplex);
                 setMovie(data.data.movieByCinplex)
             }
@@ -80,6 +105,9 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+          
+
+
                 setCinema(data.data.cinema);
             })
             .catch((err) => {
@@ -100,6 +128,17 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movie": {
+                            "title": "The Conjuring: The Devil Made Me Do It",
+                            "poster": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                            "trailer": "https://www.youtube.com/embed/1PnZBWSk0eM",
+                        }
+                    }
+                }
+
                 navigate(`/movie/${data.data.movie.title}`, { state: data.data.movie })
             })
             .catch((err) => {
@@ -133,6 +172,30 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movie": {
+                            "title": "The Conjuring: The Devil Made Me Do It",
+                            "poster": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                            "trailer": "https://www.youtube.com/embed/1PnVor36_40",
+                            "director": "Michael Chaves",
+                            "cast": "Patrick Wilson, Vera Farmiga, Ruairi O'Connor",
+                            "duration": "112",
+                            "type": "Horror, Mystery, Thriller",
+                            "releaseDate": "2021-06-04T00:00:00.000Z",
+                            "language": "English",
+                            "rated": "C18",
+
+                        },
+                        "cinema": "CGV Vincom Đồng Khởi",
+                        "day": "2021-06-05T00:00:00.000Z",
+                        "time": "10:00",
+                        "site": "A1",
+                        "price": 75000
+                    }
+                }
+
                 navigate('/ticket', { state: data.data })
             });
     }
@@ -150,7 +213,7 @@ function Cinema() {
                                     <div className="theatre-city-tabs cgv-showtime-center">
                                         <div className="content-list-cinema">
                                             <div className="title-cgv-cinema">
-                                                <h1>CGV CINEMAS</h1>
+                                                <h1>D3K CINEMAS</h1>
                                             </div>
                                             <div className="cinemas-area">
                                                 <ul>
