@@ -14,17 +14,6 @@ function Header() {
     <>
       <div id="header-container">
         <div id="header_btn">
-          {/* <div className="btn-cover btn-cover1 ">
-            <img
-              className="icon"
-              src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/recruitment_icon1.png"
-              alt="icon"
-            />
-
-            <a id="btn-zoom" href="https://www.facebook.com/">
-              Tuyển dụng
-            </a>
-          </div> */}
           <div className="btn-cover btn-cover1">
             <img
               className="icon"
@@ -146,17 +135,6 @@ function Header() {
               </ul>
             </div>
 
-
-            {/* <img
-              id="kenhCine"
-              src="https://www.cgv.vn/media/wysiwyg/2019/AUG/kenhcine.gif"
-              alt="kênh cine"
-            />
-            <img
-              id="muaVe"
-              src="https://www.cgv.vn/media/wysiwyg/news-offers/mua-ve_ngay.png"
-              alt="mua vé"
-            /> */}
           </div>
         </div>
 
