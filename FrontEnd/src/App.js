@@ -20,6 +20,7 @@ import Cinema from "./pages/Cinema";
 import Test from "./pages/Test";
 import History from "./pages/Auth/History/History";
 import NewsOffer from "./pages/NewsOffer";
+import Hotline from "./components/Hotline/Hotline";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path="/movies/coming-soon" element={<MovieComingSoon />} />
         <Route path="/movie/:id" element={<Chitiet />} />
         <Route path="/payment" element={<AuthPayment />} />
-        <Route path="/payment/momo" element={<Payment />} />
+        <Route path="/payment/ZaloPay" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
         <Route path="/cinema" element={<Cinema />} />
         <Route path="/newsoffer" element={<NewsOffer />} />
@@ -50,6 +51,7 @@ function App() {
         <Route path="/contact" element={<Test />} />
       </Routes>
       <Footer />
+      <Hotline />
     </Router >
   );
 }

@@ -40,6 +40,45 @@ class authController {
     }
   }
 
+  async loginAdmin(req = new Request(), res) {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        status: "error",
+        message: "Email and password are required",
+      });
+    }
+    let validateErr = validateEmail(email) || validatePassword(password);
+    if (validateErr) {
+      return res.status(400).json({ status: "error", message: validateErr });
+    }
+    try {
+      
+      const [rows] = await pool.execute(`SELECT * from employee where gmail = ? and password = ?;`, [email, password]);
+      if (rows.length === 0) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "Employee does not exist" });
+      }
+      if (rows[0].password !== password) {
+        return res
+          .status(400)
+          .json({ status: "error", message: "Password is incorrect" });
+      }
+      return res.status(200).json({
+        status: "success",
+        data: { user: rows[0] },
+      });
+    } catch (error) {
+      return res.status(503).json({
+        status: "error",
+        message: "Service error. Please try again later",
+      });
+    }
+  }
+  
+
 
 
   // async signup(req = new Request(), res) {
@@ -200,39 +239,23 @@ class authController {
   // }
 
   async saveHistory(req = new Request(), res) {
-    const { name, day, location, type, cinema, site, time, position, type_chair, code, email, total_showtime, order_date } = req.body;
-    console.log(email);
-
+    const { user_id, showtime_id, position_booked, room_id } = req.body;
+    console.log(req.body);
+    console.log(`----------------------`);
     try {
-      const user = await User.findOne({ email });
-      console.log(user);
-      //add history
-      user.history.push({
-        name: name,
-        day: day,
-        location: location,
-        type: type,
-        cinema: cinema,
-        site: site,
-        time: time,
-        position: position,
-        type_chair: type_chair,
-        total_showtime: total_showtime,
-        code: code,
-        order_date: order_date
+      const promises = position_booked.map(async (p) => {
+        const [rows] = await pool.execute(`INSERT INTO ticket (chair_number, user_id, showtime_id) VALUES ((SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?), ?, ?);`, [room_id, p, user_id, showtime_id]);
+        return rows;
       });
-
-      await user.save();
-
-
+      await Promise.all(promises);
+  
       return res.status(200).json({
         status: "success",
       });
-    }
-    catch (error) {
-      return res.status(503).json({
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
         status: "error",
-        message: "Service error. Please try again later",
       });
     }
   }

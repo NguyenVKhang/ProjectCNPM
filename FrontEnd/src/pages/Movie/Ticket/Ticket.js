@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "./Ticket.css";
+import "./style.css";
 
 
 function Ticket() {

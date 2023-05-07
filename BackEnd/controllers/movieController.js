@@ -167,36 +167,6 @@ class movieController {
   }
 
 
-  // async getDetailMovieNowShowing(req = new Request(), res) {
-  //   const { name } = req.body;
-  //   if (!name) {
-  //     return res.status(400).json({
-  //       status: "error",
-  //       message: "Name is required",
-  //     });
-  //   }
-  //   try {
-  //     const movie = await MovieNowShowing.findOne({
-  //       name
-  //     });
-  //     if (!movie) {
-  //       return res
-  //         .status(400)
-  //         .json({ status: "error", message: "Movie does not exist" });
-  //     }
-
-  //     return res.status(200).json({
-  //       status: "success",
-  //       data: { movie }
-  //     });
-  //   } catch (error) {
-  //     return res.status(503).json({
-  //       status: "error",
-  //       message: "Service error. Please try again later",
-  //     });
-  //   }
-  // }
-
   async getDetailMovieNowShowing(req = new Request(), res) {
     const { id } = req.body;
     if (!id) {
@@ -270,9 +240,9 @@ class movieController {
 
   async getMiddle(req, res) {
     try {
-      const response = await axios.get('https://api.web2m.com/historyapimomo/f8302be90a2b90a9a2882c-667c-c240-b57a-6a4a48d70e0d');
-      const data = response.data.momoMsg.tranList;
-
+      const response = await axios.get('https://api.sieuthicode.net/historyapizalopay/xLYzPryvMEtQ-ESBjIk-CHUA-mcfv-xZaf');
+    
+      const data = response.data.zalopayMsg.tranList;
       return res.status(200).json({ status: "success", data })
 
     } catch (error) {
@@ -294,109 +264,53 @@ class movieController {
 
   //updateStatus post
   async updateStatus(req = new Request(), res) {
-    const { name, day, location, type, cinema, site, time, position } = req.body;
-    const movie = await MovieNowShowing.findOne({
-      name
-    });
-
-
-    const date = new Date(day);
-    const timest = new Date(time);
-
-    const Position = movie.Date.find((Date) => Date.day.getTime() === date.getTime()).Location.find((Location) => Location.place === location).Movie_Type.find((Movie_Type) => Movie_Type.type_name === type).Cinema.find((Cinema) => Cinema.cinema_name === cinema).Site.find((Site) => Site.site_name === site).Time.find((Time) => Time.timeSt.getTime() === timest.getTime()).Position;
-
-    //update status of position
-    Position.forEach((pos) => {
-      pos.forEach((q) => {
-        position.forEach((p) => {
-          if (q.position === p) {
-            q.status = "disable";
-          }
-        })
-      })
-    })
-
-    await movie.save();
-    return res.status(200).json({
-      status: "success",
-    });
+    const { movie, position, position_booked } = req.body;
+    console.log(position_booked);
+    console.log([movie[0].id, position[0][0].room_id]);
+    try {
+      const promises = position_booked.map(async (p) => {
+        const [rows] = await pool.execute(`INSERT INTO booked_seat (showtime_id, seat_id) VALUES (?, (SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?));`, [movie[0].id, position[0][0].room_id, p]);
+        return rows;
+      });
+      await Promise.all(promises);
+  
+      return res.status(200).json({
+        status: "success",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        status: "error",
+      });
+    }
   }
-
-
+  
   async updateStatusEmpty(req = new Request(), res) {
-    const { name, day, location, type, cinema, site, time, position, type_chair } = req.body;
-    const movie = await MovieNowShowing.findOne({
-      name
-    });
-
-    const date = new Date(day);
-    const timest = new Date(time);
-
-    const Position = movie.Date.find((Date) => Date.day.getTime() === date.getTime()).Location.find((Location) => Location.place === location).Movie_Type.find((Movie_Type) => Movie_Type.type_name === type).Cinema.find((Cinema) => Cinema.cinema_name === cinema).Site.find((Site) => Site.site_name === site).Time.find((Time) => Time.timeSt.getTime() === timest.getTime()).Position;
-
-    //update status of position
-    Position.forEach((pos) => {
-      pos.forEach((q) => {
-        position.forEach((p) => {
-          if (q.position === p) {
-            q.status = type_chair;
-          }
-        })
-      })
-    })
-
-    await movie.save();
-
-
-    return res.status(200).json({
-      status: "success",
-    });
+    const { movie, position, position_booked } = req.body;
+    console.log(movie);
+    console.log(`------------`);
+    try {
+      const promises = position_booked.map(async (p) => {
+        const [rows] = await pool.execute(`DELETE FROM booked_seat WHERE seat_id = (SELECT seat_id from room_seat where room_seat.seat_name = ? and room_id = ?) and booked_seat.showtime_id = ?;`, [p, position[0][0].room_id, movie[0].id]);
+        return rows;
+      });
+      await Promise.all(promises);
+  
+      return res.status(200).json({
+        status: "success",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        status: "error",
+      });
+    }
   }
+  
 
-  // async getShowTime(req, res) {
-  //   const  name  = req.params.name;
-  //     const currentDay = new Date()
-  //     let date = [];
-  //     for(let i = 0; i < 20; i++) {
-  //       let currentDate = new Date();
-  //       currentDate.setDate(currentDate.getDate() + i);
-  //       let [cinema_data] = await pool.execute(`SELECT cinema.name as name, cinema.cinema_id as id from cinema inner join cinema_room on cinema_room.cinema_id = cinema.cinema_id inner join showtime on showtime.room_id = cinema_room.room_id inner join film on film.film_id = showtime.film_id where film.name = "Người Kiến Và Chiến Binh Ong" and cast(showtime.time as date) = '20230501' GROUP BY(cinema.name);`);
-  //       let cinemas = cinema_data.map(async (cinema) => {
-  //         let cinema_name = cinema.name;
-  //         let id = cinema.id;
-  //         let [cinema_room] = await pool.execute('SELECT room_id, name_room FROM cinema_room where cinema_id = ?;', [id]);
-  //         let sites = cinema_room.map(async (room) => {
-  //           let id = room.room_id;
-  //           let site_name = room.name_room;
-  //           let [times]  = await pool.execute('SELECT Time(showtime.time) as time, showtime.showtime_id as id FROM showtime inner join film on film.film_id = showtime.film_id where film.name = ? and showtime.room_id = ?;', [name, id]);
-  //           let Time = times.map(async (time) => {
-  //             let id = time.id;
-  //             let timeSt = time.time;
-  //             return {id, timeSt};
-  //           })
-  //           return {id, site_name, Time}
-  //         })
-  //         return {cinema_name, id, site: sites};
-  //       })
-  //       let types = [];
-  //       let type = {id: 1, type_name: "2D Phụ đề tiếng anh", Cinema: cinemas};
-  //       types.push(type);
-  //       let locations = [];
-  //       let location = {id: 1, place: "Hà nội", Movie_Type: types};
-  //       locations.push(location);
-  //       let datei = {id: i, day: currentDate, Location: locations};
-  //       date.push(datei);
-  //     }
-  //     return res.status(200).json({
-  //       status: "success",
-  //       data: { date: date }
-  //     });
-  //   } catch (error) {
-  //     return res.status(503).json({
-  //       status: "error",
-  //       message: "Service error. Please try again later",
-  //     });
-  //   }
+
+
+
   async getShowTime(req, res) {
     const film_id = req.params.id;
     console.log(film_id);
@@ -497,19 +411,6 @@ class movieController {
     }
   }
 
-  // try {
-//     const id = req.body.id;
-//     await pool.execute(`DELETE FROM users WHERE user_id = ${id};`);
-//     return res.status(200).json({
-//         status: "success",
-//         message: "Delete user successfully",
-//     });
-// } catch (error) {
-//     return res.status(503).json({
-//         status: "error",
-//         message: "Service error. Please try again later",
-//     });
-// }
   async deleteMovie(req = new Request(), res) {
     try {
       const id = req.body.id;
@@ -546,8 +447,6 @@ class movieController {
 
 
   async getPosition(req, res) {
-    console.log(req.body);
-    console.log(`------------`);
     const film_id  = req.body.id;
     if (!film_id) {
       return res.status(400).json({
@@ -574,7 +473,7 @@ class movieController {
     const [booked_seat] = await pool.execute(`SELECT room_seat.* FROM room_seat inner join showtime on showtime.room_id = room_seat.room_id inner join booked_seat on booked_seat.showtime_id = showtime.showtime_id where booked_seat.seat_id = room_seat.seat_id and showtime.showtime_id = ? ;`, [film_id]);
     booked_seat.map((booked) => {
       if(booked != null) {
-        position[booked.seat_column-1][booked.seat_row-1].status = "disable";
+        position[booked.seat_row-1][booked.seat_column-1].status = "disable";
       } 
     })
     return res.status(200).json({
