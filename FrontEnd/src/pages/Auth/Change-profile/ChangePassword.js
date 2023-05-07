@@ -30,7 +30,7 @@ function ChangePassword() {
       },
       body: JSON.stringify({
         name: document.getElementById("fullname").value || user.user.name,
-        phone: document.getElementById("telephone").value || user.user.phone_number,
+        phone: user.user.phone_number,
         // sex: document.getElementById("gender").value || '',
         sex: genderInput ? genderInput.value : '',
         date_of_birth: document.getElementById("date_of_birth").value || '',
@@ -79,9 +79,9 @@ function ChangePassword() {
                     type="text"
                     id="fullname"
                     name="fullname"
-                    defaultValue=""
-                    title=""
-                    placeholder=""
+                    defaultValue={user && user.user.name}
+                    title="Full Name"
+                    placeholder="Nhập họ và tên"
                     maxLength="255"
                     className="input-text required-entry"
                   />
@@ -96,18 +96,10 @@ function ChangePassword() {
               >
                 <em>*</em>Điện thoại
               </label>
-              <div className="input-box">
-                <input
-                  type="tel"
-                  autoCapitalize="off"
-                  autoCorrect="off"
-                  name="telephone"
-                  id="telephone"
-                  defaultValue=""
-                  title="Phone Number"
-                  className="input-text validate-mobile required-entry"
-                />
-              </div>
+              {user &&
+                <div className="input-box">{user.user.phone_number} </div>
+              }
+
             </li>
             <li>
               <label htmlFor="gender" className="required" cursorshover="true">
@@ -133,7 +125,7 @@ function ChangePassword() {
                   autoCorrect="off"
                   name="date_of_birth"
                   id="date_of_birth"
-                  defaultValue=""
+                  defaultValue={user && user.user.date_of_birth}
                   title="Date of Birth"
                   className="input-text validate-mobile required-entry"
                 />
@@ -168,7 +160,7 @@ function ChangePassword() {
                     className="validate-select"
                     cursorshover="true"
                     style={{ width: "100%" }}
-                    defaultValue=""
+                    defaultValue={user && user.user.city}
                   >
                     <option defaultValue="0">Vui lòng chọn...</option>
                     <option defaultValue="65">Hồ Chí Minh</option>
@@ -251,7 +243,7 @@ function ChangePassword() {
                 <input
                   type="text"
                   name="street[]"
-                  defaultValue=""
+                  defaultValue={user && user.user.address}
                   title="Địa chỉ"
                   id="street_1"
                   className="input-text  required-entry"
@@ -272,6 +264,7 @@ function ChangePassword() {
                   title="Mật khẩu cũ"
                   className="input-text required-entry"
                   name="current_password"
+                  defaultValue={user && user.user.password}
                   id="current_password"
                 />
               </div>

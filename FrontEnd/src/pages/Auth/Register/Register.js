@@ -24,10 +24,12 @@ function Register() {
 
     if (!name || !email || !password || !phone || !confirmPassword) {
       setFlag(true);
+      alert("Vui lòng nhập đầy đủ thông tin");
       return;
     }
     if (password !== confirmPassword) {
       setErr(true);
+      alert("Mật khẩu không khớp");
       return;
     }
 
@@ -42,12 +44,12 @@ function Register() {
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "error") {
-            alert("Dang ky that bai");
+            alert("Email hoặc số điện thoại đã tồn tại");
             console.log(data);
             return;
           }
           console.log(JSON.stringify(data));
-          alert("Dang ky thanh cong");
+          alert("Đăng ký thành công");
           window.location.href = "/login";
         })
         .catch((err) => {
