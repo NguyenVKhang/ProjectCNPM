@@ -123,14 +123,13 @@ function Ticket() {
         for (let i = 0; i < seats.length; i++) {
             total += parseInt(seats[i].getAttribute("price"));
         }
-        const currency = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
 
         navigate("/payment", {
             state: {
                 movie: state.movie,
                 position: state.position,
                 position_booked: position,
-                price: currency,
+                price: total,
                 type_chair: document.getElementById("Type_Chair").innerHTML,
                 name_chair: document.getElementById("Name_Chair").innerHTML,
                 showtime_start
