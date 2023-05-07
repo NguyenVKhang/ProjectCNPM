@@ -299,7 +299,9 @@ function MovieNowShowing() {
                                                     <ul>
                                                       {Cinema.Site.map((Site) => (
                                                         <li style={{
-                                                          'textAlign': 'left'
+                                                          'textAlign': 'left',
+                                                          'display': 'table',
+                                                          'margin': '10px 0'
                                                         }} key={Site.id} className="site">
                                                           <span>{Site.site_name}</span>
                                                           <ul>

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="itemsContainer">
+      {/* <div className="itemsContainer">
         <div className="itemTitle">
           <span>Dashboard</span>
         </div>
@@ -37,12 +37,18 @@ function Sidebar() {
             <span className="subItem2">Sales</span>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="itemsContainer">
         <div className="itemTitle">
           <span>Quick Menu</span>
         </div>
         <div className="items">
+        <Link to="/" className="link">
+            <div className="subItem0Wrapper">
+              <HomeOutlinedIcon className="subItem0" />
+              <span className="subItem0">Home</span>
+            </div>
+          </Link>
         <Link to="/schedules" className="link">
             <div className="subItem2Wrapper">
               <EqualizerOutlinedIcon className="subItem2" />
@@ -71,7 +77,7 @@ function Sidebar() {
           
         </div>
       </div>
-      <div className="itemsContainer">
+      {/* <div className="itemsContainer">
         <div className="itemTitle">
           <span>Notifications</span>
         </div>
@@ -89,8 +95,8 @@ function Sidebar() {
             <span className="subItem2">Messages</span>
           </div>
         </div>
-      </div>
-      <div className="itemsContainer">
+      </div> */}
+      {/* <div className="itemsContainer">
         <div className="itemTitle">
           <span>Staff</span>
         </div>
@@ -108,7 +114,7 @@ function Sidebar() {
             <span className="subItem2">Reports</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -55,14 +55,7 @@ function MoviesPage() {
       field: "name",
       headerName: "Movie",
       width: 250,
-      // renderCell: (params) => {
-      //   return (
-      //     <div className="userRowProfile">
-      //       <img src={params.row.poster} alt="" />
-      //       {params.row.description}
-      //     </div>
-      //   );
-      // },
+  
     },
     { field: "genres", headerName: "Genre", width: 200 },
     {
@@ -112,7 +105,7 @@ function MoviesPage() {
            ({ ...movie, id: movie.film_id }) 
         )}
           columns={columns}
-          pageSize={8}
+          pageSize={10}
           checkboxSelection
           disableSelectionOnClick
           getRowId={(r) => r.film_id}

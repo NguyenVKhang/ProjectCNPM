@@ -12,33 +12,7 @@ function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     login({ email, password }, dispatch);
-    // e.preventDefault();
-    // if (!email || !password) {
-    //   alert("Please enter email and password");
-    //   return;
-    // }
-    // fetch("http://localhost:3001/auth/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.status === "success") {
-    //       alert("login success");
-    //       window.localStorage.setItem("token", JSON.stringify(data.data));
-    //       // navigate(-1);
-    //       window.location.href = "/";
-    //     }
-    //     else {
-    //       alert(data.message);
-    //     }
-    //   });
+    
   };
 
   return (

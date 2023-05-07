@@ -69,7 +69,7 @@ function Lists() {
           <DataGrid
           rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
           columns={columns}
-          pageSize={8}
+          pageSize={10}
           checkboxSelection
           disableSelectionOnClick
           />

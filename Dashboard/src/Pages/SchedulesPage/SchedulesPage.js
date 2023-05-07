@@ -58,14 +58,7 @@ function SchedulesPage() {
       field: "film_name",
       headerName: "Film Name",
       width: 200,
-      // renderCell: (params) => {
-      //   return (
-      //     <div className="userRowProfile">
-      //       <img src={params.row.poster} alt="" />
-      //       {params.row.description}
-      //     </div>
-      //   );
-      // },
+   
     },
     { field: "time", headerName: "Time", width: 200 },
     {
@@ -86,11 +79,7 @@ function SchedulesPage() {
       width: 150,
     },
 
-    // {
-    //   field: "length",
-    //   headerName: "Length",
-    //   width: 130,
-    // },
+    
     {
       field: "actor",
       headerName: "Actor",
@@ -122,7 +111,7 @@ function SchedulesPage() {
            ({ ...schedule, id: schedule.showtime_id }) 
         )}
           columns={columns}
-          pageSize={8}
+          pageSize={10}
           checkboxSelection
           disableSelectionOnClick
           getRowId={(r) => r.showtime_id}
