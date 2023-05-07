@@ -390,7 +390,7 @@ h1 {
 }
 
 
-li.time:hover {
+/* li.time:hover {
     font-weight: bold;
 }
 
@@ -403,5 +403,4 @@ li.time {
     margin: 2px;
     display: block;
     cursor: pointer;
-}
-
+} */

@@ -491,7 +491,8 @@ li.current .day {
 }
 
 li.time:hover {
-    font-weight: bold;
+    border: 2px solid black;
+    margin: 1px;
 }
 
 li.time {

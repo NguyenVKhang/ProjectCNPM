@@ -1,4 +1,4 @@
-import "./style.css";
+import "./DetailMovie.css";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BsFillHandThumbsUpFill } from "react-icons/bs"

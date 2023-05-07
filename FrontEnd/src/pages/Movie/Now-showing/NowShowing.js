@@ -298,20 +298,23 @@ function MovieNowShowing() {
                                                     <span>{Cinema.cinema_name}</span>
                                                     <ul>
                                                       {Cinema.Site.map((Site) => (
-                                                        <li style={{
-                                                          'textAlign': 'left'
-                                                        }} key={Site.id} className="site">
-                                                          <span>{Site.site_name}</span>
-                                                          <ul>
-                                                            {Site.Time.map((Time) => {
-                                                              return (
-                                                                <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
-                                                                  <span>{String(Time.timeSt).slice(0, 5)}</span>
-                                                                </li>
-                                                              )
-                                                            })}
-                                                          </ul>
-                                                        </li>
+                                                        <>
+                                                          <li style={{
+                                                            'textAlign': 'left'
+                                                          }} key={Site.id} className="site">
+                                                            <div>{Site.site_name}</div>
+                                                            <ul>
+                                                              {Site.Time.map((Time) => {
+                                                                return (
+                                                                  <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
+                                                                    <span>{String(Time.timeSt).slice(0, 5)}</span>
+                                                                  </li>
+                                                                )
+                                                              })}
+                                                            </ul>
+                                                            <br></br>
+                                                          </li>
+                                                          <br></br></>
                                                       ))}
                                                     </ul>
                                                   </li>
