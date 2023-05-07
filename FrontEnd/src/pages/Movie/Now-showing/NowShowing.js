@@ -1,11 +1,12 @@
-import "./style.css";
+import "./NowShowing.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsFillHandThumbsUpFill } from "react-icons/bs"
 import { Col, Row } from "react-bootstrap";
 import { useMediaQuery } from 'react-responsive';
+
 function MovieNowShowing() {
- 
+
   const isLaptop = useMediaQuery({ query: '(max-width: 960px)' });
   const isIpad = useMediaQuery({ query: '(max-width: 770px)' });
 
@@ -68,6 +69,11 @@ function MovieNowShowing() {
       "style",
       "display: block; padding-right: 16px; background-color: rgba(0, 0, 0, 0.9);"
     );
+    const header = document.getElementById("header-container");
+    header.setAttribute(
+      "style",
+      "display: block; padding-right: 16px; opacity: 0.9;"
+    )
   };
 
   const user = JSON.parse(localStorage.getItem("token"));
@@ -91,7 +97,7 @@ function MovieNowShowing() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({id: e.currentTarget.title}),
+      body: JSON.stringify({ id: e.currentTarget.title }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -109,6 +115,11 @@ function MovieNowShowing() {
       "style",
       "display: none; padding-right: 0px; background-color: rgba(0, 0, 0, 0.5);"
     );
+    const header = document.getElementById("header-container");
+    header.setAttribute(
+      "style",
+      "display: block; padding-right: 16px; opacity: 1;"
+    )
   };
 
   //add event when click outside modal to hide modal
@@ -175,7 +186,7 @@ function MovieNowShowing() {
                   </div>
                   <div className="cgv-movie-info">
                     <span className="cgv-info-bold">Khởi chiếu: </span>
-                    <span className="cgv-info-normal">{String(item.dates_minium).slice(0,10)}</span>
+                    <span className="cgv-info-normal">{String(item.dates_minium).slice(0, 10)}</span>
                   </div>
                 </div>
                 <ul className="add-to-links">
@@ -295,7 +306,7 @@ function MovieNowShowing() {
                                                             {Site.Time.map((Time) => {
                                                               return (
                                                                 <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
-                                                                  <span>{String(Time.timeSt).slice(0,5)}</span>
+                                                                  <span>{String(Time.timeSt).slice(0, 5)}</span>
                                                                 </li>
                                                               )
                                                             })}

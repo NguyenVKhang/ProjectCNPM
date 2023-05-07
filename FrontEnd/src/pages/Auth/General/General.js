@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./General.css";
 function General() {
   const user = JSON.parse(localStorage.getItem("token"));
 
@@ -50,7 +50,10 @@ function General() {
         </div>
         <div className="welcome-msg">
           <p className="hello">
-            <strong>Xin chào {user.user.name},</strong>
+            {
+              user &&
+              <strong>Xin chào {user.user.name},</strong>
+            }
           </p>
           <p>
             Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của
@@ -132,10 +135,14 @@ function General() {
               </span>
             </div>
             <div className="box-content box-content-my-cgv col2-set">
-              <span>Tên : {user.user.name}</span>
-              <span>Email : {user.user.gmail}</span>
-              <span>Tên đăng nhập : {user.user.gmail}</span>
-              <span>Điện thoại : {user.user.phone_number}</span>
+              {user &&
+                <>
+                  <span>Tên : {user.user.name}</span>
+                  <span>Email : {user.user.gmail}</span>
+                  <span>Tên đăng nhập : {user.user.gmail}</span>
+                  <span>Điện thoại : {user.user.phone_number}</span>
+                </>
+              }
             </div>
           </div>
         </div>

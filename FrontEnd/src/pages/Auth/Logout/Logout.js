@@ -1,4 +1,4 @@
-import "./style.css";
+import "./Logout.css";
 
 function Logout() {
   setTimeout(() => {

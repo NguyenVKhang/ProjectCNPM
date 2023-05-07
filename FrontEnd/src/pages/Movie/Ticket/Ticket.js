@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "./style.css";
+import "./Ticket.css";
 
 
 function Ticket() {
@@ -9,7 +9,7 @@ function Ticket() {
     let sum_chair = 0;
     Position.forEach(element => {
         element.forEach(element1 => {
-            if(element1.seat_type != 'SPACE') {
+            if (element1.seat_type != 'SPACE') {
                 sum_chair++;
             }
         });
@@ -84,7 +84,7 @@ function Ticket() {
             total += parseInt(seats[i].getAttribute("price"));
         }
         //show the total price
-        const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(total);
+        const currency = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
         document.getElementById("total1").innerHTML = `${currency}`;
         document.getElementById("total").innerHTML = `${currency}`;
         const positions = document.querySelectorAll(".checked");
@@ -95,12 +95,12 @@ function Ticket() {
         }
         console.log(position);
 
-   
+
     }
 
     const [hour, minute, second] = state.movie[0].film_length.split(":");
     const showtime_start = new Date(state.movie[0].time);
-    const showtime_end = new Date(showtime_start.getTime() + hour*3600000 + minute*60000 + second*1000);
+    const showtime_end = new Date(showtime_start.getTime() + hour * 3600000 + minute * 60000 + second * 1000);
 
     const navigate = useNavigate();
     const Next = () => {
@@ -123,7 +123,7 @@ function Ticket() {
         for (let i = 0; i < seats.length; i++) {
             total += parseInt(seats[i].getAttribute("price"));
         }
-        const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(total);
+        const currency = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
 
         navigate("/payment", {
             state: {
@@ -138,7 +138,7 @@ function Ticket() {
         });
     }
 
-  
+
 
 
 
@@ -202,14 +202,14 @@ function Ticket() {
                                                     <>
                                                         {item.seat_type !== "SPACE" ? <div className={`${item.status === "disable" ? "seat seat-disable disable" : `seat seat-${item.seat_type} active`}`} key={index} type={item.seat_type} price={item.seat_fare} onClick={check}>
                                                             {item.seat_name}
-                                                        </div> 
-                                                        :
-                                                        <div className={`${item.status = `seat seat-${item.seat_type} `}`}>
-                                                        </div> 
+                                                        </div>
+                                                            :
+                                                            <div className={`${item.status = `seat seat-${item.seat_type} `}`}>
+                                                            </div>
                                                         }
-                                                        
+
                                                     </>
-                                                  
+
                                                 ))}
                                             </div>
                                         ))}
