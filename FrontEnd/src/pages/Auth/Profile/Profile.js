@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./style.css"
+import "./Profile.css"
 function Profile() {
   // const user = JSON.parse(localStorage.getItem('token'));
   const [active, setActive] = useState(1);

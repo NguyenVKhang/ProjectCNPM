@@ -1,10 +1,37 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import Countdown from "react-countdown-now";
 import "./style.css";
+import React, { useEffect } from 'react';
+
+
 function AuthPayment() {
-    const { state } = useLocation();
-    console.log(state.movie[0]);
     const navigate = useNavigate();
+    const { state } = useLocation();
+    const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(state.price);
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+          event.preventDefault();
+          event.returnValue = '';
+          fetch('http://localhost:3001/movie/updateStatusEmpty', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              movie: state.movie,
+              position: state.position,
+              position_booked: state.position_booked
+            })
+          });
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+      }, []);
+
+      
+
     const back = () => {
         fetch("http://localhost:3001/movie/updateStatusEmpty", {
             method: "POST",
@@ -66,8 +93,8 @@ function AuthPayment() {
         if (method === null) {
             alert("Vui lòng chọn hình thức thanh toán");
         }
-        else if (method.value === 'MoMo') {
-            navigate("/payment/momo", { state })
+        else if (method.value === 'ZaloPay') {
+            navigate("/payment/ZaloPay", { state })
         }
         else {
             alert("Chức năng đang được bảo trì")
@@ -110,8 +137,8 @@ function AuthPayment() {
                                             <label htmlFor="payment2">Thẻ quốc tế (Visa, Master, Amex, JCB)</label>
                                         </li>
                                         <li className="type-payment-cgv">
-                                            <input type="radio" name="payment" id="payment3" value="MoMo"></input>
-                                            <label htmlFor="payment3">Ví MoMo</label>
+                                            <input type="radio" name="payment" id="payment3" value="ZaloPay"></input>
+                                            <label htmlFor="payment3">ZaloPay</label>
                                         </li>
                                     </ul>
 
@@ -197,7 +224,7 @@ function AuthPayment() {
                                                     <thead>
                                                         <tr className="block-box">
                                                             <td className="label">Giá phim:</td>
-                                                            <td className="price" id="total1">{state.price}</td>
+                                                            <td className="price" id="total1">{currency}</td>
                                                             <td className="data">
                                                                 <div className="truncated">
                                                                     <div className="truncated_full_value">
@@ -228,7 +255,7 @@ function AuthPayment() {
                                                     <tfoot className="block-price">
                                                         <tr>
                                                             <td className="label">Tổng:</td>
-                                                            <td className="price" id="total">{state.price}</td>
+                                                            <td className="price" id="total">{currency}</td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>

@@ -1,6 +1,8 @@
 import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
-import { BsJustify } from "react-icons/bs"
+import { BsJustify } from "react-icons/bs";
+import logo from "./D3K.png";
+
 function Header() {
   const user = JSON.parse(localStorage.getItem("token"));
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ function Header() {
             />
             <a id="btn-zoom">
               <Link to="profile/history">Vé của tôi</Link>
-              
+
             </a>
           </div>
           <div className="btn-cover ">
@@ -61,8 +63,8 @@ function Header() {
             <Link to="/">
               <img
                 className="logo"
-                src="./D3K.png"
-             
+                src={logo}
+
                 alt="logo"
               />
             </Link>
@@ -138,7 +140,7 @@ function Header() {
 
         <div className="dropdown">
           <button id="btn-menu" data-bs-toggle="dropdown" aria-expanded="false">
-            <BsJustify/>Menu
+            <BsJustify />Menu
           </button>
           <button id="btn-tiket">
             <span className="icon"><a href="https://www.cgv.vn/default/sales/order/history/"></a></span>

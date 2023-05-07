@@ -6,19 +6,19 @@ import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
 import Profile from "./pages/Auth/Profile/Profile";
 import Logout from "./pages/Auth/Logout/Logout";
-import General from "./pages/Auth/General";
-import ChangeProfile from "./pages/Auth/Change-profile";
-import MovieNowShowing from "./pages/Movie/Now-showing";
+import General from "./pages/Auth/General/General";
+import ChangeProfile from "./pages/Auth/Change-profile/ChangePassword";
+import MovieNowShowing from "./pages/Movie/Now-showing/NowShowing";
 import MovieComingSoon from "./pages/Movie/Coming-soon";
 import Chitiet from "./pages/Movie/Detail-movie";
-import Ticket from "./pages/Movie/Ticket";
+import Ticket from "./pages/Movie/Ticket/Ticket";
 import AuthPayment from "./pages/Auth-payment";
 import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 import Nocart from "./pages/NoCart";
 import Cinema from "./pages/Cinema";
 import Test from "./pages/Test";
-import History from "./pages/Auth/History";
+import History from "./pages/Auth/History/History";
 import NewsOffer from "./pages/NewsOffer";
 import Hotline from "./components/Hotline/Hotline";
 
@@ -33,7 +33,7 @@ function App() {
         <Route path="/profile" element={<Profile />}>
           <Route path="general" element={<General />} />
           <Route path="change-profile" element={<ChangeProfile />} />
-          <Route path="history" element={<History />} />
+          <Route path="history" exact element={<History />} />
         </Route>
         <Route path="/logout" element={<Logout />} />
         <Route path="/movies/now-showing" element={<MovieNowShowing />} />
@@ -41,14 +41,14 @@ function App() {
         <Route path="/movies/coming-soon" element={<MovieComingSoon />} />
         <Route path="/movie/:id" element={<Chitiet />} />
         <Route path="/payment" element={<AuthPayment />} />
-        <Route path="/payment/momo" element={<Payment />} />
+        <Route path="/payment/ZaloPay" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
         <Route path="/cinema" element={<Cinema />} />
         <Route path="/newsoffer" element={<NewsOffer />} />
-        
+
         <Route path="*" element={<NotFound />} />
         <Route path="/test" element={<Test />} />
-        <Route path="/contact" element={<Test/>}/>
+        <Route path="/contact" element={<Test />} />
       </Routes>
       <Footer />
       <Hotline />
