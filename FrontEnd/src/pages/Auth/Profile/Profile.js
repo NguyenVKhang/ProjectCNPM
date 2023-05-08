@@ -29,7 +29,7 @@ function Profile() {
             marginLeft: "10px",
           }}
         >
-          TÀI KHOẢN CGV
+          TÀI KHOẢN D3K
         </span>
 
         <nav style={{ width: '25%' }} id='nav-profile'>

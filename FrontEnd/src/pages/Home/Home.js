@@ -62,14 +62,14 @@ export default function Home() {
   return (
     <div className="main-container">
       <div className="main">
-        <div className="sect-person">
+        {/* <div className="sect-person">
           <ul>
             <li>
               <a
                 className="threater"
                 href="/cinema"
               >
-                cgv threater
+                D3K THEATER
               </a>
             </li>
             <li>
@@ -80,22 +80,6 @@ export default function Home() {
                 now showing
               </a>
             </li>
-            {/* <li>
-              <a
-                className="special"
-                href="/"
-              >
-                cgv special
-              </a>
-            </li> */}
-            {/* <li>
-              <a
-                className="event"
-                href="/"
-              >
-                mua voucher, thẻ quà tặng CGV
-              </a>
-            </li> */}
             <li>
               <a
                 className="ticket requied-login"
@@ -118,7 +102,7 @@ export default function Home() {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="slideshow-container">
           <Swiper
 
@@ -241,7 +225,7 @@ export default function Home() {
             
           </Swiper>
         </div>
-        <div className="product-collateral toggle-content tabs home-event">
+        {/* <div className="product-collateral toggle-content tabs home-event">
           <div className="home-title">
             <h2>event</h2>
 
@@ -253,9 +237,8 @@ export default function Home() {
               id="uncontrolled-tab-example"
               className="mb-3 tabss"
             >
-              <Tab eventKey="home" title="Thành Viên CGV">
+              <Tab eventKey="home" title="Thành Viên D3K">
                 <Swiper
-                  //  slidesPerView={4}
                   slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
                   spaceBetween={5}
                   slidesPerGroup={1}
@@ -387,7 +370,7 @@ export default function Home() {
               </div>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
     </div>

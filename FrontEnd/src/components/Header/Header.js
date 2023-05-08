@@ -58,6 +58,8 @@ function Header() {
             )}
           </div>
         </div>
+
+
         <div id="bg-top">
           <div className="top-container">
             <Link to="/">
@@ -71,19 +73,20 @@ function Header() {
             <div className="menubartop">
               <ul>
                 <li className="menu">
-                  Phim
-                  <ul className="subMenu">
+                  <Link to="/movies/now-showing">Phim Đang Chiếu</Link>
+                  {/* <ul className="subMenu">
                     <li>
                       <Link to="/movies/now-showing">Phim Đang Chiếu</Link>
                     </li>
                     <li>
                       <Link to="/movies/coming-soon">Phim Sắp Chiếu</Link>
                     </li>
-                  </ul>
+                  </ul> */}
                 </li>
                 <li className="menu">
-                  Rạp D3K
-                  <ul
+                  
+                  <Link to="/movies/coming-soon">Phim Sắp Chiếu</Link>
+                  {/* <ul
                     className="subMenu"
                     style={{
                       marginLeft: " -10px",
@@ -98,47 +101,39 @@ function Header() {
                     <li>
                       <a href=""> Rạp 3D</a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </li>
-                <li className="menu" style={{ margin: "40px 13px" }}>
-                  Thành viên
-                  <ul className="subMenu" style={{ marginLeft: "-20px" }}>
-                    {/* <div
-                      style={{ position: "absolute", border: "2px solid #fff" }}
-                    ></div> */}
+                <li className="menu">
+                  {/* <Link to="/profile/general">Tài khoản</Link> */}
+                  {user ? ( 
+                    <Link to="/profile/general">Tài khoản</Link>
+                  ) : (
+                    <Link to="/login">Tài khoản</Link>
+                  )}
+                  {/* <ul className="subMenu" style={{ marginLeft: "-20px" }}>
                     <li>
-                      <a href=""> Tài khoản CGV</a>
+                      <a href=""> Tài khoản D3K</a>
                     </li>
                     <li>
                       <a href=""> Quyền Lợi</a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </li>
-                <li className="menu" style={{ margin: "40px 50px auto 13px" }}>
-                  Cultureplex
-                  <ul className="subMenu" style={{ marginLeft: " -20px" }}>
-                    <div style={{}}></div>
-                    <li>
-                      <a href=""> Quầy Online</a>
-                    </li>
-                    <li>
-                      <a href=""> Thuê Rạp và Vé Nhóm</a>
-                    </li>
-                    <li>
-                      <a href=""> E-CGV</a>
-                    </li>
-                    <li>
-                      <a href=""> Thẻ Quà Tặng</a>
-                    </li>
-                  </ul>
+                {/* <li className="menu">
+                  <Link to="/newsoffer">Tin mới & Ưu đãi</Link>
+                </li> */}
+
+                <li className="menu">
+                  <Link to="/contact">Liên hệ D3K</Link>
                 </li>
+
               </ul>
             </div>
 
           </div>
         </div>
 
-        <div className="dropdown">
+        {/* <div className="dropdown">
           <button id="btn-menu" data-bs-toggle="dropdown" aria-expanded="false">
             <BsJustify />Menu
           </button>
@@ -148,13 +143,13 @@ function Header() {
           <ul className="dropdown-menu">
             <li><Link to="/movies/now-showing">PHIM ĐANG CHIẾU</Link></li>
             <li><Link to="/movies/coming-soon">PHIM SẮP CHIẾU</Link></li>
-            <li><Link to="/cinema">RẠP CGV</Link></li>
+            <li><Link to="/cinema">RẠP D3K</Link></li>
             <li><a href=""> THÀNH VIÊN</a></li>
             <li><a href=""> CULTUREPLEX</a></li>
             <li><a href=""> TUYỂN DỤNG</a></li>
             <li><a href=""> TIN MỚI VÀ ƯU ĐÃI</a></li>
           </ul>
-        </div>
+        </div> */}
 
       </div>
     </>

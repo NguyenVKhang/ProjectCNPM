@@ -328,7 +328,7 @@ function Cinema() {
                                                     </div>
                                                     <div className="contact-us">
                                                         <a className="cotact-us-link" href="https://www.cgv.vn/default/contacts/" >
-                                                            Liên hệ CGV
+                                                            Liên hệ D3K
                                                         </a>
                                                     </div>
                                                 </div>
@@ -632,7 +632,7 @@ function Cinema() {
                                                                 </h3>
                                                                 <ul>
                                                                     <li>- Dành cho khách hàng tại rạp L'amour (Goldclass), buffet không giới hạn được phục vụ tại buffet counter trong 30 phút bao gồm: 20 phút đầu phim (10 phút trước khi phim chiếu và tiếp tục trong 10 phút sau khi phim bắt đầu chiếu) và 10 phút giữa phim.</li>
-                                                                    <li>- Vui lòng xuất trình thẻ thành viên CGV trước khi mua vé để được tích điểm.</li>
+                                                                    <li>- Vui lòng xuất trình thẻ thành viên D3K trước khi mua vé để được tích điểm.</li>
                                                                     <li>- Giá vé khi đặt vé trực tuyến trên website và ứng dụng CGV là giá vé người lớn. Các loại vé như học sinh-sinh viên, vé trẻ em, vé người cao tuổi, vé U22 vui lòng mua trực tiếp tại quầy.</li>
                                                                     <li>- Vé trẻ em chỉ xuất khi có sự hiện diện của trẻ dưới 1m3 và trên 2 tuổi.</li>
                                                                     <li>- Vé người cao tuổi chỉ dành cho khách hàng từ 55 tuổi trở lên. Vui lòng xuất trình CMND khi mua vé.</li>

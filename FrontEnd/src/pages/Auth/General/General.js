@@ -74,7 +74,7 @@ function General() {
             </div>
             <div className="cgv-point">
               <div className="format-acc-point">
-                <label>Điểm CGV</label>
+                <label>Điểm D3K</label>
                 <span className="acc-show-point"> 0 P </span>
               </div>
             </div>
