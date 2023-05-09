@@ -25,10 +25,10 @@ function Userspage() {
             result.data.users[i].Address + ", " + result.data.users[i].City;
           if (result.data.users[i].Address === null) {
             result.data.users[i].Address_city = result.data.users[i].City;
-          } else if(result.data.users[i].City === null){
+          } else if (result.data.users[i].City === null) {
             result.data.users[i].Address_city = result.data.users[i].Address;
           }
-          else if(result.data.users[i].Address === null && result.data.users[i].City === null){
+          else if (result.data.users[i].Address === null && result.data.users[i].City === null) {
             result.data.users[i].Address_city = "";
           }
         }
@@ -54,11 +54,11 @@ function Userspage() {
       alert("Người dùng đã được xóa thành công")
       window.location.reload();
     });
-    
+
   };
 
   const columns = [
-    { field: "user_id"  , headerName: "ID", width: 50 },
+    { field: "user_id", headerName: "ID", width: 50 },
     {
       field: "name",
       headerName: "User",
@@ -102,24 +102,24 @@ function Userspage() {
 
   return (
     // console.log("hello", data.data),
-      
+
     <div className="userspage">
-      
+
       <div style={{ height: "100%", width: "100%" }}>
-       
+
         {data.data && data.data.users.length > 0 ? (
           <DataGrid
-          rows={data.data.users.map((user) => ({ ...user, id: user.user_id }))}
-          columns={columns}
-          pageSize={10}
-          checkboxSelection
-          disableSelectionOnClick
+            rows={data.data.users.map((user) => ({ ...user, id: user.user_id }))}
+            columns={columns}
+            pageSize={8}
+            checkboxSelection
+            disableSelectionOnClick
           />
         ) : (
           <h1>Loading...</h1>
         )}
 
-        
+
       </div>
     </div>
   );
