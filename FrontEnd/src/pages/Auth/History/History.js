@@ -42,7 +42,6 @@ function History() {
                             const time_used = diff > 0 ? `Còn sử dụng` : "Đã hết hạn";
                             const bg_class = diff > 0 ? "green" : "red";
                             
-                            console.log(order_date, show_date, showtimes);  
                             return (
                                 <li key={index}>
                                     <div className={`content-page__item ${bg_class}`}>
