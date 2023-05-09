@@ -43,7 +43,7 @@ function Sidebar() {
           <span>Quick Menu</span>
         </div>
         <div className="items">
-        <Link to="/schedules" className="link">
+          <Link to="/schedules" className="link">
             <div className="subItem2Wrapper">
               <EqualizerOutlinedIcon className="subItem2" />
               <span className="subItem2">Schedule</span>
@@ -61,14 +61,19 @@ function Sidebar() {
               <span className="subItem0">Users</span>
             </div>
           </Link>
-          
+
           <Link to="/lists" className="link">
             <div className="subItem2Wrapper">
               <FormatListBulletedOutlinedIcon className="subItem2" />
               <span className="subItem2">Admin</span>
             </div>
           </Link>
-          
+          <Link to="/rooms" className="link">
+            <div className="subItem2Wrapper">
+              <span className="subItem2">Rooms</span>
+            </div>
+          </Link>
+
         </div>
       </div>
       <div className="itemsContainer">

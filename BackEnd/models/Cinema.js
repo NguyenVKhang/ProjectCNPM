@@ -12,7 +12,15 @@ const CinemaSchema = new Schema({
                 type: Number,
                 required: true,
             },
+            room_name: {
+                type: String,
+                required: true,
+            },
             cinema_name: {
+                type: String,
+                required: true,
+            },
+            address: {
                 type: String,
                 required: true,
             }

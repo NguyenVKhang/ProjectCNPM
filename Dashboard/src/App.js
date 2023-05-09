@@ -23,6 +23,7 @@ import NewListPage from "./Pages/NewListPage/NewList";
 import SchedulesPage from "./Pages/SchedulesPage/SchedulesPage";
 import ScheduleSingle from "./Pages/ScheduleSingle/ScheduleSingle";
 import ScheduleNew from "./Pages/ScheduleNew/ScheduleNew";
+import RoomPage from "./Pages/RoomPage/RoomPage";
 function App() {
   const { user } = useContext(authContext);
   return (
@@ -67,15 +68,18 @@ function App() {
                 <NewListPage />
               </Route>
               <Route path="/schedules">
-                <SchedulesPage/>
+                <SchedulesPage />
+              </Route>
+              <Route path="/rooms">
+                <RoomPage />
               </Route>
 
               <Route path="/schedule/:id">
-                <ScheduleSingle/>
+                <ScheduleSingle />
               </Route>
 
               <Route path="/scheduleNew">
-                <ScheduleNew/>
+                <ScheduleNew />
               </Route>
 
             </div>

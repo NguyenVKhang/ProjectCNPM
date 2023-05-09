@@ -11,7 +11,7 @@ export const login = async (user, dispatch) => {
     // const res = await axiosInstance.post("auth/login", user);
     // data for testing
     // fetch http://localhost:3001/auth/login with user is body
-    
+
     const result = await fetch("http://localhost:3001/auth/loginAdmin", {
       method: "POST",
       headers: {
@@ -23,7 +23,7 @@ export const login = async (user, dispatch) => {
     console.log(res_);
     if (res_.status === "success") {
       alert("login success");
-      
+
     } else {
       alert(res_.message);
       return;
