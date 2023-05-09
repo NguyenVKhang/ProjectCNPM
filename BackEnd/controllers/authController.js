@@ -141,7 +141,7 @@ class authController {
       SET name = ?, phone_number = ?, sex = ?, date_of_birth = ?, city = ?, address = ?, password = ?
       WHERE gmail = ?;`, [name, phone, sex, date_of_birth, city, address, newPassword, email])
       const newData = {
-        id: rows.insertId,
+        user_id: rows.insertId,
         gmail: email,
         password: password,
         name: name,
@@ -187,21 +187,14 @@ class authController {
   }
 
   async getHistory(req = new Request(), res) {
-    const { email } = req.body;
-    try {
-      const user = await User.findOne({ email });
-      const history = user.history;
-      return res.status(200).json({
-        status: "success",
-        data: { history }
-      });
-    }
-    catch (error) {
-      return res.status(503).json({
-        status: "error",
-        message: "Service error. Please try again later",
-      });
-    }
+    const {user_id} = req.body;
+    console.log(req.body);
+    console.log(`--------------------`);
+    const [rows] = await pool.execute(`SELECT cinema.name as cinema_name, ticket.payment_time as order_date, film.name as film_name, film.length as film_length, showtime.time as time, cinema_room.name_room as name_room, room_seat.seat_name as seat_name, ticket.ticket_id as ticket_id from ticket inner join showtime on showtime.showtime_id = ticket.showtime_id inner join film on film.film_id = showtime.film_id inner join room_seat on ticket.chair_number = room_seat.seat_id inner join cinema_room on cinema_room.room_id = showtime.room_id inner join cinema on cinema_room.cinema_id = cinema.cinema_id where ticket.user_id = ? order by(time) desc;`, [user_id]);
+    return res.status(200).json({
+      status: "success",
+      data: rows
+    })
   }
 
 

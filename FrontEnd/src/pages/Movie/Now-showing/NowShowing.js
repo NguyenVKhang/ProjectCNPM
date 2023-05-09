@@ -12,7 +12,7 @@ function MovieNowShowing() {
 
   const [showTimes, setShowTimes] = useState([]);
   const [place, setPlace] = useState(1);
-  const [calendar, setCalendar] = useState(1);
+  const [calendar, setCalendar] = useState(0);
   const [type, setType] = useState(1);
   const [names, setNames] = useState("");
 
