@@ -1,42 +1,71 @@
-.loginForm {
-  height: 100vh;
-  width: 100%;
+.loginPage {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  background: url("https://nld.mediacdn.vn/291774122806476800/2021/10/21/rap-chieu-phim-16347860643071218824167.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  align-items: center;
+  height: 100vh;
+  background-color: #fcfdf0;
 }
 
-.loginForm > input {
-  margin-top: 10px;
-  width: 300px;
-  padding: 20px;
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  opacity: 0.6;
-}
-
-.loginButton {
-  margin-top: 15px;
-  border: none;
+.card {
+  max-width: 600px;
+  width: 100%;
   border-radius: 5px;
-  padding: 20px;
-  width: 200px;
-  background-color: rgb(81, 192, 118);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: red;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.card-header h5 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.login-form {
+  padding: 40px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
   font-weight: bold;
-  font-size: 20px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border: 1px solid red;
+}
+
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: red;
+  color: #fff;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.loginButton:active {
-  opacity: 0.6;
-}
-
-.loginButton:hover {
-  background-color: rgb(2, 48, 19);
+.login-form button[type="submit"]:hover {
+  background-color: red;
 }
