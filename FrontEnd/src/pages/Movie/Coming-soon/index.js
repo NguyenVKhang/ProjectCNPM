@@ -96,14 +96,15 @@ function MovieComingSoon() {
                 </div>
                 <ul className="add-to-links">
                   <li>
-                    <button
+                    {/* <button
                       type="button"
                       title="Thích"
                       className="button btn-like"
+                      
                     >
                       <BsFillHandThumbsUpFill />
                       <span>like</span>
-                    </button>
+                    </button> */}
                   </li>
                 </ul>
               </Col>

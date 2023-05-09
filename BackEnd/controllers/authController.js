@@ -1,4 +1,4 @@
-const User = require("../models/User");
+// const User = require("../models/User");
 const { validatePassword, validateEmail } = require("../utils/validates");
 import pool from "../config/index.js";
 class authController {

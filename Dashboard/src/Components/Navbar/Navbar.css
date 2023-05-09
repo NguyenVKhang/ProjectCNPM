@@ -4,7 +4,8 @@
   position: sticky;
   top: 0;
   z-index: 999;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
+  background-color: #FDF7DC;
 }
 
 .NavbarWrapper {
@@ -18,7 +19,7 @@
 .logo {
   font-size: 30px;
   font-weight: bold;
-  color: darkblue;
+  color: #FF0000;
   cursor: pointer;
 }
 
@@ -26,6 +27,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 40px;
+  /* text color */
+  
 }
 
 .NavbarIcons {
@@ -53,8 +57,10 @@
 }
 
 .logout {
-  color: darkblue;
+  color: #252525;;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+ 
+  font-weight: bold;
 }

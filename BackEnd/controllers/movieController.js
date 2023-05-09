@@ -1,5 +1,5 @@
-const MovieNowShowing = require("../models/MovieNowShowing");
-const MovieComingSoon = require("../models/MovieComingSoon");
+// const MovieNowShowing = require("../models/MovieNowShowing");
+// const MovieComingSoon = require("../models/MovieComingSoon");
 const axios = require("axios");
 import pool from "../config/index.js";
 class movieController {
@@ -77,80 +77,80 @@ class movieController {
     }
   }
 
-  async getMovieByCinplex(req = new Request(), res) {
-    const { cinplex, place } = req.body;
-    const movie = await MovieNowShowing.find({});
+  // async getMovieByCinplex(req = new Request(), res) {
+  //   const { cinplex, place } = req.body;
+  //   const movie = await MovieNowShowing.find({});
 
 
-    const date = new Date(2023, 1, 23);
+  //   const date = new Date(2023, 1, 23);
 
-    const movieByCinplex = movie.filter((movie) => {
-      return movie.Date.some((Date) => {
-        return Date.day.getTime() === date.getTime() && Date.Location.some((Location) => {
-          return Location.place === place && Location.Movie_Type.some((Movie_Type) => {
-            return Movie_Type.Cinema.some((Cinema) => {
-              return Cinema.cinema_name === cinplex;
-            })
-          })
-        })
-      })
-    }).map((Movie) => {
-      const name = Movie.name;
-      const image = Movie.image;
-      const itemRate = Movie.itemRate;
-      const day = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).day
+  //   const movieByCinplex = movie.filter((movie) => {
+  //     return movie.Date.some((Date) => {
+  //       return Date.day.getTime() === date.getTime() && Date.Location.some((Location) => {
+  //         return Location.place === place && Location.Movie_Type.some((Movie_Type) => {
+  //           return Movie_Type.Cinema.some((Cinema) => {
+  //             return Cinema.cinema_name === cinplex;
+  //           })
+  //         })
+  //       })
+  //     })
+  //   }).map((Movie) => {
+  //     const name = Movie.name;
+  //     const image = Movie.image;
+  //     const itemRate = Movie.itemRate;
+  //     const day = Movie.Date.find((Date) => {
+  //       return Date.day.getTime() === date.getTime();
+  //     }).day
 
-      const location = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).place
+  //     const location = Movie.Date.find((Date) => {
+  //       return Date.day.getTime() === date.getTime();
+  //     }).Location.find((Location) => {
+  //       return Location.place === place;
+  //     }).place
 
-      const type = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).Movie_Type.filter((Movie_Type) => {
-        return Movie_Type.Cinema.some((Cinema) => {
-          return Cinema.cinema_name === cinplex;
-        })
-      }).map((Movie_Type) => {
-        return {
-          type_name: Movie_Type.type_name,
-          Cinema: Movie_Type.Cinema.filter((Cinema) => {
-            return Cinema.cinema_name === cinplex;
-          }
-          )
-        }
-      })
-
-
-      const cinema = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).Movie_Type.find((Movie_Type) => {
-        return Movie_Type.Cinema.some((Cinema) => {
-          return Cinema.cinema_name === cinplex;
-        })
-      }).Cinema.find((Cinema) => {
-        return Cinema.cinema_name === cinplex;
-      }).cinema_name
-
-      return { name, image, itemRate, day, location, type, cinema };
-
-    })
-
-    console.log(movieByCinplex)
+  //     const type = Movie.Date.find((Date) => {
+  //       return Date.day.getTime() === date.getTime();
+  //     }).Location.find((Location) => {
+  //       return Location.place === place;
+  //     }).Movie_Type.filter((Movie_Type) => {
+  //       return Movie_Type.Cinema.some((Cinema) => {
+  //         return Cinema.cinema_name === cinplex;
+  //       })
+  //     }).map((Movie_Type) => {
+  //       return {
+  //         type_name: Movie_Type.type_name,
+  //         Cinema: Movie_Type.Cinema.filter((Cinema) => {
+  //           return Cinema.cinema_name === cinplex;
+  //         }
+  //         )
+  //       }
+  //     })
 
 
-    return res.status(200).json({
-      status: "success",
-      data: { movieByCinplex }
-    });
-  }
+  //     const cinema = Movie.Date.find((Date) => {
+  //       return Date.day.getTime() === date.getTime();
+  //     }).Location.find((Location) => {
+  //       return Location.place === place;
+  //     }).Movie_Type.find((Movie_Type) => {
+  //       return Movie_Type.Cinema.some((Cinema) => {
+  //         return Cinema.cinema_name === cinplex;
+  //       })
+  //     }).Cinema.find((Cinema) => {
+  //       return Cinema.cinema_name === cinplex;
+  //     }).cinema_name
+
+  //     return { name, image, itemRate, day, location, type, cinema };
+
+  //   })
+
+  //   console.log(movieByCinplex)
+
+
+  //   return res.status(200).json({
+  //     status: "success",
+  //     data: { movieByCinplex }
+  //   });
+  // }
 
 
   async getDetailMovieNowShowing(req = new Request(), res) {
@@ -190,34 +190,34 @@ class movieController {
     }
   }
 
-  async getDetailMovieComingSoon(req = new Request(), res) {
-    const { name } = req.body;
-    if (!name) {
-      return res.status(400).json({
-        status: "error",
-        message: "Name is required",
-      });
-    }
-    try {
-      const movie = await MovieComingSoon.findOne({
-        name
-      });
-      if (!movie) {
-        return res
-          .status(400)
-          .json({ status: "error", message: "Movie does not exist" });
-      }
-      return res.status(200).json({
-        status: "success",
-        data: { movie }
-      });
-    } catch (error) {
-      return res.status(503).json({
-        status: "error",
-        message: "Service error. Please try again later",
-      });
-    }
-  }
+  // async getDetailMovieComingSoon(req = new Request(), res) {
+  //   const { name } = req.body;
+  //   if (!name) {
+  //     return res.status(400).json({
+  //       status: "error",
+  //       message: "Name is required",
+  //     });
+  //   }
+  //   try {
+  //     const movie = await MovieComingSoon.findOne({
+  //       name
+  //     });
+  //     if (!movie) {
+  //       return res
+  //         .status(400)
+  //         .json({ status: "error", message: "Movie does not exist" });
+  //     }
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: { movie }
+  //     });
+  //   } catch (error) {
+  //     return res.status(503).json({
+  //       status: "error",
+  //       message: "Service error. Please try again later",
+  //     });
+  //   }
+  // }
 
   /** */
   

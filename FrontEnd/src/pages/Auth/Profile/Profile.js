@@ -131,7 +131,7 @@ function Profile() {
               </Link>
             </li>
 
-            <li
+            {/* <li
               style={
                 active === 3
                   ? {
@@ -364,7 +364,7 @@ function Profile() {
               >
                 COUPON
               </Link>
-            </li>
+            </li> */}
 
             <li
               style={

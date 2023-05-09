@@ -20,17 +20,18 @@ function Navbar() {
           <span className="logo">D3K ADMIN</span>
         </div>
         <div className="topRight">
-          <div className="NavbarIcons">
+          {/* <div className="NavbarIcons">
             <Badge badgeContent={4} color="primary" className="badge">
               <NotificationsActiveIcon />
             </Badge>
             <SettingsIcon className="badge" />
-          </div>
-          <div className="profile">
+          </div> */}
+          {/* <div className="profile">
             {user.profilePic ? <img src={user.profilePic} alt="" /> : null}
-          </div>
+          </div> */}
+          <img class="icon" src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon_login25.png" alt="icon"></img>
           <div className="logout" onClick={handleLogout}>
-            <span>Logout</span>
+            <span>Thoát</span>
           </div>
         </div>
       </div>

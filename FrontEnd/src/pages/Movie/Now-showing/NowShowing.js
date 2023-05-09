@@ -190,16 +190,19 @@ function MovieNowShowing() {
                   </div>
                 </div>
                 <ul className="add-to-links">
-                  <li>
+                  {/* <li>
                     <button
                       type="button"
                       title="Thích"
                       className="button btn-like"
+                      // style hide button like
+                      style={{ display: "none" }}
+                      
                     >
                       <BsFillHandThumbsUpFill />
                       <span>like</span>
                     </button>
-                  </li>
+                  </li> */}
 
                   <li>
                     <button
@@ -208,6 +211,8 @@ function MovieNowShowing() {
                       className="button btn-booking"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
+                      style={{"margin-left": "50px"}}
+                      
                     >
                       <span onClick={handleShow} id={item.film_id}>MUA VÉ</span>
                     </button>

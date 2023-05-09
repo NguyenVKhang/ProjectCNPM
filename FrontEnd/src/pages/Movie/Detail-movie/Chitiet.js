@@ -166,14 +166,14 @@ function Chitiet() {
           </div>
           <div className="movie-detail-fb-booking">
             <ul className="add-to-cart-wrapper">
-              <li>
+              {/* <li>
                 <button type="button" title="Thích" className="button btn-like">
                   <BsFillHandThumbsUpFill />
                   <span>
                     like
                   </span>
                 </button>
-              </li>
+              </li> */}
 
               <li>
                 {state.dates_minium !== undefined && <button type="button" title="Mua vé" className="button btn-booking"><span onClick={buyTicket}>Mua vé</span></button>}
