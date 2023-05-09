@@ -139,25 +139,7 @@ function SingleMoviePage() {
             <img src={movie?.poster} alt="" className="movieImage" />
             <span className="movieTitle">{movie?.name}</span>
           </div>
-          {/*
-          <div className="movieDetailss">
-            <div className="movieId">
-              <span className="id">ID:</span>
-              <span className="Amount">{movie?.film_id}</span>
-            </div>
-            <div className="movieSales">
-              <span className="sales">Genres:</span>
-              <span className="salesAmount">{movie?.genres}</span>
-            </div>
-            <div className="activeMovie">
-              <span className="active">Description:</span>
-              <span className="statuss">{movie?.description}</span>
-            </div>
-            <div className="movieStock">
-              <span className="inStock">Length:</span>
-              <span className="statusss">{movie?.length}</span>
-            </div>
-          </div> */}
+          
         </div>
       </div>
       <div className="updateWrapper">

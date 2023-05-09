@@ -20,6 +20,7 @@ export default function Home() {
   const isPhone = useMediaQuery({ query: '(max-width: 600px)' });
   const [movie, setMovie] = useState([]);
   
+  const [movieBackDrop, setMovieBackDrop] = useState([]);
   
   const navigate = useNavigate();
   const showDetailMovie = (e, film_id) => {
@@ -42,6 +43,8 @@ export default function Home() {
   };
 
 
+
+
   
 
   useEffect(() => {
@@ -49,6 +52,8 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setMovie(data.data.moviesNowShowing);
+        // movieBackDrop is 4 movies first of moviesNowShowing
+        setMovieBackDrop(data.data.moviesNowShowing.slice(0, 4));
       })
       .catch((err) => {
         console.log(err);
@@ -57,14 +62,14 @@ export default function Home() {
   return (
     <div className="main-container">
       <div className="main">
-        <div className="sect-person">
+        {/* <div className="sect-person">
           <ul>
             <li>
               <a
                 className="threater"
                 href="/cinema"
               >
-                cgv threater
+                D3K THEATER
               </a>
             </li>
             <li>
@@ -75,22 +80,6 @@ export default function Home() {
                 now showing
               </a>
             </li>
-            {/* <li>
-              <a
-                className="special"
-                href="/"
-              >
-                cgv special
-              </a>
-            </li> */}
-            {/* <li>
-              <a
-                className="event"
-                href="/"
-              >
-                mua voucher, thẻ quà tặng CGV
-              </a>
-            </li> */}
             <li>
               <a
                 className="ticket requied-login"
@@ -113,7 +102,7 @@ export default function Home() {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="slideshow-container">
           <Swiper
 
@@ -121,7 +110,7 @@ export default function Home() {
             spaceBetween={30}
             loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             pagination={{
@@ -130,8 +119,9 @@ export default function Home() {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
+
           >
-            <SwiperSlide className="swiper-slide">
+            {/* <SwiperSlide className="swiper-slide">
               <a href="https://www.cgv.vn/default/newsoffer/cgv-cnp-promo/">
                 <img
                   src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/n/cnp_banner_adapt_980x448-01_1_.jpg"
@@ -162,7 +152,28 @@ export default function Home() {
                   alt=""
                 />
               </a>
-            </SwiperSlide>
+            </SwiperSlide> */}
+            {/* limit 4 movie */}
+
+          
+            {movieBackDrop.map((Movie, index) => {
+              return (
+                <SwiperSlide 
+                key={index} className="swiper-slide" onClick={(e) => showDetailMovie(e, Movie.film_id)}
+                // set height 400px, width auto inorder height of image is 400px
+                style={{height: "500px" }}
+                >
+
+                    <img
+                      src={Movie.backdrop_path}
+                      alt=""
+                    />
+                  
+                </SwiperSlide>
+              );
+            })
+          }
+
 
           </Swiper>
         </div>
@@ -214,7 +225,7 @@ export default function Home() {
             
           </Swiper>
         </div>
-        <div className="product-collateral toggle-content tabs home-event">
+        {/* <div className="product-collateral toggle-content tabs home-event">
           <div className="home-title">
             <h2>event</h2>
 
@@ -226,9 +237,8 @@ export default function Home() {
               id="uncontrolled-tab-example"
               className="mb-3 tabss"
             >
-              <Tab eventKey="home" title="Thành Viên CGV">
+              <Tab eventKey="home" title="Thành Viên D3K">
                 <Swiper
-                  //  slidesPerView={4}
                   slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
                   spaceBetween={5}
                   slidesPerGroup={1}
@@ -360,7 +370,7 @@ export default function Home() {
               </div>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
     </div>

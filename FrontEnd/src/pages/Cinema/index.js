@@ -61,6 +61,31 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movieByCinplex": [
+                            {
+
+                                "name": "The Conjuring: The Devil Made Me Do It",   
+                                "image": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                                "time": [
+                                    {
+                                        "start": "10:00",
+                                        "end": "12:00"
+                                    },
+                                    {
+                                        "start": "12:00",
+                                        "end": "14:00"
+                                    },
+
+                                ]
+                            },
+                            
+                        ]
+                    }
+                }
+
                 console.log(data.data.movieByCinplex);
                 setMovie(data.data.movieByCinplex)
             }
@@ -80,6 +105,9 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+          
+
+
                 setCinema(data.data.cinema);
             })
             .catch((err) => {
@@ -100,6 +128,17 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movie": {
+                            "title": "The Conjuring: The Devil Made Me Do It",
+                            "poster": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                            "trailer": "https://www.youtube.com/embed/1PnZBWSk0eM",
+                        }
+                    }
+                }
+
                 navigate(`/movie/${data.data.movie.title}`, { state: data.data.movie })
             })
             .catch((err) => {
@@ -133,6 +172,30 @@ function Cinema() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // fake data
+                data = {
+                    "data": {
+                        "movie": {
+                            "title": "The Conjuring: The Devil Made Me Do It",
+                            "poster": "https://www.cgv.vn/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/h/the-conjuring-the-devil-made-me-do-it-2021-poster-1.jpg",
+                            "trailer": "https://www.youtube.com/embed/1PnVor36_40",
+                            "director": "Michael Chaves",
+                            "cast": "Patrick Wilson, Vera Farmiga, Ruairi O'Connor",
+                            "duration": "112",
+                            "type": "Horror, Mystery, Thriller",
+                            "releaseDate": "2021-06-04T00:00:00.000Z",
+                            "language": "English",
+                            "rated": "C18",
+
+                        },
+                        "cinema": "CGV Vincom Đồng Khởi",
+                        "day": "2021-06-05T00:00:00.000Z",
+                        "time": "10:00",
+                        "site": "A1",
+                        "price": 75000
+                    }
+                }
+
                 navigate('/ticket', { state: data.data })
             });
     }
@@ -150,7 +213,7 @@ function Cinema() {
                                     <div className="theatre-city-tabs cgv-showtime-center">
                                         <div className="content-list-cinema">
                                             <div className="title-cgv-cinema">
-                                                <h1>CGV CINEMAS</h1>
+                                                <h1>D3K CINEMAS</h1>
                                             </div>
                                             <div className="cinemas-area">
                                                 <ul>
@@ -265,7 +328,7 @@ function Cinema() {
                                                     </div>
                                                     <div className="contact-us">
                                                         <a className="cotact-us-link" href="https://www.cgv.vn/default/contacts/" >
-                                                            Liên hệ CGV
+                                                            Liên hệ D3K
                                                         </a>
                                                     </div>
                                                 </div>
@@ -569,7 +632,7 @@ function Cinema() {
                                                                 </h3>
                                                                 <ul>
                                                                     <li>- Dành cho khách hàng tại rạp L'amour (Goldclass), buffet không giới hạn được phục vụ tại buffet counter trong 30 phút bao gồm: 20 phút đầu phim (10 phút trước khi phim chiếu và tiếp tục trong 10 phút sau khi phim bắt đầu chiếu) và 10 phút giữa phim.</li>
-                                                                    <li>- Vui lòng xuất trình thẻ thành viên CGV trước khi mua vé để được tích điểm.</li>
+                                                                    <li>- Vui lòng xuất trình thẻ thành viên D3K trước khi mua vé để được tích điểm.</li>
                                                                     <li>- Giá vé khi đặt vé trực tuyến trên website và ứng dụng CGV là giá vé người lớn. Các loại vé như học sinh-sinh viên, vé trẻ em, vé người cao tuổi, vé U22 vui lòng mua trực tiếp tại quầy.</li>
                                                                     <li>- Vé trẻ em chỉ xuất khi có sự hiện diện của trẻ dưới 1m3 và trên 2 tuổi.</li>
                                                                     <li>- Vé người cao tuổi chỉ dành cho khách hàng từ 55 tuổi trở lên. Vui lòng xuất trình CMND khi mua vé.</li>

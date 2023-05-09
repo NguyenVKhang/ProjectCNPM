@@ -83,7 +83,7 @@
     margin: 0 auto;
     overflow: visible;
     margin-top: -10px;
-    padding-left: 200px
+    /* padding-left: 200px */
 }
 
 @media only screen and (max-width: 770px) {
@@ -302,4 +302,19 @@
 #header-container .dropdown-menu>li a:hover {
     color: #E71A0F;
 
+}
+
+.menu a {
+    color: black;
+    /* remove _ */
+    text-decoration: none;
+    margin: 0 50px;
+}
+
+.menu a:hover {
+    color: #E71A0F;
+    /* ___ if hover */
+    text-decoration: underline;
+    /* bold it */
+    font-weight: bold;
 }

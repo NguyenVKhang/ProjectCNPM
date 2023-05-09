@@ -1,67 +1,53 @@
 import React, { useContext, useState } from "react";
-import "./LoginPage.css";
 import { authContext } from "./../../Context/Auth/AuthContext";
 import { login } from "./LoginApiCall";
+import "./LoginPage.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { isFetching, dispatch } = useContext(authContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
     login({ email, password }, dispatch);
-    // e.preventDefault();
-    // if (!email || !password) {
-    //   alert("Please enter email and password");
-    //   return;
-    // }
-    // fetch("http://localhost:3001/auth/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.status === "success") {
-    //       alert("login success");
-    //       window.localStorage.setItem("token", JSON.stringify(data.data));
-    //       // navigate(-1);
-    //       window.location.href = "/";
-    //     }
-    //     else {
-    //       alert(data.message);
-    //     }
-    //   });
   };
 
   return (
     <div className="loginPage">
-      <form className="loginForm">
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          className="loginButton"
-          onClick={handleLogin}
-          disabled={isFetching}
+      <div className="card">
+        <div
+          className="card-header"
+          style={{ display: "flex", textAlign: "center", padding: "5px" }}
         >
-          Login
-        </button>
-      </form>
+          <h5 style={{ flex: "1", margin: "7px" }}>ĐĂNG NHẬP</h5>
+        </div>
+        <div className="login-form">
+          <form>
+            <label>Email:</label>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label>Password:</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit" onClick={handleLogin} disabled={isFetching}>
+              Đăng nhập
+            </button>
+          </form>
+        </div>
+        <div className="register-link"></div>
+      </div>
+      
     </div>
   );
 }

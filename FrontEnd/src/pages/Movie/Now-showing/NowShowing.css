@@ -505,3 +505,12 @@ li.time {
     display: block;
     cursor: pointer;
 }
+
+.cinema .site {
+    /* 'textAlign': 'left',
+                                                        //   'margin': '10px 0px',
+                                                        //   'display': 'block', */
+    text-align: left;
+    margin: 10px 0px;
+    display: table;
+}

@@ -12,7 +12,7 @@ function MovieNowShowing() {
 
   const [showTimes, setShowTimes] = useState([]);
   const [place, setPlace] = useState(1);
-  const [calendar, setCalendar] = useState(1);
+  const [calendar, setCalendar] = useState(0);
   const [type, setType] = useState(1);
   const [names, setNames] = useState("");
 
@@ -294,27 +294,29 @@ function MovieNowShowing() {
                                                 {Movie_Type.Cinema.map((Cinema) => (
                                                   <li style={{
                                                     'textAlign': 'left'
+                                                  
                                                   }} key={Cinema.id} className="cinema">
                                                     <span>{Cinema.cinema_name}</span>
                                                     <ul>
                                                       {Cinema.Site.map((Site) => (
-                                                        <>
-                                                          <li style={{
-                                                            'textAlign': 'left'
-                                                          }} key={Site.id} className="site">
-                                                            <div>{Site.site_name}</div>
-                                                            <ul>
-                                                              {Site.Time.map((Time) => {
-                                                                return (
-                                                                  <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
-                                                                    <span>{String(Time.timeSt).slice(0, 5)}</span>
-                                                                  </li>
-                                                                )
-                                                              })}
-                                                            </ul>
-                                                            <br></br>
-                                                          </li>
-                                                          <br></br></>
+                                                        <li 
+                                                        // style={{
+                                                        //   'textAlign': 'left',
+                                                        //   'margin': '10px 0px',
+                                                        //   'display': 'block',
+                                                        // }} 
+                                                        key={Site.id} className="site">
+                                                          <span>{Site.site_name}</span>
+                                                          <ul>
+                                                            {Site.Time.map((Time) => {
+                                                              return (
+                                                                <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
+                                                                  <span>{String(Time.timeSt).slice(0, 5)}</span>
+                                                                </li>
+                                                              )
+                                                            })}
+                                                          </ul>
+                                                        </li>
                                                       ))}
                                                     </ul>
                                                   </li>

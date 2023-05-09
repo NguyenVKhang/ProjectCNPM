@@ -8,20 +8,6 @@ import { Alert } from "@mui/material";
 
 function Userspage() {
   const [data, setData] = useState([]);
-  // const renderer = ({ hours, minutes, seconds, completed }) => {
-  // const dataUser = () => {
-  //   // use fetch to get data from api
-  //   fetch("http://localhost:3001/user/getAllUsers", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {   
-  //       setData(result);
-  //     });
-  // };
 
   useEffect(() => {
     const dataUsers = async () => {

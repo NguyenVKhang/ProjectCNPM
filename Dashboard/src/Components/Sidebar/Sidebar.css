@@ -3,12 +3,16 @@
   height: calc(100vh-60px);
   position: sticky;
   top: 60px;
+
 }
 
 .itemsContainer {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  height: 650px;
+  border-right : 2px solid rgb(207, 197, 197);
+  width: 225px;
 }
 
 .itemTitle {
@@ -56,6 +60,7 @@
 .subItem0Wrapper {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .subItem0 {
@@ -65,6 +70,7 @@
 .subItem1Wrapper {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .subItem1 {
@@ -74,6 +80,7 @@
 .subItem2Wrapper {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .subItem2 {

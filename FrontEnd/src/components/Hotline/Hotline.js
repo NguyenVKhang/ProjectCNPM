@@ -164,7 +164,7 @@ export default class Hotline extends Component {
                                     <a
                                         className="messanger "
                                         rel="nofollow noopener"
-                                        href="https://m.me/areamaDevelopment"
+                                        href="https://www.facebook.com/profile.php?id=100033353748879"
                                         target="_blank"
                                     >
                                         <span style={{ backgroundColor: "#31ADFF" }}>
@@ -187,7 +187,7 @@ export default class Hotline extends Component {
                                     <a
                                         className="messanger "
                                         rel="nofollow noopener"
-                                        href="https://m.me/areamaDevelopment"
+                                        href="https://www.facebook.com/profile.php?id=100033353748879"
                                         target="_blank"
                                     >
                                         <span style={{ backgroundColor: "#31ADFF" }}>
@@ -205,7 +205,7 @@ export default class Hotline extends Component {
                                     <a
                                         className="messanger "
                                         rel="nofollow noopener"
-                                        href="https://wa.me/380505109376"
+                                        href="https://wa.me/380999999999"
                                         target="_blank"
                                     >
                                         <span style={{ backgroundColor: "#09D261" }}>

@@ -3,21 +3,7 @@ const MovieComingSoon = require("../models/MovieComingSoon");
 const axios = require("axios");
 import pool from "../config/index.js";
 class movieController {
-  // async getMoviesNowShowing(req = new Request(), res) {
-  //   try {
-  //     const moviesNowShowing = await MovieNowShowing.find({});
-  //     return res.status(200).json({
-  //       status: "success",
-  //       data: { moviesNowShowing },
-  //     });
-  //   } catch (error) {
-  //     return res.status(503).json({
-  //       status: "error",
-  //       message: "Service error. Please try again later",
-  //     });
-  //   }
-  // }
-// use mysql
+
   async getMoviesNowShowing(req = new Request(), res) {
     try {
       const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film where dates_minium < now()');
@@ -94,7 +80,7 @@ class movieController {
   async getMovieByCinplex(req = new Request(), res) {
     const { cinplex, place } = req.body;
     const movie = await MovieNowShowing.find({});
-    //filter movie by date 23/02/2023 have place in HCM
+
 
     const date = new Date(2023, 1, 23);
 
@@ -191,8 +177,6 @@ class movieController {
 
       // const date = new Date(year, month, day);
       movie[0].dates_minium = day + "-" + month + "-" + year;
-      // console.log(movie[0].dates_minium)
-      // movie[0].dates_minium = date;
       
       return res.status(200).json({
         status: "success",
@@ -356,12 +340,6 @@ class movieController {
   async getAllMovies(req, res) {
     try {
       const [movies] = await pool.execute('SELECT * FROM film');
-      // const year = movie[0].dates_minium.getFullYear();
-      // const month = movie[0].dates_minium.getMonth();
-      // const day = movie[0].dates_minium.getDate();
-
-      // // const date = new Date(year, month, day);
-      // movie[0].dates_minium = day + "-" + month + "-" + year;
 
       for (let i = 0; i < movies.length; i++) {
         // convert to string
@@ -382,7 +360,7 @@ class movieController {
 
   async postMovie(req, res) {
     //name, description, length,genres, trailer, poster, release_date, dates_minium, actor, director
-    console.log(req.body)
+    // console.log(req.body)
     
     try {
       

@@ -14,6 +14,7 @@ function Payment() {
     }
 
     const user = JSON.parse(localStorage.getItem("token"));
+    console.log(user);
     const back = () => {
         window.history.back()
     }
@@ -69,7 +70,7 @@ function Payment() {
                                 "Content-Type": "application/json",
                             },
                             body: JSON.stringify({
-                                user_id: user.user.id,
+                                user_id: user.user.user_id,
                                 showtime_id: state.movie[0].id,
                                 room_id: state.position[0][0].room_id,
                                 position_booked: state.position_booked

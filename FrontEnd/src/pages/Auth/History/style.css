@@ -1,0 +1,48 @@
+.content-page__item {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    color: black;
+  }
+  
+  .content-page__item__title {
+    margin-bottom: 10px;
+  }
+  
+  .content-page__item__title h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .content-page__item__content__item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .content-page__item__content__item__info {
+    margin-left: 10px;
+  }
+  
+  .content-page__item__content__item__info p {
+    margin: 5px 0;
+  }
+  
+  .content-page__item__content__item__info__name {
+    font-weight: bold;
+  }
+  
+  .content-page__item__content__item__info__time-used {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Màu nền đỏ nhạt */
+  .content-page__item.red {
+    background-color: #f6a5a5;
+  }
+  
+  /* Màu nền xanh nhạt */
+  .content-page__item.green {
+    background-color: #a1d9c7;
+  }
+  
