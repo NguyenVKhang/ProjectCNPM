@@ -7,7 +7,15 @@ class movieController {
   async getMoviesNowShowing(req = new Request(), res) {
     try {
       const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film where dates_minium < now()');
+      // for (let i = 0; i < data.data.moviesNowShowing.length; i++) {
+      //   data.data.moviesNowShowing[i].date_minium = data.data.moviesNowShowing[i].date_minium + 1;
+      // }
 
+      for(let i = 0; i < moviesNowShowing.length; i++){
+        moviesNowShowing[i].dates_minium = moviesNowShowing[i].dates_minium.getFullYear() + '-' + (moviesNowShowing[i].dates_minium.getMonth() + 1) + '-' + moviesNowShowing[i].dates_minium.getDate();
+
+      }
+      
       moviesNowShowing.forEach((movie) => {
         const time = movie.length;
         const timeConvert = time.split(':');
@@ -34,6 +42,16 @@ class movieController {
   async getMoviesComingSoon(req = new Request(), res) {
     try {
       const [moviesComingSoon, fields] = await pool.execute('SELECT * FROM film where dates_minium > now()');
+
+      // for(let i = 0; i < moviesNowShowing.length; i++){
+      //   moviesNowShowing[i].dates_minium = moviesNowShowing[i].dates_minium.getFullYear() + '-' + (moviesNowShowing[i].dates_minium.getMonth() + 1) + '-' + moviesNowShowing[i].dates_minium.getDate();
+
+      // }
+
+      for (let i = 0; i < moviesComingSoon.length; i++) {
+        moviesComingSoon[i].dates_minium = moviesComingSoon[i].dates_minium.getFullYear() + '-' + (moviesComingSoon[i].dates_minium.getMonth() + 1) + '-' + moviesComingSoon[i].dates_minium.getDate();
+
+      }
 
       moviesComingSoon.forEach((movie) => {
         const time = movie.length;
@@ -77,81 +95,6 @@ class movieController {
     }
   }
 
-  // async getMovieByCinplex(req = new Request(), res) {
-  //   const { cinplex, place } = req.body;
-  //   const movie = await MovieNowShowing.find({});
-
-
-  //   const date = new Date(2023, 1, 23);
-
-  //   const movieByCinplex = movie.filter((movie) => {
-  //     return movie.Date.some((Date) => {
-  //       return Date.day.getTime() === date.getTime() && Date.Location.some((Location) => {
-  //         return Location.place === place && Location.Movie_Type.some((Movie_Type) => {
-  //           return Movie_Type.Cinema.some((Cinema) => {
-  //             return Cinema.cinema_name === cinplex;
-  //           })
-  //         })
-  //       })
-  //     })
-  //   }).map((Movie) => {
-  //     const name = Movie.name;
-  //     const image = Movie.image;
-  //     const itemRate = Movie.itemRate;
-  //     const day = Movie.Date.find((Date) => {
-  //       return Date.day.getTime() === date.getTime();
-  //     }).day
-
-  //     const location = Movie.Date.find((Date) => {
-  //       return Date.day.getTime() === date.getTime();
-  //     }).Location.find((Location) => {
-  //       return Location.place === place;
-  //     }).place
-
-  //     const type = Movie.Date.find((Date) => {
-  //       return Date.day.getTime() === date.getTime();
-  //     }).Location.find((Location) => {
-  //       return Location.place === place;
-  //     }).Movie_Type.filter((Movie_Type) => {
-  //       return Movie_Type.Cinema.some((Cinema) => {
-  //         return Cinema.cinema_name === cinplex;
-  //       })
-  //     }).map((Movie_Type) => {
-  //       return {
-  //         type_name: Movie_Type.type_name,
-  //         Cinema: Movie_Type.Cinema.filter((Cinema) => {
-  //           return Cinema.cinema_name === cinplex;
-  //         }
-  //         )
-  //       }
-  //     })
-
-
-  //     const cinema = Movie.Date.find((Date) => {
-  //       return Date.day.getTime() === date.getTime();
-  //     }).Location.find((Location) => {
-  //       return Location.place === place;
-  //     }).Movie_Type.find((Movie_Type) => {
-  //       return Movie_Type.Cinema.some((Cinema) => {
-  //         return Cinema.cinema_name === cinplex;
-  //       })
-  //     }).Cinema.find((Cinema) => {
-  //       return Cinema.cinema_name === cinplex;
-  //     }).cinema_name
-
-  //     return { name, image, itemRate, day, location, type, cinema };
-
-  //   })
-
-  //   console.log(movieByCinplex)
-
-
-  //   return res.status(200).json({
-  //     status: "success",
-  //     data: { movieByCinplex }
-  //   });
-  // }
-
 
   async getDetailMovieNowShowing(req = new Request(), res) {
     const { id } = req.body;
@@ -172,7 +115,7 @@ class movieController {
 
       
       const year = movie[0].dates_minium.getFullYear();
-      const month = movie[0].dates_minium.getMonth();
+      const month = movie[0].dates_minium.getMonth() + 1;
       const day = movie[0].dates_minium.getDate();
 
       // const date = new Date(year, month, day);

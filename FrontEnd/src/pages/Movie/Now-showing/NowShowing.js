@@ -1,7 +1,7 @@
 import "./NowShowing.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BsFillHandThumbsUpFill } from "react-icons/bs"
+// import { BsFillHandThumbsUpFill } from "react-icons/bs"
 import { Col, Row } from "react-bootstrap";
 import { useMediaQuery } from 'react-responsive';
 
@@ -24,6 +24,8 @@ function MovieNowShowing() {
     fetch("http://localhost:3001/movie/now-showing")
       .then((res) => res.json())
       .then((data) => {
+        // data.data.movienowShowing = data.data.moviesNowShowingdate_minium + 1;
+        
         setMovie(data.data.moviesNowShowing);
       })
       .catch((err) => {

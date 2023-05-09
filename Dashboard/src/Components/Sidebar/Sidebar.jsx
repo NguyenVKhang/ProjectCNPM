@@ -17,27 +17,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <div className="sidebar">
-      {/* <div className="itemsContainer">
-        <div className="itemTitle">
-          <span>Dashboard</span>
-        </div>
-        <div className="items">
-          <Link to="/" className="link">
-            <div className="subItem0Wrapper">
-              <HomeOutlinedIcon className="subItem0" />
-              <span className="subItem0">Home</span>
-            </div>
-          </Link>
-          <div className="subItem1Wrapper">
-            <TimelineOutlinedIcon className="subItem1" />
-            <span className="subItem1">Analytics</span>
-          </div>
-          <div className="subItem2Wrapper">
-            <ShowChartOutlinedIcon className="subItem2" />
-            <span className="subItem2">Sales</span>
-          </div>
-        </div>
-      </div> */}
+     
       <div className="itemsContainer">
         <div className="itemTitle">
           <span>Quick Menu</span>
@@ -69,7 +49,9 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/rooms" className="link">
-            <div className="subItem2Wrapper">
+          <div className="subItem2Wrapper">
+            <WorkOutlineOutlinedIcon  className="subItem0" />
+            
               <span className="subItem2">Rooms</span>
             </div>
           </Link>

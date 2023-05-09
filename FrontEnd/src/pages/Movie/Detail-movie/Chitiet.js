@@ -1,7 +1,7 @@
 import "./DetailMovie.css";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BsFillHandThumbsUpFill } from "react-icons/bs"
+// import { BsFillHandThumbsUpFill } from "react-icons/bs"
 
 
 function Chitiet() {
@@ -125,7 +125,6 @@ function Chitiet() {
               <span className="h1">{state.name}</span>
             </div>
 
-            {/* Build test  */}
             <div className="movie-director movie-info">
               <label>Đạo diễn: </label>
               <div className="std">&nbsp; {state.director} </div>
@@ -166,14 +165,7 @@ function Chitiet() {
           </div>
           <div className="movie-detail-fb-booking">
             <ul className="add-to-cart-wrapper">
-              {/* <li>
-                <button type="button" title="Thích" className="button btn-like">
-                  <BsFillHandThumbsUpFill />
-                  <span>
-                    like
-                  </span>
-                </button>
-              </li> */}
+          
 
               <li>
                 {state.dates_minium !== undefined && <button type="button" title="Mua vé" className="button btn-booking"><span onClick={buyTicket}>Mua vé</span></button>}

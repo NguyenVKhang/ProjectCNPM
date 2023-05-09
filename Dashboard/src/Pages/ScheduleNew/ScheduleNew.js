@@ -1,34 +1,34 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./ScheduleNew.css";
-import { storage } from "../../Firebase/Firebase";
-import { postMovie } from "./../MoviesPage/MoviesApiCall";
+// import { storage } from "../../Firebase/Firebase";
+// import { postMovie } from "./../MoviesPage/MoviesApiCall";
 import { moviesContext } from "./../../Context/Movies/MoviesContext";
-import CircularProgress from "@mui/material/CircularProgress";
+// import CircularProgress from "@mui/material/CircularProgress";
 import { useHistory } from "react-router-dom";
 import { Alert } from "@mui/material";
 
 // feature: name, description, length,genres, trailer, poster, release_date, dates_minium, actor, director
 function ScheduleNew() {
   const [schedule, setMovie] = useState(null);
-  const [img, setImg] = useState(null);
-  const [imgTitle, setImgTitle] = useState(null);
-  const [imgThumbnail, setImgThumbnail] = useState(null);
-  const [trailer, setTrailer] = useState("");
-  const [video, setVideo] = useState(null);
+  // const [img, setImg] = useState(null);
+  // const [imgTitle, setImgTitle] = useState(null);
+  // const [imgThumbnail, setImgThumbnail] = useState(null);
+  // const [trailer, setTrailer] = useState("");
+  // const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(0);
-  const [error, setError] = useState(false);
+  // const [status, setStatus] = useState(0);
+  // const [error, setError] = useState(false);
   const [flag, setFlag] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [length, setLength] = useState("");
-  const [genres, setGenres] = useState("");
-  const [poster, setPoster] = useState("");
-  const [release_date, setRelease_date] = useState("");
-  const [dates_minium, setDates_minium] = useState("");
-  const [actor, setActor] = useState("");
-  const [director, setDirector] = useState("");
+  // const [name, setName] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [length, setLength] = useState("");
+  // const [genres, setGenres] = useState("");
+  // const [poster, setPoster] = useState("");
+  // const [release_date, setRelease_date] = useState("");
+  // const [dates_minium, setDates_minium] = useState("");
+  // const [actor, setActor] = useState("");
+  // const [director, setDirector] = useState("");
 
 
   const history = useHistory();
@@ -46,18 +46,18 @@ function ScheduleNew() {
   }, [uploaded]);
 
 
-  const { dispatch, isFetching } = useContext(moviesContext);
+  // const { dispatch, isFetching } = useContext(moviesContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    postMovie(schedule, dispatch);
-    history.push("/movies");
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   postMovie(schedule, dispatch);
+  //   history.push("/movies");
+  // };
 
   const submitForm = (e) => {
     e.preventDefault();
     const newSchedule = {
-        ticket_fare: schedule.ticket_fare,
+        ticket_fare: 10000,
         time: schedule.date + " " + schedule.time,
         room_id: schedule.room_id,
         film_id: schedule.film_id,
@@ -90,7 +90,7 @@ function ScheduleNew() {
     <div className="newMoviePage">
       <h1 className="newMovieTitle">Post a New Schedule</h1>
       <form action="" className="uploadForm" onSubmit={submitForm}>
-        <div className="uploadItem">
+        {/* <div className="uploadItem">
           <label>Ticket Fare</label>
           <input
             type="number"
@@ -98,7 +98,7 @@ function ScheduleNew() {
             name="ticket_fare"
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="uploadItem">
           <label>Time</label>
           <input

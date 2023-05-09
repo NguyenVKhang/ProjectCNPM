@@ -16,11 +16,10 @@ import AuthPayment from "./pages/Auth-payment";
 import Payment from "./pages/Payment";
 import NotFound from "./pages/NotFound";
 import Nocart from "./pages/NoCart";
-import Cinema from "./pages/Cinema";
 import Test from "./pages/Test";
 import History from "./pages/Auth/History/History";
 import NewsOffer from "./pages/NewsOffer";
-import Hotline from "./components/Hotline/Hotline";
+// import Hotline from "./components/Hotline/Hotline";
 
 function App() {
   return (
@@ -43,7 +42,6 @@ function App() {
         <Route path="/payment" element={<AuthPayment />} />
         <Route path="/payment/ZaloPay" element={<Payment />} />
         <Route path="/nocart" element={<Nocart />} />
-        <Route path="/cinema" element={<Cinema />} />
         <Route path="/newsoffer" element={<NewsOffer />} />
 
         <Route path="*" element={<NotFound />} />
@@ -51,7 +49,7 @@ function App() {
         <Route path="/contact" element={<Test />} />
       </Routes>
       <Footer />
-      <Hotline />
+      {/* <Hotline /> */}
     </Router >
   );
 }
