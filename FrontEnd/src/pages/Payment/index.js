@@ -58,12 +58,10 @@ function Payment() {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 data.data.map((item) => {
-                    if (parseInt(item.trans_amount) === state.price/1000 && item.description === result) {
+                    if (parseInt(item.trans_amount) === 1 && item.description === "P7XZMJ") {
                         clearInterval(interval);
                         alert("Thanh toán thành công");
-                        //create random number
                         fetch("http://localhost:3001/auth/saveHistory", {
                             method: "POST",
                             headers: {

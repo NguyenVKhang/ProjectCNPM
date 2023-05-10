@@ -61,6 +61,7 @@ function Lists() {
   ];
 
   return (
+    // console.log("hello", data.data),
     <div className="userspage">
       <div style={{ height: "100%", width: "100%" }}>
        
@@ -82,5 +83,4 @@ function Lists() {
   );
 }
 
-export default Lists
-;
+export default Lists;

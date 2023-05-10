@@ -19,7 +19,7 @@ import Nocart from "./pages/NoCart";
 import Test from "./pages/Test";
 import History from "./pages/Auth/History/History";
 import NewsOffer from "./pages/NewsOffer";
-// import Hotline from "./components/Hotline/Hotline";
+import Hotline from "./components/Hotline/Hotline";
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
         <Route path="/contact" element={<Test />} />
       </Routes>
       <Footer />
-      {/* <Hotline /> */}
+      <Hotline />
     </Router >
   );
 }
