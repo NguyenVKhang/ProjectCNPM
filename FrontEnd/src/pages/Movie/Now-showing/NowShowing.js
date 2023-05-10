@@ -93,7 +93,7 @@ function MovieNowShowing() {
     const Cinema = e.target.closest('.cinema').querySelector('span').innerHTML
     const Site = e.target.closest('.site').querySelector('span').innerHTML
     const TimeSt = e.target.title
-
+    
     fetch('http://localhost:3001/movie/getposition', {
       method: 'POST',
       headers: {
@@ -317,7 +317,7 @@ function MovieNowShowing() {
                                                           <ul>
                                                             {Site.Time.map((Time) => {
                                                               return (
-                                                                <li key={Time.id} className="time" title={Time.timeSt} onClick={chooseShowTimes}>
+                                                                <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
                                                                   <span>{String(Time.timeSt).slice(0, 5)}</span>
                                                                 </li>
                                                               )

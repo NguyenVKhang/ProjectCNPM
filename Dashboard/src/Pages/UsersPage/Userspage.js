@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Userspage.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { Link } from "react-router-dom";
-import { userRows } from "./../../Components/DummyData/DummyData";
-import { Alert } from "@mui/material";
 
 function Userspage() {
   const [data, setData] = useState([]);

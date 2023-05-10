@@ -4,7 +4,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { Link } from "react-router-dom";
 function SchedulesPage() {
-  // const { movies, dispatch } = useContext(moviesContext);
   const [data, setData] = useState([]);
   
 

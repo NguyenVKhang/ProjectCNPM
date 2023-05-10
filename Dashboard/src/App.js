@@ -8,18 +8,13 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Homepage from "./Pages/Homepage/Homepage";
 import Userspage from "./Pages/UsersPage/Userspage";
-import SingleUserPage from "./Pages/Single User Page/SingleUserPage";
-import NewUserPage from "./Pages/New User Page/NewUserPage";
 import MoviesPage from "./Pages/MoviesPage/MoviesPage";
 import SingleMoviePage from "./Pages/SingleMoviePage/SingleMoviePage";
 import NewMoviePage from "./Pages/NewMoviePage/NewMoviePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import { authContext } from "./Context/Auth/AuthContext";
 import Lists from "./Pages/ListsPage/Lists";
-import SingleListPage from "./Pages/SingleListPage/SingleList";
-import NewListPage from "./Pages/NewListPage/NewList";
 import SchedulesPage from "./Pages/SchedulesPage/SchedulesPage";
 import ScheduleSingle from "./Pages/ScheduleSingle/ScheduleSingle";
 import ScheduleNew from "./Pages/ScheduleNew/ScheduleNew";
@@ -30,7 +25,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">
-          {!user ? <LoginPage /> : <Redirect to="/" />}
+          {!user ? <LoginPage /> : <Redirect to="/schedules" />}
         </Route>
         {user ? (
           <>
@@ -38,17 +33,17 @@ function App() {
             <div className="container">
               <Sidebar />
               <Route exact path="/">
-                <Homepage />
+                <Redirect to="/schedules" />
               </Route>
               <Route path="/users">
                 <Userspage />
               </Route>
-              <Route path="/user">
+              {/* <Route path="/user">
                 <SingleUserPage />
-              </Route>
-              <Route path="/newUser">
+              </Route> */}
+              {/* <Route path="/newUser">
                 <NewUserPage />
-              </Route>
+              </Route> */}
               <Route path="/movies">
                 <MoviesPage />
               </Route>
@@ -61,12 +56,7 @@ function App() {
               <Route path="/lists">
                 <Lists />
               </Route>
-              <Route path="/list">
-                <SingleListPage />
-              </Route>
-              <Route path="/newList">
-                <NewListPage />
-              </Route>
+
               <Route path="/schedules">
                 <SchedulesPage />
               </Route>
