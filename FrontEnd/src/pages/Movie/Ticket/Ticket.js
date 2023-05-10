@@ -88,12 +88,12 @@ function Ticket() {
         document.getElementById("total1").innerHTML = `${currency}`;
         document.getElementById("total").innerHTML = `${currency}`;
         const positions = document.querySelectorAll(".checked");
-        console.log(positions);
+        // console.log(positions);
         let position = [];
         for (let i = 0; i < positions.length; i++) {
             position.push(positions[i].innerHTML);
         }
-        console.log(position);
+        // console.log(position);
 
 
     }
@@ -363,10 +363,3 @@ function Ticket() {
 }
 
 export default Ticket;
-
-
-
-{/* <div className="seat seat-gold active">A15</div> */ }
-{/* <div className="seat seat-vipprime active">A15</div> */ }
-{/* <div className="seat seat-4d active">A15</div> */ }
-{/* <div className="seat seat-sw active">A10</div> */ }
