@@ -166,7 +166,6 @@ class authController {
 
   async saveHistory(req = new Request(), res) {
     const { user_id, showtime_id, position_booked, room_id } = req.body;
-    console.log(req.body);
     console.log(`----------------------`);
     try {
       const promises = position_booked.map(async (p) => {

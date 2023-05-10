@@ -23,8 +23,7 @@ function Chitiet() {
 
 
   const buyTicket = () => {
-    console.log(11111111);
-    console.log(state.film_id);
+    console.log("xyz", state.film_id)
     fetch('http://localhost:3001/movie/getShowTime/' + state.film_id, {
       method: 'GET',
       headers: {

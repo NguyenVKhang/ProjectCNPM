@@ -369,6 +369,7 @@ class movieController {
 
   async getPosition(req, res) {
     const film_id  = req.body.id;
+    console.log(film_id)
     if (!film_id) {
       return res.status(400).json({
         status: "error",
