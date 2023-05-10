@@ -169,8 +169,9 @@ class authController {
     console.log(req.body);
     console.log(`----------------------`);
     try {
+      const date = new Date();
       const promises = position_booked.map(async (p) => {
-        const [rows] = await pool.execute(`INSERT INTO ticket (chair_number, user_id, showtime_id) VALUES ((SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?), ?, ?);`, [room_id, p, user_id, showtime_id]);
+        const [rows] = await pool.execute(`INSERT INTO ticket (chair_number, user_id, showtime_id, payment_time) VALUES ((SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?), ?, ?, ?);`, [room_id, p, user_id, showtime_id, date]);
         return rows;
       });
       await Promise.all(promises);
