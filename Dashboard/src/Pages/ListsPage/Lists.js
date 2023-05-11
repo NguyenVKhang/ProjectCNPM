@@ -30,23 +30,23 @@ function Lists() {
 
 
   const columns = [
-    { field: "employee_id"  , headerName: "ID", width: 50 },
+    { field: "employee_id"  , headerName: "ID", width: 100 },
     {
       field: "name",
       headerName: "User",
-      width: 160,
+      width: 200,
     },
-    { field: "gmail", headerName: "Email", width: 200 },
+    { field: "gmail", headerName: "Email", width: 250 },
     {
       field: "phone_number",
       headerName: "Phone number",
       width: 200,
     },
-    {
-      field: "password",
-      headerName: "Password",
-      width: 160,
-    },
+    // {
+    //   field: "password",
+    //   headerName: "Password",
+    //   width: 160,
+    // },
     {
       field: "Address",
       headerName: "Address",

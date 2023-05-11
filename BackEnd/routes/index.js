@@ -4,6 +4,7 @@ const cinemaRouter = require("./cinema");
 const userRouter = require("./user");
 const adminRouter = require("./admin");
 const scheduleRouter = require("./schedule");
+const analyticsRouter = require("./analytics");
 
 function route(app) {
   app.use("/auth", loginRouter);
@@ -12,6 +13,7 @@ function route(app) {
   app.use("/user", userRouter);
   app.use("/admin", adminRouter);
   app.use("/schedule", scheduleRouter);
+  app.use("/analytics", analyticsRouter);
 }
 
 module.exports = route;
