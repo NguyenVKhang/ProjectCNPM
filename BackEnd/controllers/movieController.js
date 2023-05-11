@@ -191,26 +191,59 @@ class movieController {
 
   //updateStatus post
   async updateStatus(req = new Request(), res) {
-    const { movie, position, position_booked } = req.body;
-    console.log(position_booked);
-    console.log([movie[0].id, position[0][0].room_id]);
     try {
-      const promises = position_booked.map(async (p) => {
-        const [rows] = await pool.execute(`INSERT INTO booked_seat (showtime_id, seat_id) VALUES (?, (SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?));`, [movie[0].id, position[0][0].room_id, p]);
-        return rows;
-      });
-      await Promise.all(promises);
+      const { movie, position, position_booked } = req.body;
   
-      return res.status(200).json({
-        status: "success",
+      console.log(position_booked);
+      console.log([movie[0].id, position[0][0].room_id]);
+  
+      const [data] = await pool.execute(
+        `SELECT room_seat.seat_name
+        FROM booked_seat
+        INNER JOIN room_seat ON booked_seat.seat_id = room_seat.seat_id
+        WHERE booked_seat.showtime_id = ?`,
+        [movie[0].id]
+      );
+  
+      let booked = false;
+      data.forEach((data1) => {
+        position_booked.forEach((p) => {
+          if (data1.seat_name === p) {
+            booked = true;
+          }
+        });
       });
+  
+      if (!booked) {
+        const promises = position_booked.map(async (p) => {
+          const [rows] = await pool.execute(
+            `INSERT INTO booked_seat (showtime_id, seat_id)
+            VALUES (?, (SELECT seat_id FROM room_seat WHERE room_id = ? AND seat_name = ?))`,
+            [movie[0].id, position[0][0].room_id, p]
+          );
+          return rows;
+        });
+  
+        await Promise.all(promises);
+  
+        return res.status(200).json({
+          status: "success",
+          type: 1 // thành công
+        });
+      } else {
+        return res.status(200).json({
+          status: "success",
+          type: 2 // có người đặt rồi
+        });
+      }
     } catch (error) {
       console.log(error);
       return res.status(500).json({
-        status: "error",
+        status: "error"
       });
     }
   }
+  
   
   async updateStatusEmpty(req = new Request(), res) {
     const { movie, position, position_booked } = req.body;

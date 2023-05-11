@@ -88,7 +88,7 @@ function Payment() {
             .catch((err) => {
                 console.log(err);
             });
-    }, 2000);
+    }, 10000);
 
     return (
         <div>

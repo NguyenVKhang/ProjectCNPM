@@ -14,7 +14,6 @@ function MovieNowShowing() {
   const [place, setPlace] = useState(1);
   const [calendar, setCalendar] = useState(0);
   const [type, setType] = useState(1);
-  const [names, setNames] = useState("");
 
   const navigate = useNavigate();
 
@@ -86,26 +85,7 @@ function MovieNowShowing() {
       window.location.href = "/login";
       return;
     }
-
-    const Day = document.querySelector('.current .day').getAttribute('title')
-    const Place = document.querySelector('.toggle-tabs-city .appear .current-location span').innerHTML
-    const Type = document.querySelector('.toggle-tabs-type .appear .appear .current-type span').innerHTML
-    const Cinema = e.target.closest('.cinema').querySelector('span').innerHTML
-    const Site = e.target.closest('.site').querySelector('span').innerHTML
-    const TimeSt = e.target.title
-    
-    fetch('http://localhost:3001/movie/getposition', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: e.currentTarget.title }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        navigate('/ticket', { state: data.data })
-      });
+    navigate('/ticket', { state: e.currentTarget.title });
   }
 
 
@@ -136,11 +116,6 @@ function MovieNowShowing() {
 
 
   const Day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const minutes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
-    , "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
-    "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"
-  ];
-
 
   return (
     <div className="page-phim" id="now-movie">
@@ -154,7 +129,7 @@ function MovieNowShowing() {
               <Col className="film-lists item last " key={index}>
                 <div className="product-images">
                   <span className={`nmovie-rating nmovie-rating-${item.itemRate}`}></span>
-                  <a
+                  <p
                     onClick={(e) => showDetailMovie(e, item.film_id)}
                     className="product-image"
                     cursorshover="true"
@@ -165,7 +140,7 @@ function MovieNowShowing() {
                       alt={item.name}
                       cursorshover="true"
                     />
-                  </a>
+                  </p>
                 </div>
                 <div
                   className="product-info"
@@ -192,20 +167,6 @@ function MovieNowShowing() {
                   </div>
                 </div>
                 <ul className="add-to-links">
-                  {/* <li>
-                    <button
-                      type="button"
-                      title="Thích"
-                      className="button btn-like"
-                      // style hide button like
-                      style={{ display: "none" }}
-                      
-                    >
-                      <BsFillHandThumbsUpFill />
-                      <span>like</span>
-                    </button>
-                  </li> */}
-
                   <li>
                     <button
                       type="button"
