@@ -3,15 +3,10 @@ import {
   loginFailure,
   loginSuccess,
 } from "../../Context/Auth/AuthActions";
-import axiosInstance from "./../../axios";
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
-    // const res = await axiosInstance.post("auth/login", user);
-    // data for testing
-    // fetch http://localhost:3001/auth/login with user is body
-
     const result = await fetch("http://localhost:3001/auth/loginAdmin", {
       method: "POST",
       headers: {

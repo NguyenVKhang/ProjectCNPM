@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Userspage.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { Link } from "react-router-dom";
-import { userRows } from "./../../Components/DummyData/DummyData";
-import { Alert } from "@mui/material";
 
 function Userspage() {
   const [data, setData] = useState([]);
@@ -58,23 +55,23 @@ function Userspage() {
   };
 
   const columns = [
-    { field: "user_id", headerName: "ID", width: 50 },
+    { field: "user_id", headerName: "ID", width: 100 },
     {
       field: "name",
       headerName: "User",
-      width: 160,
+      width: 200,
     },
-    { field: "gmail", headerName: "Email", width: 200 },
+    { field: "gmail", headerName: "Email", width: 250 },
     {
       field: "phone_number",
       headerName: "Phone number",
       width: 200,
     },
-    {
-      field: "password",
-      headerName: "Password",
-      width: 160,
-    },
+    // {
+    //   field: "password",
+    //   headerName: "Password",
+    //   width: 160,
+    // },
     {
       field: "Address_city",
       headerName: "Address",
@@ -83,7 +80,7 @@ function Userspage() {
     {
       field: "action",
       headerName: "Action",
-      width: 140,
+      width: 130,
       renderCell: (params) => {
         return (
           <div className="actionRow">

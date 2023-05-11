@@ -1,8 +1,6 @@
 import "./RoomPage.css";
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { Link } from "react-router-dom";
 
 function RoomPage() {
     const [data, setData] = useState([]);
