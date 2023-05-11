@@ -201,6 +201,8 @@
     background: #C0C081;
 }
 
+
+
 .icon.zone-4d:before {
     background: #B55642;
 }
@@ -276,6 +278,7 @@
 }
 
 .btn-left {
+    cursor: pointer;
     background-position: -152px 0 !important;
 }
 
