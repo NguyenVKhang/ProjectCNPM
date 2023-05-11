@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./SalesPage.css";
 import { DataGrid } from "@mui/x-data-grid";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { Link } from "react-router-dom";
-
+// import Plotly
+import {PieChart, Pie, BarChart, Cell} from 'recharts';
 function MoviesPage() {
   const [data, setData] = useState([]);
   
@@ -59,6 +58,15 @@ function MoviesPage() {
 
   ];
 
+  // chart plotly
+  var trace1 = {
+    x: ['giraffes', 'orangutans', 'monkeys'],
+    y: [20, 14, 23],
+    name: 'SF Zoo',
+    type: 'bar'
+  };
+
+
 
 
   return (
@@ -80,6 +88,11 @@ function MoviesPage() {
         <h1>Loading...</h1>
         )}
       </div>
+      {/* use plotly to chart */}
+      
+      
+      
+
     </div>
   );
 }
