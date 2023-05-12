@@ -1,7 +1,6 @@
 import "./NowShowing.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { BsFillHandThumbsUpFill } from "react-icons/bs"
 import { Col, Row } from "react-bootstrap";
 import { useMediaQuery } from 'react-responsive';
 
@@ -219,11 +218,7 @@ function MovieNowShowing() {
                                         <ul>
                                           {Cinema.Site.map((Site) => (
                                             <li 
-                                            // style={{
-                                            //   'textAlign': 'left',
-                                            //   'margin': '10px 0px',
-                                            //   'display': 'block',
-                                            // }} 
+ 
                                             key={Site.id} className="site">
                                               <span>{Site.site_name}</span>
                                               <ul>

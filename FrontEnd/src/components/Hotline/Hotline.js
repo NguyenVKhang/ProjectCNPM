@@ -4,9 +4,7 @@ import "../Hotline/animate.min.css";
 function Hotline() {
   return (
     <div>
-      {/* <title>Contact us - multifunctional contact button</title>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
+
       <div
         id="contact"
         className="arcontactus-widget arcontactus-message right sm active arcuAnimated"
