@@ -1,102 +1,12 @@
 import "./footer.css";
-import _4xd from "../../img/1.png";
-import imax from "../../img/6.png";
-import sturium from "../../img/8.png";
-import goldclass from "../../img/7.png";
-import lamour from "../../img/9.png";
-import sweetbox from "../../img/5.png";
-import premium from "../../img/10.png";
-import screenX from "../../img/11.png";
-import cineF from "../../img/3.png";
-import cineL from "../../img/4.png";
-import cineS from "../../img/2.png";
-import suit from "../../img/12.png";
 import cgvFoot from "../../img/cgv-foot.png";
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function Footer() {
   return (
     <div id="footer-container">
-      {/* <div className="footer-brand-slide">
-        <div className="footer-brand-cover">
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={_4xd} alt="_4xd" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={imax} alt="imax" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={sturium} alt="starium" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={goldclass} alt="goldclass" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={lamour} alt="lamour" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={sweetbox} alt="sweetbox" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={cineS} alt="cineS" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={premium} alt="premium" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={screenX} alt="screenX" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={cineF} alt="cineF" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img src={cineL} alt="cineL" />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/">
-              <img
-                style={{ width: "100%", margin: "0 -70px 0 -70px" }}
-                src={suit}
-                alt="suit"
-              />
-            </a>
-          </li>
-        </div>
-      </div> */}
       <div className="footer-cgv-policy">
         <div className="footer-container">
-          {/* <div className="footer-title footer-item footer-item2">
-            <h6>CGV Việt Nam</h6>
-            <li><a href="https://www.facebook.com/">Giới Thiệu</a></li>
-
-
-            <li><a href="https://www.cgv.vn/default/cgv-online/">Tiện Ích Online</a> </li>
-            <li><a href="https://www.facebook.com/">Thẻ Quà Tặng</a></li>
-            <li><a href="https://www.facebook.com/">Tuyển Dụng</a></li>
-            <li><a href="https://www.facebook.com/">Liên Hệ Quảng Cáo</a></li>
-          </div> */}
           <div className="footer-title footer-item footer-item2">
 
             <h6>D3K Việt Nam</h6>
@@ -149,11 +59,6 @@ function Footer() {
           <div className="cgv-foot">
             <img src={cgvFoot} alt="cgvFoot" />
           </div>
-
-          
-
-
-
 
           <div className="cgv-end">
             <h6>CÔNG TY TNHH D3K VIETNAM</h6>

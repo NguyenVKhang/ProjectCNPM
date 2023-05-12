@@ -166,7 +166,6 @@ class authController {
 
   async saveHistory(req = new Request(), res) {
     const { user_id, showtime_id, position_booked, room_id } = req.body;
-    console.log(`----------------------`);
     try {
       const date = new Date();
       const promises = position_booked.map(async (p) => {
@@ -188,8 +187,6 @@ class authController {
 
   async getHistory(req = new Request(), res) {
     const {user_id} = req.body;
-    console.log(req.body);
-    console.log(`--------------------`);
     const [rows] = await pool.execute(`SELECT cinema.name as cinema_name, ticket.payment_time as order_date, film.name as film_name, film.length as film_length, showtime.time as time, cinema_room.name_room as name_room, room_seat.seat_name as seat_name, ticket.ticket_id as ticket_id from ticket inner join showtime on showtime.showtime_id = ticket.showtime_id inner join film on film.film_id = showtime.film_id inner join room_seat on ticket.chair_number = room_seat.seat_id inner join cinema_room on cinema_room.room_id = showtime.room_id inner join cinema on cinema_room.cinema_id = cinema.cinema_id where ticket.user_id = ? order by(time) desc;`, [user_id]);
     return res.status(200).json({
       status: "success",

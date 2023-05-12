@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
-import { BsJustify } from "react-icons/bs";
 import logo from "./D3K.png";
 
 function Header() {
@@ -22,7 +22,6 @@ function Header() {
             />
             <a id="btn-zoom">
               <Link to="/newsoffer">Tin mới và ưu đãi</Link>
-              {/* Tin mới và ưu đãi */}
             </a>
           </div>
           <div className="btn-cover btn-cover1">
@@ -73,56 +72,20 @@ function Header() {
             <div className="menubartop">
               <ul>
                 <li className="menu">
-                  <Link to="/movies/now-showing">Phim Đang Chiếu</Link>
-                  {/* <ul className="subMenu">
-                    <li>
-                      <Link to="/movies/now-showing">Phim Đang Chiếu</Link>
-                    </li>
-                    <li>
-                      <Link to="/movies/coming-soon">Phim Sắp Chiếu</Link>
-                    </li>
-                  </ul> */}
+                  <Link to="/movies/now-showing">Phim Đang Chiếu 
+                  </Link>
                 </li>
                 <li className="menu">
                   
                   <Link to="/movies/coming-soon">Phim Sắp Chiếu</Link>
-                  {/* <ul
-                    className="subMenu"
-                    style={{
-                      marginLeft: " -10px",
-                    }}
-                  >
-                    <li>
-                      <Link to="/cinema">Tất cả các rạp</Link>
-                    </li>
-                    <li>
-                      <a href=""> Rạp Đặc Biệt</a>
-                    </li>
-                    <li>
-                      <a href=""> Rạp 3D</a>
-                    </li>
-                  </ul> */}
                 </li>
                 <li className="menu">
-                  {/* <Link to="/profile/general">Tài khoản</Link> */}
                   {user ? ( 
                     <Link to="/profile/general">Tài khoản</Link>
                   ) : (
                     <Link to="/login">Tài khoản</Link>
                   )}
-                  {/* <ul className="subMenu" style={{ marginLeft: "-20px" }}>
-                    <li>
-                      <a href=""> Tài khoản D3K</a>
-                    </li>
-                    <li>
-                      <a href=""> Quyền Lợi</a>
-                    </li>
-                  </ul> */}
                 </li>
-                {/* <li className="menu">
-                  <Link to="/newsoffer">Tin mới & Ưu đãi</Link>
-                </li> */}
-
                 <li className="menu">
                   <Link to="/contact">Liên hệ D3K</Link>
                 </li>
@@ -132,25 +95,6 @@ function Header() {
 
           </div>
         </div>
-
-        {/* <div className="dropdown">
-          <button id="btn-menu" data-bs-toggle="dropdown" aria-expanded="false">
-            <BsJustify />Menu
-          </button>
-          <button id="btn-tiket">
-            <span className="icon"><a href="https://www.cgv.vn/default/sales/order/history/"></a></span>
-          </button>
-          <ul className="dropdown-menu">
-            <li><Link to="/movies/now-showing">PHIM ĐANG CHIẾU</Link></li>
-            <li><Link to="/movies/coming-soon">PHIM SẮP CHIẾU</Link></li>
-            <li><Link to="/cinema">RẠP D3K</Link></li>
-            <li><a href=""> THÀNH VIÊN</a></li>
-            <li><a href=""> CULTUREPLEX</a></li>
-            <li><a href=""> TUYỂN DỤNG</a></li>
-            <li><a href=""> TIN MỚI VÀ ƯU ĐÃI</a></li>
-          </ul>
-        </div> */}
-
       </div>
     </>
   );

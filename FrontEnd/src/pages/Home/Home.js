@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
