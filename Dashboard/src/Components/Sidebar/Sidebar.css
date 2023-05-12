@@ -16,10 +16,12 @@
 }
 
 .itemTitle {
-  font-size: 13px;
-  opacity: 0.5;
+  font-size: 16px;
+  opacity: 1;
   margin-left: 5px;
-  margin-top: 10px;
+  margin-top: 25px;
+  /* bold */
+  
 }
 
 .items {
@@ -70,7 +72,7 @@
 .subItem1Wrapper {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .subItem1 {
@@ -80,7 +82,7 @@
 .subItem2Wrapper {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .subItem2 {
