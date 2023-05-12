@@ -7,100 +7,106 @@ import React, { useEffect } from 'react';
 function AuthPayment() {
     const navigate = useNavigate();
     const { state } = useLocation();
-    const currency = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(state.price);
-    console.log(currency, state.price);
+    const currency = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(state.price);
+
     useEffect(() => {
         const handleBeforeUnload = (event) => {
+          // Thực hiện các hành động tại đây trước khi người dùng rời khỏi trang
           event.preventDefault();
-          event.returnValue = '';
+          event.returnValue = 'Giao dịch chưa thành công bạn có chắc chắn rời khỏi trang này chứ?';
           fetch('http://localhost:3001/movie/updateStatusEmpty', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              movie: state.movie,
-              position: state.position,
-              position_booked: state.position_booked
+            movie: state.movie,
+            position: state.position,
+            position_booked: state.position_booked,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data);
             })
-          });
+            .catch((err) => {
+            console.log(err);
+            });
         };
+    
         window.addEventListener('beforeunload', handleBeforeUnload);
+    
         return () => {
           window.removeEventListener('beforeunload', handleBeforeUnload);
         };
-      }, []);
-
-      
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  
     const back = () => {
-        fetch("http://localhost:3001/movie/updateStatusEmpty", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                movie: state.movie,
-                position: state.position,
-                position_booked: state.position_booked
-            }),
+      fetch('http://localhost:3001/movie/updateStatusEmpty', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          movie: state.movie,
+          position: state.position,
+          position_booked: state.position_booked,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
         })
-
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
-        window.history.back()
-    }
-
-
-    const renderer = ({ hours, minutes, seconds, completed }) => {
-        if (completed) {
-            window.location.href = "/nocart";
-            fetch("http://localhost:3001/movie/updateStatusEmpty", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    movie: state.movie,
-                    position: state.position,
-                    position_booked: state.position_booked
-                }),
-            })
-
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            return (
-                <span>{minutes}:{seconds}</span>
-            )
-        }
+        .catch((err) => {
+          console.log(err);
+        });
+  
+      window.history.back();
     };
-
+  
+  
+    const renderer = ({ hours, minutes, seconds, completed }) => {
+      if (completed) {
+        window.location.href = '/nocart';
+        fetch('http://localhost:3001/movie/updateStatusEmpty', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            movie: state.movie,
+            position: state.position,
+            position_booked: state.position_booked,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        return (
+          <span>{minutes}:{seconds}</span>
+        )
+      }
+    };
+  
     const payment = () => {
-
-        const method = document.querySelector('input[name="payment"]:checked')
-
-        if (method === null) {
-            alert("Vui lòng chọn hình thức thanh toán");
-        }
-        else if (method.value === 'ZaloPay') {
-            navigate("/payment/ZaloPay", { state })
-        }
-        else {
-            alert("Chức năng đang được bảo trì")
-        }
-
+  
+      const method = document.querySelector('input[name="payment"]:checked')
+  
+      if (method === null) {
+        alert("Vui lòng chọn hình thức thanh toán");
+      }
+      else if (method.value === 'ZaloPay') {
+        navigate("/payment/ZaloPay", { state })
+      }
+      else {
+        alert("Chức năng đang được bảo trì")
+      }
     }
 
 
@@ -147,7 +153,7 @@ function AuthPayment() {
                             </div>
                             <div className="bottom-content">
                                 <div className="format-bg-top"></div>
-                                <a className="btn-left" title="Previous" onClick={back}></a>
+                                <p className="btn-left" title="Previous" onClick={back}></p>
                                 <div className="minicart-wrapper">
                                     <ul>
                                         <li className="item first">
@@ -234,7 +240,6 @@ function AuthPayment() {
                                                                             <dd>2</dd>
                                                                         </dl>
                                                                     </div>
-                                                                    <a className="details">I</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -248,7 +253,6 @@ function AuthPayment() {
                                                             <td className="data">
                                                                 <div className="truncated">
                                                                     <div className="truncated_full_value"></div>
-                                                                    <a className="details">I</a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -264,7 +268,7 @@ function AuthPayment() {
                                         </li>
                                     </ul>
                                 </div>
-                                <a className="btn-rights box" title="Next" onClick={payment}></a>
+                                <p className="btn-rights box" title="Next" onClick={payment}></p>
                                 <div className="format-bg-bottom"></div>
                             </div>
                         </div>

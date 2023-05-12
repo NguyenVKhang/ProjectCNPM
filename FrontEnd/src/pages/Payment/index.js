@@ -58,6 +58,7 @@ function Payment() {
         })
             .then((res) => res.json())
             .then((data) => {
+                // eslint-disable-next-line array-callback-return
                 data.data.map((item) => {
                     if (parseInt(item.trans_amount) === 1 && item.description === "P7XZMJ") {
                         clearInterval(interval);

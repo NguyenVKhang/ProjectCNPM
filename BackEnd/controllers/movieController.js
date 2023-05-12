@@ -273,8 +273,6 @@ class movieController {
 
   async getShowTime(req, res) {
     const film_id = req.params.id;
-    console.log(film_id);
-    const currentDay = new Date();
     let date = [];
     for(let i = 0; i < 20; i++) {
       let currentDate = new Date();
@@ -298,13 +296,7 @@ class movieController {
         }));
         return {cinema_name, id, Site: sites};
       }));
-      let types = [];
-      let type = {id: 1, type_name: "2D Phụ đề tiếng anh", Cinema: cinemas};
-      types.push(type);
-      let locations = [];
-      let location = {id: 1, place: "Hà nội", Movie_Type: types};
-      locations.push(location);
-      let datei = {id: i, day: currentDate, Location: locations};
+      let datei = {id: i, day: currentDate, Cinema: cinemas};
       date.push(datei);
     }
     return res.status(200).json({
