@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Lists.css";
 import { DataGrid } from "@mui/x-data-grid";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import { Link } from "react-router-dom";
+import { userRows } from "./../../Components/DummyData/DummyData";
 
 function Lists() {
   const [data, setData] = useState([]);
@@ -27,26 +30,28 @@ function Lists() {
   }, []);
 
 
-
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.employee !== id));
+  };
 
   const columns = [
-    { field: "employee_id"  , headerName: "ID", width: 100 },
+    { field: "employee_id", headerName: "ID", width: 50 },
     {
       field: "name",
       headerName: "User",
-      width: 200,
+      width: 160,
     },
-    { field: "gmail", headerName: "Email", width: 250 },
+    { field: "gmail", headerName: "Email", width: 200 },
     {
       field: "phone_number",
       headerName: "Phone number",
       width: 200,
     },
-    // {
-    //   field: "password",
-    //   headerName: "Password",
-    //   width: 160,
-    // },
+    {
+      field: "password",
+      headerName: "Password",
+      width: 160,
+    },
     {
       field: "Address",
       headerName: "Address",
@@ -59,23 +64,24 @@ function Lists() {
     // console.log("hello", data.data),
     <div className="userspage">
       <div style={{ height: "100%", width: "100%" }}>
-       
+
         {data.data && data.data.employee.length > 0 ? (
           <DataGrid
-          rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
-          columns={columns}
-          pageSize={10}
-          checkboxSelection
-          disableSelectionOnClick
+            rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
+            columns={columns}
+            pageSize={10}
+            checkboxSelection
+            disableSelectionOnClick
           />
         ) : (
           <h1>Loading...</h1>
         )}
 
-        
+
       </div>
     </div>
   );
 }
 
-export default Lists;
+export default Lists
+  ;
