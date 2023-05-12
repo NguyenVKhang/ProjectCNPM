@@ -10,9 +10,7 @@ function Chitiet() {
 
   const [showTimes, setShowTimes] = useState([]);
   const [toggleState, setToggleState] = useState(1);
-  const [place, setPlace] = useState(1);
   const [calendar, setCalendar] = useState(0);
-  const [type, setType] = useState(1);
 
   const navigate = useNavigate();
 
@@ -170,8 +168,6 @@ function Chitiet() {
                             return (
                               <li key={DATE.id} className={`${DATE.id === calendar ? "date current" : "date"}`} onClick={() => {
                                 setCalendar(DATE.id);
-                                setPlace(1);
-                                setType(1);
                               }}>
                                 <div className="day" title={DATE.day}>
                                   <span>{dAte.getMonth() + 1}</span>
