@@ -35,7 +35,7 @@ function Lists() {
   };
 
   const columns = [
-    { field: "employee_id"  , headerName: "ID", width: 50 },
+    { field: "employee_id", headerName: "ID", width: 50 },
     {
       field: "name",
       headerName: "User",
@@ -64,24 +64,24 @@ function Lists() {
     // console.log("hello", data.data),
     <div className="userspage">
       <div style={{ height: "100%", width: "100%" }}>
-       
-        {data.data && data.data.employee.length > 0 ? (
+
+        {data && data.data && data.data.employee.length > 0 ? (
           <DataGrid
-          rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
-          columns={columns}
-          pageSize={10}
-          checkboxSelection
-          disableSelectionOnClick
+            rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
+            columns={columns}
+            pageSize={10}
+            checkboxSelection
+            disableSelectionOnClick
           />
         ) : (
           <h1>Loading...</h1>
         )}
 
-        
+
       </div>
     </div>
   );
 }
 
 export default Lists
-;
+  ;

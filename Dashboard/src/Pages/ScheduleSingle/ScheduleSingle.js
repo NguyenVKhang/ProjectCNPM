@@ -20,18 +20,18 @@ function ScheduleSingle() {
             "Content-Type": "application/json",
           },
         });
-        
+
         const result = await res.json();
         // setSchedule(result.data.schedule);
         // data.schedule.time: "2021-10-10T10:00:00.000Z"
         // convert to set default value for input type="date" and input type="time"
         const dateObj = new Date(result.data.schedule.time);
-        
+
         const date = dateObj.toISOString().split("T")[0];
         dateObj.setUTCHours(dateObj.getUTCHours() + 7);
         const time = dateObj.toISOString().split("T")[1].split(".")[0];
 
-      
+
         setSchedule({ ...schedule, date: date, time: time, room_id: result.data.schedule.room_id, film_id: result.data.schedule.film_id });
         // schedule.date = date;
         // schedule.time = time;
@@ -45,7 +45,49 @@ function ScheduleSingle() {
       }
     };
     dataMovies();
-      
+
+  }, []);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const dataCinemas = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/cinema/getAllCinemaRoom", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const result = await res.json();
+        setData(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    dataCinemas();
+  }, []);
+
+  const [dataMovie, setDataMovie] = useState([]);
+
+
+
+  useEffect(() => {
+    const dataMovies = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/movie/getAllMovies", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const result = await res.json();
+        setDataMovie(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    dataMovies();
   }, []);
 
   const [updatedMovie, setUpdatedMovie] = useState(null);
@@ -55,10 +97,11 @@ function ScheduleSingle() {
   const [uploaded, setUploaded] = useState(0);
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     const value = e.target.value;
     setSchedule({ ...schedule, [e.target.name]: value });
   };
-// feature: id, date: date + time, room_id, film_id
+  // feature: id, date: date + time, room_id, film_id
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateSchedule = {
@@ -68,28 +111,28 @@ function ScheduleSingle() {
       film_id: schedule.film_id,
     };
 
-    if (!schedule.date  || !schedule.time || !schedule.room_id || !schedule.film_id) {
+    if (!schedule.date || !schedule.time || !schedule.room_id || !schedule.film_id) {
       alert("All fields are required!");
       return;
-  } else {
-    fetch("http://localhost:3001/schedule/updateSchedule/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateSchedule),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        alert("Cập nhật thành công");
-        window.location.reload();
-      }
-    );
-  }
-};
+    } else {
+      fetch("http://localhost:3001/schedule/updateSchedule/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateSchedule),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert("Cập nhật thành công");
+          window.location.reload();
+        }
+        );
+    }
+  };
 
   return (
-   console.log(schedule),
+    console.log(schedule),
     <div className="singleMoviePage">
       <div className="movieAndButtonWrapper">
         <h2 className="movieTitle">Schedule</h2>
@@ -125,29 +168,39 @@ function ScheduleSingle() {
                 onChange={handleChange}
               />
             </div>
-            
+
             <div className="movieItem">
-              <label>Room ID</label>
-              <input
+              <label for="roomList">Room ID</label>
+              {/* <input
                 type="number"
                 placeholder={schedule?.room_id}
                 defaultValue={schedule?.room_id}
                 name="room_id"
                 onChange={handleChange}
-              />
-
+              /> */}
+              <select id="roomList" onChange={handleChange}>
+                {data && data.data && data.data.cinema && data.data.cinema.map((item) => (
+                  (<option value={item.room_id}>{`${item.room_id}. ${item.name_room} - ${item.name}`}</option>)
+                ))}
+              </select>
             </div>
 
 
-          
+
+
             <div className="movieItem">
               <label>Film ID</label>
-              <input
+              {/* <input
                 type="number"
                 defaultValue={schedule?.film_id}
                 name="film_id"
                 onChange={handleChange}
-              />
+              /> */}
+              <select id="filmList" onChange={handleChange}>
+                {dataMovie && dataMovie.data && dataMovie.data.movies && dataMovie.data.movies.map((item) => (
+                  (<option value={item.film_id}>{`${item.film_id}. ${item.name}`}</option>)
+                ))}
+              </select>
             </div>
 
 
@@ -157,7 +210,7 @@ function ScheduleSingle() {
               </button>
             </div>
 
-            
+
           </form>
         </div>
       </div>

@@ -46,6 +46,7 @@ class cinemaController {
             });
         }
     }
+
 }
 
 module.exports = new cinemaController();

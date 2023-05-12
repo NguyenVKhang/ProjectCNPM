@@ -70,6 +70,7 @@ function Sidebar() {
           </Link>
           <Link to="/rooms" className="link">
             <div className="subItem2Wrapper">
+              <FormatListBulletedOutlinedIcon className="subItem2" />
               <span className="subItem2">Rooms</span>
             </div>
           </Link>
