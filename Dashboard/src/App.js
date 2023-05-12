@@ -20,13 +20,15 @@ import ScheduleSingle from "./Pages/ScheduleSingle/ScheduleSingle";
 import ScheduleNew from "./Pages/ScheduleNew/ScheduleNew";
 import RoomPage from "./Pages/RoomPage/RoomPage";
 import SalesPage from "./Pages/SalesPage/SalesPage";
+import TicketPage from "./Pages/TicketPage/TicketPage";
+
 function App() {
   const { user } = useContext(authContext);
   return (
     <Router>
       <Switch>
         <Route path="/login">
-          {!user ? <LoginPage /> : <Redirect to="/schedules" />}
+          {!user ? <LoginPage /> : <Redirect to="/movies" />}
         </Route>
         {user ? (
           <>
@@ -69,6 +71,9 @@ function App() {
               </Route>
               <Route path="/sales">
                 <SalesPage />
+              </Route>
+              <Route path="/tickets">
+                <TicketPage />
               </Route>
 
             </div>

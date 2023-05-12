@@ -5,6 +5,7 @@ import EqualizerOutlinedIcon from "@mui/icons-material/EqualizerOutlined";
 // import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
 import LocalMoviesOutlinedIcon from "@mui/icons-material/LocalMoviesOutlined";
+import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 
 import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
 
@@ -17,6 +18,34 @@ function Sidebar() {
     <div className="sidebar">
      
       <div className="itemsContainer">
+
+
+      <div className="itemTitle">
+          <span>Quick Menu</span>
+        </div>
+
+
+
+        <div className="items">
+            <Link to="/tickets" className="link">
+              <div className="subItem2Wrapper">
+                <ConfirmationNumberOutlinedIcon className="subItem2" />
+                <span className="subItem2">Tickets</span>
+              </div>
+            </Link>
+            <Link to="/schedules" className="link">
+              <div className="subItem2Wrapper">
+                <EditCalendarOutlinedIcon className="subItem2" />
+                <span className="subItem2">Schedule</span>
+              </div>
+            </Link>
+            <Link to="/movies" className="link">
+              <div className="subItem1Wrapper">
+                <LocalMoviesOutlinedIcon className="subItem0" />
+                <span className="subItem1">Movies</span>
+              </div>
+            </Link>
+          </div>
 
       <div className="itemTitle">
           <span>Analytics</span>
@@ -32,22 +61,13 @@ function Sidebar() {
         </div>
 
 
-        <div className="itemTitle">
-          <span>Quick Menu</span>
-        </div>
-        <div className="items">
-          <Link to="/schedules" className="link">
-            <div className="subItem2Wrapper">
-              <EditCalendarOutlinedIcon className="subItem2" />
-              <span className="subItem2">Schedule</span>
-            </div>
-          </Link>
-          <Link to="/movies" className="link">
-            <div className="subItem1Wrapper">
-              <LocalMoviesOutlinedIcon className="subItem0" />
-              <span className="subItem1">Movies</span>
-            </div>
-          </Link>
+        
+
+       
+          <div className="itemTitle">
+            <span>People Role</span>
+          </div>
+          <div className="items">
           <Link to="/users" className="link">
             <div className="subItem0Wrapper">
               <PersonOutlinedIcon className="subItem1" />
