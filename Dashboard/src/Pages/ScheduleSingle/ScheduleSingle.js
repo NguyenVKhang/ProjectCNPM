@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./ScheduleSingle.css";
-// import PublishIcon from "@mui/icons-material/Publish";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-// import { storage } from "./../../Firebase/Firebase";
 function ScheduleSingle() {
   const location = useLocation();
   const [schedule, setSchedule] = useState([]);
+  // const [ data, setData] = useState([]);
+  // const [dataMovie, setDataMovie] = useState([]);
   const showtime_id = location.pathname.split("/")[2];
   useEffect(() => {
     const dataMovies = async () => {
@@ -35,18 +35,11 @@ function ScheduleSingle() {
 
   }, []);
 
-  const [updatedMovie, setUpdatedMovie] = useState(null);
-  const [trailer, setTrailer] = useState(null);
-  const [video, setVideo] = useState(null);
-  const [img, setImg] = useState(null);
-  const [uploaded, setUploaded] = useState(0);
-
   const handleChange = (e) => {
     console.log(e.target.value);
     const value = e.target.value;
     setSchedule({ ...schedule, [e.target.name]: value });
   };
-  // feature: id, date: date + time, room_id, film_id
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateSchedule = {
@@ -69,6 +62,14 @@ function ScheduleSingle() {
       })
         .then((res) => res.json())
         .then((data) => {
+          if (data.message === "Room is not available") {
+            alert("Không tồn tại phòng chiếu này. Yêu cầu nhập lại.");
+            return;
+          }
+          if (data.message === "Film is not available") {
+            alert("Không tồn tại phim này. Yêu cầu nhập lại.");
+            return;
+          }
           alert("Cập nhật thành công");
           window.location.reload();
         }
@@ -116,18 +117,18 @@ function ScheduleSingle() {
 
             <div className="movieItem">
               <label for="roomList">Room ID</label>
-              {/* <input
+              <input
                 type="number"
                 placeholder={schedule?.room_id}
                 defaultValue={schedule?.room_id}
                 name="room_id"
                 onChange={handleChange}
-              /> */}
-              <select id="roomList" onChange={handleChange}>
+              />
+              {/* <select id="roomList" onChange={handleChange}>
                 {data && data.data && data.data.cinema && data.data.cinema.map((item) => (
                   (<option value={item.room_id}>{`${item.room_id}. ${item.name_room} - ${item.name}`}</option>)
                 ))}
-              </select>
+              </select> */}
             </div>
 
 
@@ -135,17 +136,20 @@ function ScheduleSingle() {
 
             <div className="movieItem">
               <label>Film ID</label>
-              {/* <input
+              <input
                 type="number"
                 defaultValue={schedule?.film_id}
                 name="film_id"
                 onChange={handleChange}
-              /> */}
+              />
+              {/* {
+                console.log(dataMovie)
+              }
               <select id="filmList" onChange={handleChange}>
                 {dataMovie && dataMovie.data && dataMovie.data.movies && dataMovie.data.movies.map((item) => (
                   (<option value={item.film_id}>{`${item.film_id}. ${item.name}`}</option>)
                 ))}
-              </select>
+              </select> */}
             </div>
 
 

@@ -84,9 +84,6 @@ function Userspage() {
       renderCell: (params) => {
         return (
           <div className="actionRow">
-            {/* <Link to={"/user/" + params.row.id}>
-              <button className="edit">Edit</button>
-            </Link> */}
             <DeleteForeverOutlinedIcon
               className="icon"
               onClick={() => handleDelete(params.row.id)}

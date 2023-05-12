@@ -3,7 +3,6 @@ import "./Lists.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { Link } from "react-router-dom";
-import { userRows } from "./../../Components/DummyData/DummyData";
 
 function Lists() {
   const [data, setData] = useState([]);
