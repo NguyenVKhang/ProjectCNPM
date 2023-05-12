@@ -4,6 +4,9 @@ class scheduleController {
     async getAllSchedules(req = new Request(), res) {
         try {
             const [rows] = await pool.execute(`SELECT * from showtime;`);
+            
+
+            
             return res.status(200).json({
                 status: "success",
                 data: { schedule: rows },
@@ -29,6 +32,16 @@ class scheduleController {
             INNER JOIN cinema ON
                 cinema_room.cinema_id = cinema.cinema_id`
             );
+            // convert dates_minium convert yyyy-mm-ddThh:mm:ss.000Z to yyyy-mm-dd hh:mm:ss
+            rows.forEach((row) => {
+                if (row.time != "Invalid Date")
+
+                {
+                    row.time = row.time.toISOString().slice(0, 19).replace('T', ' ');                    
+                }
+            });
+
+
             return res.status(200).json({
                 status: "success",
                 data: { schedule: rows },
