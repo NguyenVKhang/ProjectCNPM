@@ -150,6 +150,25 @@ class scheduleController {
             const {id, date, room_id, film_id } = req.body;
 
             const ticket_fare = req.body.ticket_fare || 0;
+            // check if room_id is not available
+            const [rows3] = await pool.execute(`SELECT * from cinema_room where room_id = ${room_id};`);
+            if (rows3.length === 0) {
+                return res.status(400).json({
+                    status: "error",
+                    message: "Room is not available",
+                });
+            }
+
+            // check if film_id is not available
+            const [rows2] = await pool.execute(`SELECT * from film where film_id = ${film_id};`);
+            if (rows2.length === 0) {
+                return res.status(400).json({
+                    status: "error",
+                    message: "Film is not available",
+                });
+            }
+
+
             const [rows] = await pool.execute(`UPDATE showtime SET ticket_fare = '${ticket_fare}', time = '${date}', room_id = '${room_id}', film_id = '${film_id}' WHERE showtime_id = ${id};`);
             return res.status(200).json({
                 status: "success",

@@ -53,7 +53,6 @@ function SchedulesPage() {
       width: 125,
     },
     {
-      // get field name in firecolume
       field: "film_name",
       headerName: "Film Name",
       width: 200,
