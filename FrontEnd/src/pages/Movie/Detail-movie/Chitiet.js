@@ -183,84 +183,33 @@ function Chitiet() {
                           })}
                         </ul>
                       </div>
-                      <div className="modal-body">
-                        <ul className="toggle-tabs-city">
-                          {showTimes.map((Date) => (
-                            <li key={Date.id} className={`${Date.id === calendar ? "appear" : "hide"}`}>
-                              <ul>
-                                {Date.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "location current-location" : "location"}`} onClick={() => {
-                                    setPlace(Location.id);
-                                    setType(1);
-                                  }}>
-                                    <span>{Location.place}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="modal-body type-watch">
-                        <ul className="toggle-tabs-type">
-                          {showTimes.map((Date) => (
-                            <li key={Date.id} className={`${Date.id === calendar ? "appear" : "hide"}`}>
-                              <ul>
-                                {Date.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "appear" : "hide"}`}>
-                                    <ul>
-                                      {Location.Movie_Type.map((Movie_Type) => (
-                                        <li key={Movie_Type.id} className={`${Movie_Type.id === type ? "type current-type" : "type"}`} onClick={() => setType(Movie_Type.id)}>
-                                          <span>{Movie_Type.type_name}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                       <div className="modal-footer">
                         <ul>
                           {showTimes.map((DATE) => (
                             <li key={DATE.id} className={`${DATE.id === calendar ? "appear" : "hide"}`}>
                               <ul>
-                                {DATE.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "appear" : "hide"}`}>
+                                {DATE.Cinema.map((Cinema) => (
+                                  <li style={{
+                                    'textAlign': 'left'
+                                  }} key={Cinema.id} className="cinema">
+                                    <span>{Cinema.cinema_name}</span>
                                     <ul>
-                                      {Location.Movie_Type.map((Movie_Type) => (
-                                        <li key={Movie_Type.id} className={`${Movie_Type.id === type ? "appear" : "hide"}`}>
+                                      {Cinema.Site.map((Site) => (
+                                        <li style={{
+                                          'textAlign': 'left'
+                                        }} key={Site.id} className="site">
+                                          <span>{Site.site_name}</span>
                                           <ul>
-                                            {Movie_Type.Cinema.map((Cinema) => (
-                                              <li style={{
-                                                'textAlign': 'left'
-                                              }} key={Cinema.id} className="cinema">
-                                                <span>{Cinema.cinema_name}</span>
-                                                <ul>
-                                                  {Cinema.Site.map((Site) => (
-                                                    <li style={{
-                                                      'textAlign': 'left'
-                                                    }} key={Site.id} className="site">
-                                                      <span>{Site.site_name}</span>
-                                                      <ul>
-                                                        {Site.Time.map((Time) => {
-                                                          return (
-                                                            <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
-                                                              <span>{String(Time.timeSt).slice(0, 5)}</span>
-                                                            </li>
-                                                          )
-                                                        })}
-                                                        <br></br>
-                                                      </ul>
-                                                      <br></br>
-                                                    </li>
-                                                  ))}
-                                                </ul>
-                                              </li>
-                                            ))}
+                                            {Site.Time.map((Time) => {
+                                              return (
+                                                <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
+                                                  <span>{String(Time.timeSt).slice(0, 5)}</span>
+                                                </li>
+                                              )
+                                            })}
+                                            <br></br>
                                           </ul>
+                                          <br></br>
                                         </li>
                                       ))}
                                     </ul>

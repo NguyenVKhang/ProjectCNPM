@@ -4,7 +4,8 @@ import "./Ticket.css";
 
 
 function Ticket() {
-    const { state } = useLocation();
+  
+    const  {state}  = useLocation();
     console.log(state, 12345);
     const [isLoaded, setIsLoaded] = useState(false);
     const [movie, setMovie] = useState({});
