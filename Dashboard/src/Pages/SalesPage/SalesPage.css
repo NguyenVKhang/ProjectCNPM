@@ -1,0 +1,16 @@
+.moviesPage {
+  flex: 0.9;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart {
+  width: 50%;
+  margin-right: 20px;
+}

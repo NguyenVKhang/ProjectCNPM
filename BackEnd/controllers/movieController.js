@@ -1,5 +1,5 @@
-const MovieNowShowing = require("../models/MovieNowShowing");
-const MovieComingSoon = require("../models/MovieComingSoon");
+// const MovieNowShowing = require("../models/MovieNowShowing");
+// const MovieComingSoon = require("../models/MovieComingSoon");
 const axios = require("axios");
 import pool from "../config/index.js";
 class movieController {
@@ -7,7 +7,15 @@ class movieController {
   async getMoviesNowShowing(req = new Request(), res) {
     try {
       const [moviesNowShowing, fields] = await pool.execute('SELECT * FROM film where dates_minium < now()');
+      // for (let i = 0; i < data.data.moviesNowShowing.length; i++) {
+      //   data.data.moviesNowShowing[i].date_minium = data.data.moviesNowShowing[i].date_minium + 1;
+      // }
 
+      for(let i = 0; i < moviesNowShowing.length; i++){
+        moviesNowShowing[i].dates_minium = moviesNowShowing[i].dates_minium.getFullYear() + '-' + (moviesNowShowing[i].dates_minium.getMonth() + 1) + '-' + moviesNowShowing[i].dates_minium.getDate();
+
+      }
+      
       moviesNowShowing.forEach((movie) => {
         const time = movie.length;
         const timeConvert = time.split(':');
@@ -34,6 +42,16 @@ class movieController {
   async getMoviesComingSoon(req = new Request(), res) {
     try {
       const [moviesComingSoon, fields] = await pool.execute('SELECT * FROM film where dates_minium > now()');
+
+      // for(let i = 0; i < moviesNowShowing.length; i++){
+      //   moviesNowShowing[i].dates_minium = moviesNowShowing[i].dates_minium.getFullYear() + '-' + (moviesNowShowing[i].dates_minium.getMonth() + 1) + '-' + moviesNowShowing[i].dates_minium.getDate();
+
+      // }
+
+      for (let i = 0; i < moviesComingSoon.length; i++) {
+        moviesComingSoon[i].dates_minium = moviesComingSoon[i].dates_minium.getFullYear() + '-' + (moviesComingSoon[i].dates_minium.getMonth() + 1) + '-' + moviesComingSoon[i].dates_minium.getDate();
+
+      }
 
       moviesComingSoon.forEach((movie) => {
         const time = movie.length;
@@ -77,81 +95,6 @@ class movieController {
     }
   }
 
-  async getMovieByCinplex(req = new Request(), res) {
-    const { cinplex, place } = req.body;
-    const movie = await MovieNowShowing.find({});
-
-
-    const date = new Date(2023, 1, 23);
-
-    const movieByCinplex = movie.filter((movie) => {
-      return movie.Date.some((Date) => {
-        return Date.day.getTime() === date.getTime() && Date.Location.some((Location) => {
-          return Location.place === place && Location.Movie_Type.some((Movie_Type) => {
-            return Movie_Type.Cinema.some((Cinema) => {
-              return Cinema.cinema_name === cinplex;
-            })
-          })
-        })
-      })
-    }).map((Movie) => {
-      const name = Movie.name;
-      const image = Movie.image;
-      const itemRate = Movie.itemRate;
-      const day = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).day
-
-      const location = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).place
-
-      const type = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).Movie_Type.filter((Movie_Type) => {
-        return Movie_Type.Cinema.some((Cinema) => {
-          return Cinema.cinema_name === cinplex;
-        })
-      }).map((Movie_Type) => {
-        return {
-          type_name: Movie_Type.type_name,
-          Cinema: Movie_Type.Cinema.filter((Cinema) => {
-            return Cinema.cinema_name === cinplex;
-          }
-          )
-        }
-      })
-
-
-      const cinema = Movie.Date.find((Date) => {
-        return Date.day.getTime() === date.getTime();
-      }).Location.find((Location) => {
-        return Location.place === place;
-      }).Movie_Type.find((Movie_Type) => {
-        return Movie_Type.Cinema.some((Cinema) => {
-          return Cinema.cinema_name === cinplex;
-        })
-      }).Cinema.find((Cinema) => {
-        return Cinema.cinema_name === cinplex;
-      }).cinema_name
-
-      return { name, image, itemRate, day, location, type, cinema };
-
-    })
-
-    console.log(movieByCinplex)
-
-
-    return res.status(200).json({
-      status: "success",
-      data: { movieByCinplex }
-    });
-  }
-
 
   async getDetailMovieNowShowing(req = new Request(), res) {
     const { id } = req.body;
@@ -172,7 +115,7 @@ class movieController {
 
       
       const year = movie[0].dates_minium.getFullYear();
-      const month = movie[0].dates_minium.getMonth();
+      const month = movie[0].dates_minium.getMonth() + 1;
       const day = movie[0].dates_minium.getDate();
 
       // const date = new Date(year, month, day);
@@ -190,34 +133,34 @@ class movieController {
     }
   }
 
-  async getDetailMovieComingSoon(req = new Request(), res) {
-    const { name } = req.body;
-    if (!name) {
-      return res.status(400).json({
-        status: "error",
-        message: "Name is required",
-      });
-    }
-    try {
-      const movie = await MovieComingSoon.findOne({
-        name
-      });
-      if (!movie) {
-        return res
-          .status(400)
-          .json({ status: "error", message: "Movie does not exist" });
-      }
-      return res.status(200).json({
-        status: "success",
-        data: { movie }
-      });
-    } catch (error) {
-      return res.status(503).json({
-        status: "error",
-        message: "Service error. Please try again later",
-      });
-    }
-  }
+  // async getDetailMovieComingSoon(req = new Request(), res) {
+  //   const { name } = req.body;
+  //   if (!name) {
+  //     return res.status(400).json({
+  //       status: "error",
+  //       message: "Name is required",
+  //     });
+  //   }
+  //   try {
+  //     const movie = await MovieComingSoon.findOne({
+  //       name
+  //     });
+  //     if (!movie) {
+  //       return res
+  //         .status(400)
+  //         .json({ status: "error", message: "Movie does not exist" });
+  //     }
+  //     return res.status(200).json({
+  //       status: "success",
+  //       data: { movie }
+  //     });
+  //   } catch (error) {
+  //     return res.status(503).json({
+  //       status: "error",
+  //       message: "Service error. Please try again later",
+  //     });
+  //   }
+  // }
 
   /** */
   
@@ -248,26 +191,59 @@ class movieController {
 
   //updateStatus post
   async updateStatus(req = new Request(), res) {
-    const { movie, position, position_booked } = req.body;
-    console.log(position_booked);
-    console.log([movie[0].id, position[0][0].room_id]);
     try {
-      const promises = position_booked.map(async (p) => {
-        const [rows] = await pool.execute(`INSERT INTO booked_seat (showtime_id, seat_id) VALUES (?, (SELECT seat_id from room_seat WHERE room_id = ? and seat_name = ?));`, [movie[0].id, position[0][0].room_id, p]);
-        return rows;
-      });
-      await Promise.all(promises);
+      const { movie, position, position_booked } = req.body;
   
-      return res.status(200).json({
-        status: "success",
+      console.log(position_booked);
+      console.log([movie[0].id, position[0][0].room_id]);
+  
+      const [data] = await pool.execute(
+        `SELECT room_seat.seat_name
+        FROM booked_seat
+        INNER JOIN room_seat ON booked_seat.seat_id = room_seat.seat_id
+        WHERE booked_seat.showtime_id = ?`,
+        [movie[0].id]
+      );
+  
+      let booked = false;
+      data.forEach((data1) => {
+        position_booked.forEach((p) => {
+          if (data1.seat_name === p) {
+            booked = true;
+          }
+        });
       });
+  
+      if (!booked) {
+        const promises = position_booked.map(async (p) => {
+          const [rows] = await pool.execute(
+            `INSERT INTO booked_seat (showtime_id, seat_id)
+            VALUES (?, (SELECT seat_id FROM room_seat WHERE room_id = ? AND seat_name = ?))`,
+            [movie[0].id, position[0][0].room_id, p]
+          );
+          return rows;
+        });
+  
+        await Promise.all(promises);
+  
+        return res.status(200).json({
+          status: "success",
+          type: 1 // thành công
+        });
+      } else {
+        return res.status(200).json({
+          status: "success",
+          type: 2 // có người đặt rồi
+        });
+      }
     } catch (error) {
       console.log(error);
       return res.status(500).json({
-        status: "error",
+        status: "error"
       });
     }
   }
+  
   
   async updateStatusEmpty(req = new Request(), res) {
     const { movie, position, position_booked } = req.body;
@@ -297,8 +273,6 @@ class movieController {
 
   async getShowTime(req, res) {
     const film_id = req.params.id;
-    console.log(film_id);
-    const currentDay = new Date();
     let date = [];
     for(let i = 0; i < 20; i++) {
       let currentDate = new Date();
@@ -322,13 +296,7 @@ class movieController {
         }));
         return {cinema_name, id, Site: sites};
       }));
-      let types = [];
-      let type = {id: 1, type_name: "2D Phụ đề tiếng anh", Cinema: cinemas};
-      types.push(type);
-      let locations = [];
-      let location = {id: 1, place: "Hà nội", Movie_Type: types};
-      locations.push(location);
-      let datei = {id: i, day: currentDate, Location: locations};
+      let datei = {id: i, day: currentDate, Cinema: cinemas};
       date.push(datei);
     }
     return res.status(200).json({
@@ -426,6 +394,7 @@ class movieController {
 
   async getPosition(req, res) {
     const film_id  = req.body.id;
+    console.log(film_id)
     if (!film_id) {
       return res.status(400).json({
         status: "error",

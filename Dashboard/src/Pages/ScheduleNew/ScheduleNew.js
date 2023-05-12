@@ -1,35 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {  useState } from "react";
 import "./ScheduleNew.css";
-import { storage } from "../../Firebase/Firebase";
-import { postMovie } from "./../MoviesPage/MoviesApiCall";
-import { moviesContext } from "./../../Context/Movies/MoviesContext";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useHistory } from "react-router-dom";
 import { Alert } from "@mui/material";
 
-// feature: name, description, length,genres, trailer, poster, release_date, dates_minium, actor, director
 function ScheduleNew() {
   const [schedule, setMovie] = useState(null);
-  const [img, setImg] = useState(null);
-  const [imgTitle, setImgTitle] = useState(null);
-  const [imgThumbnail, setImgThumbnail] = useState(null);
-  const [trailer, setTrailer] = useState("");
-  const [video, setVideo] = useState(null);
-  const [uploaded, setUploaded] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(0);
-  const [error, setError] = useState(false);
   const [flag, setFlag] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [length, setLength] = useState("");
-  const [genres, setGenres] = useState("");
-  const [poster, setPoster] = useState("");
-  const [release_date, setRelease_date] = useState("");
-  const [dates_minium, setDates_minium] = useState("");
-  const [actor, setActor] = useState("");
-  const [director, setDirector] = useState("");
-
 
   const history = useHistory();
 
@@ -39,25 +15,10 @@ function ScheduleNew() {
   };
 
 
-  useEffect(() => {
-    if (uploaded === 5) {
-      setLoading(false);
-    }
-  }, [uploaded]);
-
-
-  const { dispatch, isFetching } = useContext(moviesContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    postMovie(schedule, dispatch);
-    history.push("/movies");
-  };
-
   const submitForm = (e) => {
     e.preventDefault();
     const newSchedule = {
-        ticket_fare: schedule.ticket_fare,
+        ticket_fare: 10000,
         time: schedule.date + " " + schedule.time,
         room_id: schedule.room_id,
         film_id: schedule.film_id,
@@ -77,7 +38,27 @@ function ScheduleNew() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          history.push("/schedules");
+          if (data.status === "error") {
+            if(data.message === "Room is not available"){
+              alert("Phòng không tồn tại. Yêu cầu chọn lại phòng chiếu.")
+            }
+            if (data.message === "Film is not available") {
+              alert("Film không tồn tại. Yêu cầu chọn lại film.")
+            }
+
+            if (data.message === "There is a showtime in the same room and time within 2 hours") {
+              alert("Có lịch chiếu trong 2 tiếng tới cho cùng phòng và cùng thời gian. Yêu cầu chọn lại thời gian hoặc phòng chiếu.")
+            }
+
+            
+          } else {
+            alert("Thêm lịch chiếu thành công");
+            history.push("/schedules");
+          }
+          
+
+
+          
         }
         );
 
@@ -90,15 +71,7 @@ function ScheduleNew() {
     <div className="newMoviePage">
       <h1 className="newMovieTitle">Post a New Schedule</h1>
       <form action="" className="uploadForm" onSubmit={submitForm}>
-        <div className="uploadItem">
-          <label>Ticket Fare</label>
-          <input
-            type="number"
-            placeholder="100000"
-            name="ticket_fare"
-            onChange={handleChange}
-          />
-        </div>
+
         <div className="uploadItem">
           <label>Time</label>
           <input

@@ -46,8 +46,11 @@ function History() {
                                 <li key={index}>
                                     <div className={`content-page__item ${bg_class}`}>
                                         <div className="content-page__item__title">
-                                            <h3>Đơn hàng #{item.ticket_id}</h3>
-                                            <p>Ngày đặt hàng: {order_date.toLocaleString("en-GB")}</p>
+                                            <h3
+                                            // style: bold
+                                                style={{ fontWeight: "bold" }}
+                                            >Ticket ID #{item.ticket_id}</h3>
+                                            <p>Ngày đặt vé: {order_date.toLocaleString("en-GB")}</p>
                                         </div>
                                         <div className="content-page__item__content">
                                             <div className="content-page__item__content__item">

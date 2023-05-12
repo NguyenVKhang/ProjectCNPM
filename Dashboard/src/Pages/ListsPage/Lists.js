@@ -65,7 +65,7 @@ function Lists() {
     <div className="userspage">
       <div style={{ height: "100%", width: "100%" }}>
 
-        {data && data.data && data.data.employee.length > 0 ? (
+        {data.data && data.data.employee.length > 0 ? (
           <DataGrid
             rows={data.data.employee.map((user) => ({ ...user, id: user.employee_id }))}
             columns={columns}

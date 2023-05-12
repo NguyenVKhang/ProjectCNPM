@@ -1,20 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./SingleMoviePage.css";
-import PublishIcon from "@mui/icons-material/Publish";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { storage } from "./../../Firebase/Firebase";
-import { updateMovie } from "../MoviesPage/MoviesApiCall";
-import { moviesContext } from "./../../Context/Movies/MoviesContext";
 
 function SingleMoviePage() {
   const location = useLocation();
-  // const movie = location.movie;
   const [movie, setMovie] = useState([]);
   const film_id = location.pathname.split("/")[2];
   useEffect(() => {
     const dataMovies = async () => {
-      // console.log(film_id)
       try {
         const res = await fetch("http://localhost:3001/movie/getMovie/" + film_id, {
           method: "GET",
@@ -33,54 +27,15 @@ function SingleMoviePage() {
       
   }, []);
 
-  const [updatedMovie, setUpdatedMovie] = useState(null);
-  const [trailer, setTrailer] = useState(null);
-  const [video, setVideo] = useState(null);
-  const [img, setImg] = useState(null);
-  const [uploaded, setUploaded] = useState(0);
 
   const handleChange = (e) => {
     const value = e.target.value;
     setMovie({ ...movie, [e.target.name]: value });
   };
 
-  const upload = (updatedItems) => {
-    updatedItems.forEach((updatedItem) => {
-      const uploadTask = storage
-        .ref(`/updatedItems/${updatedItem.file.name}`)
-        .put(updatedItem.file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + " % done");
-        },
-        (err) => {
-          console.log(err);
-        },
-        () => {
-          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-            setUpdatedMovie((prev) => {
-              return { ...prev, [updatedItem.label]: url };
-            });
-            setUploaded((prev) => prev + 1);
-          });
-        }
-      );
-    });
-  };
 
-  const handleUpload = (e) => {
-    e.preventDefault();
-    upload([
-      { file: img, label: "img" },
-      { file: trailer, label: "trailer" },
-      { file: video, label: "video" },
-    ]);
-  };
 
-  // const { dispatch } = useContext(moviesContext);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,7 +77,6 @@ function SingleMoviePage() {
     );
   }
 };
-// feature: name, description, length, genres, trailer, poster, release_date, dates_minium, actor, director
 
   return (
    console.log(movie),
@@ -243,18 +197,7 @@ function SingleMoviePage() {
             
           </form>
         </div>
-        {/* <div className="imageAndButtonWrapper">
-         
-          {uploaded === 3 ? (
-            <button className="updateButton" onClick={handleSubmit}>
-              Update
-            </button>
-          ) : (
-            <button className="updateButton" onClick={handleUpload}>
-              Upload
-            </button>
-          )}
-        </div> */}
+  
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ function General() {
             mình.
           </p>
         </div>
-        <div className="box-account cgv-info">
+        {/* <div className="box-account cgv-info">
           <div className="cgv-status-member">
             <div className="cgv-tier">
               <label>Cấp Độ Thẻ</label>
@@ -122,7 +122,7 @@ function General() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="box-account box-info">
           <div className="box-head">
             <h2>Thông tin tài khoản</h2>

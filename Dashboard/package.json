@@ -3,24 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
-    "@mui/icons-material": "^5.0.5",
-    "@mui/material": "^5.12.3",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.0",
     "@mui/x-data-grid": "^4.0.2",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "chart.js": "^4.3.0",
     "firebase": "^8.2.3",
     "node-modules": "^1.0.1",
+    "plotly.js": "^2.22.0",
+    "plotly.js-dist": "^2.22.0",
     "react": "^17.0.2",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^17.0.2",
+    "react-plotly": "^1.0.0",
+    "react-plotly.js": "^2.6.0",
     "react-router-dom": "5.1",
     "react-scripts": "4.0.3",
-    "recharts": "^2.1.6",
+    "recharts": "^2.6.2",
     "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
@@ -47,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/plotly.js": "^2.12.18"
   }
 }

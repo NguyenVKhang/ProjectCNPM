@@ -1,6 +1,6 @@
 import "./style.css";
 import React from "react";
-import { BsFillHandThumbsUpFill } from "react-icons/bs"
+// import { BsFillHandThumbsUpFill } from "react-icons/bs"
 import { useNavigate } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import { useMediaQuery } from 'react-responsive';
@@ -96,14 +96,7 @@ function MovieComingSoon() {
                 </div>
                 <ul className="add-to-links">
                   <li>
-                    <button
-                      type="button"
-                      title="Thích"
-                      className="button btn-like"
-                    >
-                      <BsFillHandThumbsUpFill />
-                      <span>like</span>
-                    </button>
+              
                   </li>
                 </ul>
               </Col>

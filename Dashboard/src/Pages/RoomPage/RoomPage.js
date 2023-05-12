@@ -1,8 +1,6 @@
 import "./RoomPage.css";
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
-import { Link } from "react-router-dom";
 
 function RoomPage() {
     const [data, setData] = useState([]);
@@ -41,27 +39,6 @@ function RoomPage() {
             field: "address",
             headerName: "Address",
             width: 300,
-        },
-        {
-            field: "edit",
-            headerName: "",
-            width: 130,
-            renderCell: (params) => {
-                return (
-                    <div className="actionRow">
-                        {/* <Link
-                    to={{ pathname: "/schedule/" + params.row.showtime_id, schedule: params.row.showtime_id }}
-                  >
-                    <button className="edit">Edit</button>
-                  </Link> */}
-                        <button className="edit">Edit</button>
-                        <DeleteForeverOutlinedIcon
-                            className="icon"
-                        // onClick={() => handleDelete(params.row.showtime_id)}
-                        />
-                    </div>
-                );
-            },
         },
     ];
 

@@ -1,7 +1,7 @@
 import "./DetailMovie.css";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BsFillHandThumbsUpFill } from "react-icons/bs"
+// import { BsFillHandThumbsUpFill } from "react-icons/bs"
 
 
 function Chitiet() {
@@ -10,9 +10,7 @@ function Chitiet() {
 
   const [showTimes, setShowTimes] = useState([]);
   const [toggleState, setToggleState] = useState(1);
-  const [place, setPlace] = useState(1);
   const [calendar, setCalendar] = useState(0);
-  const [type, setType] = useState(1);
 
   const navigate = useNavigate();
 
@@ -23,8 +21,7 @@ function Chitiet() {
 
 
   const buyTicket = () => {
-    console.log(11111111);
-    console.log(state.film_id);
+    console.log("xyz", state.film_id)
     fetch('http://localhost:3001/movie/getShowTime/' + state.film_id, {
       method: 'GET',
       headers: {
@@ -76,26 +73,10 @@ function Chitiet() {
       window.location.href = "/login";
       return;
     }
-    fetch('http://localhost:3001/movie/getposition', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: e.currentTarget.title }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        navigate('/ticket', { state: data.data })
-      });
+    navigate('/ticket', { state: e.currentTarget.title });
   }
 
   const Day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const minutes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
-    , "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
-    "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"
-  ];
-
 
   return (
     <div className="page-chitiet">
@@ -125,7 +106,6 @@ function Chitiet() {
               <span className="h1">{state.name}</span>
             </div>
 
-            {/* Build test  */}
             <div className="movie-director movie-info">
               <label>Đạo diễn: </label>
               <div className="std">&nbsp; {state.director} </div>
@@ -166,14 +146,7 @@ function Chitiet() {
           </div>
           <div className="movie-detail-fb-booking">
             <ul className="add-to-cart-wrapper">
-              <li>
-                <button type="button" title="Thích" className="button btn-like">
-                  <BsFillHandThumbsUpFill />
-                  <span>
-                    like
-                  </span>
-                </button>
-              </li>
+          
 
               <li>
                 {state.dates_minium !== undefined && <button type="button" title="Mua vé" className="button btn-booking"><span onClick={buyTicket}>Mua vé</span></button>}
@@ -195,8 +168,6 @@ function Chitiet() {
                             return (
                               <li key={DATE.id} className={`${DATE.id === calendar ? "date current" : "date"}`} onClick={() => {
                                 setCalendar(DATE.id);
-                                setPlace(1);
-                                setType(1);
                               }}>
                                 <div className="day" title={DATE.day}>
                                   <span>{dAte.getMonth() + 1}</span>
@@ -208,85 +179,33 @@ function Chitiet() {
                           })}
                         </ul>
                       </div>
-                      <div className="modal-body">
-                        <ul className="toggle-tabs-city">
-                          {showTimes.map((Date) => (
-                            <li key={Date.id} className={`${Date.id === calendar ? "appear" : "hide"}`}>
-                              <ul>
-                                {Date.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "location current-location" : "location"}`} onClick={() => {
-                                    setPlace(Location.id);
-                                    setType(1);
-                                  }}>
-                                    <span>{Location.place}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="modal-body type-watch">
-                        <ul className="toggle-tabs-type">
-                          {showTimes.map((Date) => (
-                            <li key={Date.id} className={`${Date.id === calendar ? "appear" : "hide"}`}>
-                              <ul>
-                                {Date.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "appear" : "hide"}`}>
-                                    <ul>
-                                      {Location.Movie_Type.map((Movie_Type) => (
-                                        <li key={Movie_Type.id} className={`${Movie_Type.id === type ? "type current-type" : "type"}`} onClick={() => setType(Movie_Type.id)}>
-                                          <span>{Movie_Type.type_name}</span>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                       <div className="modal-footer">
                         <ul>
                           {showTimes.map((DATE) => (
                             <li key={DATE.id} className={`${DATE.id === calendar ? "appear" : "hide"}`}>
                               <ul>
-                                {DATE.Location.map((Location) => (
-                                  <li key={Location.id} className={`${Location.id === place ? "appear" : "hide"}`}>
+                                {DATE.Cinema.map((Cinema) => (
+                                  <li style={{
+                                    'textAlign': 'left'
+                                  }} key={Cinema.id} className="cinema">
+                                    <span>{Cinema.cinema_name}</span>
                                     <ul>
-                                      {Location.Movie_Type.map((Movie_Type) => (
-                                        <li key={Movie_Type.id} className={`${Movie_Type.id === type ? "appear" : "hide"}`}>
+                                      {Cinema.Site.map((Site) => (
+                                        <li style={{
+                                          'textAlign': 'left'
+                                        }} key={Site.id} className="site">
+                                          <span>{Site.site_name}</span>
                                           <ul>
-                                            {Movie_Type.Cinema.map((Cinema) => (
-                                              <li style={{
-                                                'textAlign': 'left'
-                                              }} key={Cinema.id} className="cinema">
-                                                <span>{Cinema.cinema_name}</span>
-                                                <ul>
-                                                  {Cinema.Site.map((Site) => (
-                                                    <li style={{
-                                                      'textAlign': 'left'
-                                                    }} key={Site.id} className="site">
-                                                      <span>{Site.site_name}</span>
-                                                      <ul>
-                                                        {Site.Time.map((Time) => {
-                                                          const hour = new Date(Time.timeSt);
-                                                          return (
-                                                            <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
-                                                              <span>{String(Time.timeSt).slice(0, 5)}</span>
-                                                            </li>
-                                                          )
-                                                        })}
-                                                        <br></br>
-                                                      </ul>
-                                                      <br></br>
-                                                    </li>
-                                                  ))}
-                                                </ul>
-                                              </li>
-                                            ))}
+                                            {Site.Time.map((Time) => {
+                                              return (
+                                                <li key={Time.id} className="time" title={Time.id} onClick={chooseShowTimes}>
+                                                  <span>{String(Time.timeSt).slice(0, 5)}</span>
+                                                </li>
+                                              )
+                                            })}
+                                            <br></br>
                                           </ul>
+                                          <br></br>
                                         </li>
                                       ))}
                                     </ul>

@@ -3,15 +3,10 @@ import "./MoviesPage.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import { Link } from "react-router-dom";
-import { getMovies, deleteMovie } from "./MoviesApiCall";
-import { moviesContext } from "./../../Context/Movies/MoviesContext";
 
 function MoviesPage() {
-  // const { movies, dispatch } = useContext(moviesContext);
   const [data, setData] = useState([]);
   
-
-
   useEffect(() => {
     const dataMovies = async () => {
       try {
@@ -30,8 +25,6 @@ function MoviesPage() {
     dataMovies();
   }, []);
     
-  
-
 
     const handleDelete = (id) => {
       console.log(id)

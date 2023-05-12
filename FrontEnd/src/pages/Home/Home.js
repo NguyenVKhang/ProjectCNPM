@@ -1,10 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,7 +9,6 @@ import { useMediaQuery } from 'react-responsive';
 import "./home.css";
 
 
-// import required modules
 import { Autoplay, Navigation, Pagination } from "swiper";
 
 export default function Home() {
@@ -52,7 +48,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => {
         setMovie(data.data.moviesNowShowing);
-        // movieBackDrop is 4 movies first of moviesNowShowing
+        
         setMovieBackDrop(data.data.moviesNowShowing.slice(0, 4));
       })
       .catch((err) => {
@@ -62,47 +58,7 @@ export default function Home() {
   return (
     <div className="main-container">
       <div className="main">
-        {/* <div className="sect-person">
-          <ul>
-            <li>
-              <a
-                className="threater"
-                href="/cinema"
-              >
-                D3K THEATER
-              </a>
-            </li>
-            <li>
-              <a
-                className="now-sh"
-                href="/movies/now-showing"
-              >
-                now showing
-              </a>
-            </li>
-            <li>
-              <a
-                className="ticket requied-login"
-                href="/contact"
-              >
-                my ticket infor
-              </a>
-            </li>
-            <li>
-              <a className="dc" href="/newsoffer">
-                discount infor
-              </a>
-            </li>
-            <li>
-              <a
-                className="login-header"
-                href="/register"
-              >
-                create account quick
-              </a>
-            </li>
-          </ul>
-        </div> */}
+      
         <div className="slideshow-container">
           <Swiper
 
@@ -121,46 +77,13 @@ export default function Home() {
             className="mySwiper"
 
           >
-            {/* <SwiperSlide className="swiper-slide">
-              <a href="https://www.cgv.vn/default/newsoffer/cgv-cnp-promo/">
-                <img
-                  src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/n/cnp_banner_adapt_980x448-01_1_.jpg"
-                  alt=""
-                />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <a href="https://www.cgv.vn/default/nct-dream.html">
-                <img
-                  src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/z/4/z4105039481752_70674110ac9e8cff8156032e00cd88b2.jpg"
-                  alt=""
-                />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <a href="https://www.cgv.vn/default/newsoffer/late-shift/">
-                <img
-                  src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/s/rsz_tcb-inspire-bakv-980x448.jpg"
-                  alt=""
-                />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <a href="">
-                <img
-                  src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_78.png"
-                  alt=""
-                />
-              </a>
-            </SwiperSlide> */}
-            {/* limit 4 movie */}
+
 
           
             {movieBackDrop.map((Movie, index) => {
               return (
                 <SwiperSlide 
                 key={index} className="swiper-slide" onClick={(e) => showDetailMovie(e, Movie.film_id)}
-                // set height 400px, width auto inorder height of image is 400px
                 style={{height: "500px" }}
                 >
 
@@ -197,7 +120,6 @@ export default function Home() {
               return (
                 <SwiperSlide 
                   key={index} 
-                  // onClick={(e) => showDetailMovie(e, Movie.film_id)}  
                   title={Movie.name}
                   className="swiper-slide-with-overlay"
                 >
@@ -225,152 +147,7 @@ export default function Home() {
             
           </Swiper>
         </div>
-        {/* <div className="product-collateral toggle-content tabs home-event">
-          <div className="home-title">
-            <h2>event</h2>
 
-          </div>
-          <div className="tabs">
-            <Tabs
-              defaultActiveKey="profile"
-              variant="pills"
-              id="uncontrolled-tab-example"
-              className="mb-3 tabss"
-            >
-              <Tab eventKey="home" title="Thành Viên D3K">
-                <Swiper
-                  slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
-                  spaceBetween={5}
-                  slidesPerGroup={1}
-                  loop={true}
-                  loopFillGroupWithBlank={true}
-                  navigation={true}
-                  modules={[Pagination, Navigation]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/birthday-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/b/i/birthday_popcorn_box_240x201.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/u22-vn/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/u/2/u22_2022_240x201.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/happy-wednesday/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/h/a/happywednesday240x201_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-culture-day/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/u/culture-240_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-thanh-vien-2023/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_5_.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                </Swiper>
-              </Tab>
-
-              <Tab eventKey="profile" title="Tin Mới & Ưu Đãi">
-                <Swiper
-                  // slidesPerView={4}
-                  slidesPerView={isScreen ? (isPhone ? 2 : 3) : 4}
-                  spaceBetween={5}
-                  slidesPerGroup={1}
-                  loop={true}
-                  loopFillGroupWithBlank={true}
-                  navigation={true}
-                  modules={[Pagination, Navigation]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-momo-promo-t10/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_36.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-msb-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv_240x241_1.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-techcombank-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_5.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-ban-viet-bank/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/a/d/adapt_kenh_doi_tac_240x201_1.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-citi-bank-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_7.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/zalopay-promotion-1222/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv_t12_240x201_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/zalopay-promotion-u22/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgvu22-main_240x201_1.jpg" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/ocb-promo/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv-omni-240x201_1.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <a href="https://www.cgv.vn/default/newsoffer/cgv-woori-bank/">
-                      <img src="https://ocwckgy6c1obj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/2/4/240x201_3.png" alt="" />
-                    </a>
-                  </SwiperSlide>
-                </Swiper>
-              </Tab>
-            </Tabs>
-          </div>
-
-        </div>
-        <div className="home-promotion-card">
-          <ul className="promos">
-            <li className="col-ad">
-              <div className="format-border">
-                <a href="https://www.cgv.vn/default/newsoffer/dream-party-package/">
-                  <img
-                    alt=""
-                    src="https://ocwckgy6c1obj.vcdn.cloud/media/wysiwyg/packages/214x245.jpg"
-                  />
-                </a>
-              </div>
-            </li>
-            <li className="col-hd">
-              <div className="format-border">
-                <a href="https://www.cgv.vn/default/newsoffer/u22-vn/">
-                  <img src="https://ocwckgy6c1obj.vcdn.cloud/media/wysiwyg/2022/022022/u22_homepage.jpg" alt="" />
-                </a>
-              </div>
-            </li>
-            <li className="col-ad">
-              <div className="format-border">
-                <a
-                  href="https://www.cgv.vn/default/newsoffer/hall-rental-cgv/"
-                  target="_blank"
-                >
-                  <img src="https://ocwckgy6c1obj.vcdn.cloud/media/wysiwyg/2021/CGV-DIGITAL-HALL-RENTAL-214x245.png" alt="" />
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div> */}
       </div>
 
     </div>
