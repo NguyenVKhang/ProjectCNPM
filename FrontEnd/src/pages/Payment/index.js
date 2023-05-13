@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { TiArrowBack } from "react-icons/ti";
 import { RxCounterClockwiseClock } from "react-icons/rx";
+import { useEffect } from "react";
 import Countdown from "react-countdown-now";
 
 function Payment() {
@@ -18,6 +19,39 @@ function Payment() {
     const back = () => {
         window.history.back()
     }
+
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+          // Thực hiện các hành động tại đây trước khi người dùng rời khỏi trang
+          event.preventDefault();
+          event.returnValue = 'Giao dịch chưa thành công bạn có chắc chắn rời khỏi trang này chứ?';
+          fetch('http://localhost:3001/movie/updateStatusEmpty', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            movie: state.movie,
+            position: state.position,
+            position_booked: state.position_booked,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data);
+            })
+            .catch((err) => {
+            console.log(err);
+            });
+        };
+    
+        window.addEventListener('beforeunload', handleBeforeUnload);
+    
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
     const renderer = ({ hours, minutes, seconds, completed }) => {
