@@ -94,7 +94,7 @@ function Payment() {
             .then((data) => {
                 // eslint-disable-next-line array-callback-return
                 data.data.map((item) => {
-                    if (parseInt(item.trans_amount) === 1 && item.description === "P7XZMJ") {
+                    if (parseInt(item.trans_amount) === state.price/1000 && item.description === result) {
                         clearInterval(interval);
                         alert("Thanh toán thành công");
                         fetch("http://localhost:3001/auth/saveHistory", {
